@@ -34,6 +34,17 @@ body{
     width: 100%;
     font-size: 20px;
 }
+.input{
+  min-height: auto;
+  padding: 0.33em 0.75em;
+  width: 100%;
+  outline: none;
+  border: 1px solid #e0e0e0!important;
+  border-radius: 0.25rem;
+  background: transparent;
+  transition: all .2s linear;
+  font-size: 16px;
+}
 </style>
 <body>
 
@@ -44,26 +55,26 @@ body{
           {% csrf_token %}
             <!-- Username input -->
             <div class="form-outline mb-4">
-              <input type="text" id="form2Example1" class="form-control border" name="username" />
-              <label class="form-label" for="form2Example1">Username</label>
+              <input type="text" id="form2Example1" class="input" name="username" placeholder="Username" />
+              <!-- <label class="form-label" for="form2Example1">Username</label> -->
             </div>
 
             <!-- Phone no. input -->
             <div class="form-outline mb-4">
-              <input type="tel" id="form2Example1" class="form-control border" name="phoneno" />
-              <label class="form-label" for="form2Example1">Phone no.</label>
+              <input type="tel" id="form2Example1" class="input" name="phoneno" placeholder="Phone no" />
+              <!-- <label class="form-label" for="form2Example1">Phone no.</label> -->
             </div>
             
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form2Example1" class="form-control border" name="email" />
-              <label class="form-label" for="form2Example1">Email</label>
+              <input type="email" id="form2Example1" class="input" name="email" placeholder="Email" />
+              <!-- <label class="form-label" for="form2Example1">Email</label> -->
             </div>
           
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="form2Example2" class="form-control border" name="password" />
-              <label class="form-label" for="form2Example2">Password</label>
+              <input type="password" id="form2Example2" class="input" name="password" placeholder="Password" />
+              <!-- <label class="form-label" for="form2Example2">Password</label> -->
             </div>
             
             <!-- Submit button -->
