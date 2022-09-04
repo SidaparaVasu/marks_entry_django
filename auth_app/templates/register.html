@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | Marks Entry</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
+</head>
+<style>
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0fdff;
+}
+.container{
+    width: 500px;
+    height: auto;
+    padding: 30px 40px;
+    border: 1px solid rgb(229, 229, 229);
+    background-color: #fff;
+    box-shadow: 0 2px 20px 5px rgba(0, 0, 0, 0.1)
+}
+.container > .header{
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+}
+</style>
+<body>
+
+    <section class="container" >
+        <header class="header mb-4  ">Registration</header>
+        <!-- registration form -->
+        <form action="/registration" method="post">
+            <!-- Username input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="form2Example1" class="form-control border" name="registerusername" />
+              <label class="form-label" for="form2Example1">Username</label>
+            </div>
+
+            <!-- Phone no. input -->
+            <div class="form-outline mb-4">
+              <input type="tel" id="form2Example1" class="form-control border" name="registerphoneno" />
+              <label class="form-label" for="form2Example1">Phone no.</label>
+            </div>
+            
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="form2Example1" class="form-control border" name="registeremail" />
+              <label class="form-label" for="form2Example1">Email</label>
+            </div>
+          
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" id="form2Example2" class="form-control border" name="registerpassword" />
+              <label class="form-label" for="form2Example2">Password</label>
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+          </form>
+    </section>
+
+</body>
+</html>
