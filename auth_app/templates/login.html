@@ -1,79 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Marks Entry</title>
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"rel="stylesheet"/>
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Marks Entry</title>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
 </head>
 <style>
-body{
+  body {
     height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f0fdff;
-}
-.container{
+  }
+
+  .container {
     width: 500px;
     height: auto;
     padding: 30px 40px;
     border: 1px solid rgb(229, 229, 229);
     background-color: #fff;
     box-shadow: 0 2px 20px 5px rgba(0, 0, 0, 0.1)
-}
-.container > .header{
+  }
+
+  .container>.header {
     text-align: center;
     width: 100%;
     font-size: 20px;
-}
+  }
+
+  .input {
+    min-height: auto;
+    padding: 0.33em 0.75em;
+    width: 100%;
+    outline: none;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 0.25rem;
+    background: transparent;
+    transition: all .2s linear;
+    font-size: 16px;
+  }
 </style>
+
 <body>
 
-    <section class="container" >
-        <header class="header mb-4">Login</header>
-        <!-- login form -->
-        <form action="/login" method="post">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form2Example1" class="form-control border" name="loginusername" />
-              <label class="form-label" for="form2Example1">Username</label>
-            </div>
-          
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <input type="password" id="form2Example2" class="form-control border" name="loginpassword" />
-              <label class="form-label" for="form2Example2">Password</label>
-            </div>
-          
-            <!-- 2 column grid layout for inline styling -->
-            <div class="row mb-4">
-              <div class="col d-flex justify-content-center">
-                <!-- Checkbox -->
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                  <label class="form-check-label" for="form2Example31"> Remember me </label>
-                </div>
-              </div>
-          
-              <div class="col">
-                <!-- Simple link -->
-                <a href="#!">Forgot password?</a>
-              </div>
-            </div>
-          
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-          
-          </form>
-    </section>
+  <section class="container">
+    <header class="header mb-4">Login</header>
+    <!-- login form -->
+    <form action="loginHandle" method="post">
+      {% csrf_token %}
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="text" id="form2Example1" class="input" name="username" placeholder="username" required />
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="form2Example2" class="input" name="password" placeholder="Password" required />
+      </div>
+
+      <!-- 2 column grid layout for inline styling -->
+      <div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+          <!-- Checkbox -->
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+            <label class="form-check-label" for="form2Example31"> Remember me </label>
+          </div>
+        </div>
+
+        <div class="col">
+          <!-- Simple link -->
+          <a href="#!">Forgot password?</a>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+    </form>
+  </section>
 
 </body>
+
 </html>
