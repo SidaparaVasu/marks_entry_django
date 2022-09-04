@@ -40,33 +40,34 @@ body{
     <section class="container" >
         <header class="header mb-4  ">Registration</header>
         <!-- registration form -->
-        <form action="/registration" method="post">
+        <form action="registration" method="post">
+          {% csrf_token %}
             <!-- Username input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form2Example1" class="form-control border" name="registerusername" />
+              <input type="text" id="form2Example1" class="form-control border" name="username" />
               <label class="form-label" for="form2Example1">Username</label>
             </div>
 
             <!-- Phone no. input -->
             <div class="form-outline mb-4">
-              <input type="tel" id="form2Example1" class="form-control border" name="registerphoneno" />
+              <input type="tel" id="form2Example1" class="form-control border" name="phoneno" />
               <label class="form-label" for="form2Example1">Phone no.</label>
             </div>
             
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form2Example1" class="form-control border" name="registeremail" />
+              <input type="email" id="form2Example1" class="form-control border" name="email" />
               <label class="form-label" for="form2Example1">Email</label>
             </div>
           
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="form2Example2" class="form-control border" name="registerpassword" />
+              <input type="password" id="form2Example2" class="form-control border" name="password" />
               <label class="form-label" for="form2Example2">Password</label>
             </div>
             
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+            <button type="submit" class="btn btn-primary btn-block mb-4">register</button>
           </form>
     </section>
 
