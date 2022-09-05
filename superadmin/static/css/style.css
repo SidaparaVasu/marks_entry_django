@@ -150,6 +150,7 @@
     width: calc( 100vw - var(--side-panel-width) );
     background-color: var(--light-grey);
     padding: 30px;
+    overflow-y: scroll;
 }
 
 .container > .content-area{
