@@ -11,5 +11,7 @@ class users(models.Model):
     phoneno = models.TextField(max_length = 10)
     password = models.TextField(max_length = 50)
     type = models.IntegerField(max_length = 1, default = 3)
-    def __str__(self):
-        return self.name 
+    # def __str__(self):
+    #     return (self.username,self.email)
+    def data(self):
+        return [self.username,self.email]
