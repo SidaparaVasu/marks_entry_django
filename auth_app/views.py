@@ -3,6 +3,7 @@ from auth_app.forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.hashers import check_password
+from django.http import HttpResponseRedirect
 from . models import users
 # Create your views here.
 def loginPage(request):
@@ -34,8 +35,10 @@ def loginHandle(request):
         
        
         if uname[0].username == un and uname[0].password == ps:
-            return HttpResponse('successful')
-        
+            return HttpResponseRedirect('/superadmin')
+        else:
+            html = "Invaild Credentials! Please try again!" + "<a href='login'>Go back</a>"
+            return HttpResponse(html)
     else:
         form = RegisterForm()
         return render(request, template_name = "login.html", context = {"form":form})

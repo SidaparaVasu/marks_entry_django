@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Navigation Bar -->
 <nav class="navigation-bar">
     <div class="logo">
@@ -9,6 +10,6 @@
     </h1>
 
     <h4 class="logout-box">
-        <a href="#">Logout</a>
+        <a href="{% url 'loginPage' %}">Logout</a>
     </h4>
 </nav>
