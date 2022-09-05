@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404,HttpResponse
 from auth_app.forms import RegisterForm  
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
@@ -25,23 +25,17 @@ def registration(request):
     return render(request,'register.html',{'form':form})  
 
 def loginHandle(request):
+    
     if request.method == "POST":    
         form = RegisterForm(request.POST)
+        un = request.POST.get("username")
+        ps = request.POST.get("password")
+        uname = users.objects.all().filter(username=un)
         
-        if form.is_valid():
-            loginusername = form.cleaned_data.get('username')
-            loginpassword =  form.cleaned_data.get('password')
+       
+        if uname[0].username == un and uname[0].password == ps:
+            return HttpResponse('successful')
         
-            # obj = get_object_or_404(users, username=loginusername)
-            # res = check_password(loginpassword,obj.password1)
-            user = authenticate(username=loginusername, password=loginpassword)
-            
-            if user == True:
-                messages.info(request, "You are now logged in as {loginusername}")
-                return redirect("/")
-        else:
-            messages.error(request, "Invalid credential! Please try again")
-            return redirect("loginPage")
     else:
         form = RegisterForm()
         return render(request, template_name = "login.html", context = {"form":form})
