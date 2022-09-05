@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.hashers import check_password
 from . models import users
+from faculty import urls
 # Create your views here.
 def loginPage(request):
     return render(request, 'login.html')
@@ -31,29 +32,12 @@ def loginHandle(request):
         un = request.POST.get("username")
         ps = request.POST.get("password")
         uname = users.objects.all().filter(username=un)
-        
-        #username=form['username']
-        # print(uname)
-        #return HttpResponse(uname[0].phoneno)
         if uname[0].username == un and uname[0].password == ps:
-            return HttpResponse('successful')
-        #if form.is_valid():
-            #loginusername = form.cleaned_data.get('username')
-            #loginpassword =  form.cleaned_data.get('password')
+            return render(request,'login.html')
         
-            # obj = get_object_or_404(users, username=loginusername)
-            # res = check_password(loginpassword,obj.password1)
-            #user = authenticate(username=loginusername, password=loginpassword)
-            
-            #if user == None:
-                #messages.info(request, "You are now logged in as {loginusername}")
-                #return redirect("/")
-        #else:
-         #   messages.error(request, "Invalid credential! Please try again")
-          #  return redirect("loginPage")
-    else:
-        form = RegisterForm()
-        return render(request, template_name = "login.html", context = {"form":form})
+        else:
+            form = RegisterForm()
+            return render(request, template_name = "login.html", context = {"form":form})
 
 def logoutHandle(request):
     if request.method == "POST":    
