@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
     <title>Welcome to marks entry webapp</title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <!-- Font Awesome -->
@@ -21,7 +22,7 @@
                 <img src="{% static 'assets/logo.png' %}" alt="" srcset="">
             </p>
             <p class="box">
-                continue with &nbsp;<a href="{% url 'loginPage' %}"> sign in </a> &nbsp;|&nbsp; <a href="{% url 'registerPage' %}"> register </a>
+                continue with &nbsp;<a href="{% url 'loginPage' %}"> sign in </a>
             </p>    
         </nav>
         <div class="home-content">
