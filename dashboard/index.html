@@ -1,4 +1,6 @@
 {% load static %}
+
+{% extends utils.navbar %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,38 +15,6 @@
     <link rel="stylesheet" href="css/plugins.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navigation-bar">
-        <div class="logo">
-            <img src="{% static 'assets/logo.png' %}" alt="logo">
-        </div>
-
-        <h1 class="title">
-            Marks Entry System
-        </h1>
-
-        <h4 class="logout-box">
-            <a href="#">Logout</a>
-        </h4>
-    </nav>
-
-    <!-- Side Navigation Bar -->
-    <section class="side-panel">
-        <div class="user-name-box">
-            <a href="#">Admin</a>
-        </div>
-
-        <ul class="list">
-            <li class="list-items"><a href="#" class="links">home</a></li>
-            <li class="list-items"><a href="#" class="links">Add Exam</a></li>
-            <li class="list-items"><a href="#" class="links">Add Student</a></li>
-        </ul>
-
-        <p class="credits">
-            Copyright &copy; <script>document.write(new Date().getFullYear())</script> 
-            | All Rights Reserved 
-        </p>
-    </section>
 
     <!-- Main Container -->
     <section class="container">
