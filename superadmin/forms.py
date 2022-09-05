@@ -5,3 +5,4 @@ class AddInstitute(forms.ModelForm):
     class Meta:  
         model = addInstitute  
         fields = ('instituteId','instituteName','instituteAddress',)
+        
