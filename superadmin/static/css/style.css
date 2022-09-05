@@ -205,6 +205,15 @@
     text-align: center;
     border-bottom: 1px solid var(--grey);
 }
+.col-6:nth-child(3), 
+.col-6:nth-child(4){
+    justify-content: left;
+}
+.jc-lft{
+    text-align: left;
+    /* justify-content: left; */
+}
+
 
 .svg{
     height: 16px;
