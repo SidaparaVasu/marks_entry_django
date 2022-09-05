@@ -156,6 +156,56 @@
     width: 100%;
     height: auto;
     background-color: var(--white);
-    padding: 10px;
+    padding: 10px 20px;
     margin-bottom: 40px;
+}
+.content-area-header{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 8px;
+}
+
+.content-area-form{
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 50px;
+}
+.content-area-form > input[type="text"]{
+    outline: none;
+    border: 1px solid var(--grey);
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}   
+.content-area-form > input[type="text"]:focus{
+    box-shadow: 0 0 0 3px #e5e5e57f;
+}
+.form-btn{
+    padding: 10px 15px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    background-color: var(--violet);
+    color: var(--white);
+    font-size: 16px;
+    cursor: pointer;
+}
+.form-btn:is(:hover, :focus){
+    box-shadow: 0 0 0 3px #b59ff581;
+}
+
+
+.col-6{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 5% 15% 35% 35% 5% 5%);
+    text-align: center;
+    border-bottom: 1px solid var(--grey);
+}
+
+.svg{
+    height: 16px;
 }
