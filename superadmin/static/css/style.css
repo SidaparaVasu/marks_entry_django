@@ -155,6 +155,7 @@
 .container > .content-area{
     width: 100%;
     height: auto;
-    background-color: var(--pink);
+    background-color: var(--white);
     padding: 10px;
+    margin-bottom: 40px;
 }

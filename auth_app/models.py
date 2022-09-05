@@ -10,6 +10,6 @@ class users(models.Model):
     email = models.EmailField(blank = True,max_length=50)
     phoneno = models.TextField(max_length = 10)
     password = models.TextField(max_length = 50)
-    type = models.IntegerField(max_length = 1, default = 3)
+    type = models.IntegerField(default = 3)
     def __str__(self):
-        return self.name 
+        return self.name  
