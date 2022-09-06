@@ -35,6 +35,7 @@ def loginHandle(request):
         
        
         if uname[0].username == un and uname[0].password == ps:
+            # return render(request, "institute.html")
             return HttpResponseRedirect('/superadmin')
         else:
             html = "Invaild Credentials! Please try again!" + "<a href='login'>Go back</a>"
