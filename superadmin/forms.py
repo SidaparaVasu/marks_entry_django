@@ -1,8 +1,8 @@
 from django import forms  
-from superadmin.models import addInstitute
+from superadmin.models import Institute
  
-class AddInstitute(forms.ModelForm):  
+class Institute(forms.ModelForm):  
     class Meta:  
-        model = addInstitute  
+        model = Institute  
         fields = ('instituteId','instituteName','instituteAddress',)
         

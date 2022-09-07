@@ -84,7 +84,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'marks_entry_django',
+        'NAME':'marks_entry',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost',
