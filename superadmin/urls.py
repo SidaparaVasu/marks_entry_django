@@ -9,6 +9,7 @@ urlpatterns = [
     # Institute CRUD paths
     path('addInstitute', views.addInstitute, name="addInstitute"),
     path('showInstitute', views.showInstitute, name="showInstitute"),
+    path('deleteInstitute<id>', views.deleteInstitute, name="deleteInstitute"),
     # Course CRUD paths
     path('addCourse', views.addCourse, name="addCourse"),
     

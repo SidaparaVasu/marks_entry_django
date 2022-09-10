@@ -67,7 +67,7 @@
                     <!-- update institue data -->
                     <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
                     <!-- delete institue data -->
-                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
+                    <a href="{% url 'deleteInstitute' data.id %}"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
                 </div>
                 {% endfor %}
             </div>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect,HttpResponse 
 from superadmin.models import Institute
@@ -21,10 +21,11 @@ def course(request):
 def addInstitute(request):
     if request.method == "POST":     
         form = InstituteForm(request.POST or None) 
-        if form.is_valid():  
+        if form.is_valid():   
             form.save()
             messages.error(request, "Institute added successfully!")
-            return render(request,'institute.html')  
+            return redirect("/superadmin/institute")
+            #return render(request,'institute.html')  
         else:
             messages.error(request, "Insertion failed!")
             return render(request,'institute.html')  
@@ -35,6 +36,15 @@ def addInstitute(request):
 def showInstitute(request):
     context = {"Institute":Institute.objects.all()}
     return render(request,'institute.html',context)  
+
+def deleteInstitute(request,id):
+    context ={}
+    obj = get_object_or_404(Institute,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/superadmin/institute")
+    return render(request,'institute.html',context)
+
 # Institute CRUD ends
 
 # Course CRUD starts
