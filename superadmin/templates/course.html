@@ -33,9 +33,9 @@
             <header class="content-area-header">Add Courses</header>
             <form action="addCourse" method="post" class="content-area-form">
                 {% csrf_token %}
-                <input type="text" name="courseId" class="input" placeholder="course id" />
+                <input type="text" name="courseID" class="input" placeholder="course id" />
                 <input type="text" name="courseName" class="input" placeholder="course name" />
-                <!-- <input type="text" name="instituteID" class="input" placeholder="institute id" /> -->
+                <input type="text" name="instituteID" class="input" placeholder="institute id" />
                 <input type="submit" value="add course" class="form-btn">
             </form>
             {% if messages %}

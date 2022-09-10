@@ -23,7 +23,7 @@ def addInstitute(request):
         form = InstituteForm(request.POST or None) 
         if form.is_valid():   
             form.save()
-            messages.error(request, "Institute added successfully!")
+            messages.success(request, "Institute added successfully!")
             return redirect("/superadmin/institute")
             #return render(request,'institute.html')  
         else:
@@ -53,7 +53,7 @@ def addCourse(request):
         form = CourseForm(request.POST or None) 
         if form.is_valid():  
             form.save()
-            messages.error(request, "Course added successfully!")
+            messages.success(request, "Course added successfully!")
             return render(request,'course.html')  
         else:
             messages.error(request, "Insertion failed!")
