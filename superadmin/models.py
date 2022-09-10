@@ -10,4 +10,3 @@ class Course(models.Model):
     courseID = models.IntegerField(unique=True)
     courseName = models.TextField(blank = True, max_length=50)
     instituteID = models.ForeignKey(Institute, on_delete=models.CASCADE)
-    type = models.IntegerField(default = 3) 

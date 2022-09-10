@@ -217,4 +217,13 @@
 
 .svg{
     height: 16px;
+    background-color: rgb(217, 123, 1);
+}
+
+.upd {
+    background-color: var(--green);
+}
+
+.del {
+    background-color: var(--red);
 }
