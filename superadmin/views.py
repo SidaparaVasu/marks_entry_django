@@ -33,3 +33,7 @@ def showInstitute(request):
     context["Institute"] = Institute.objects.all()
     return render(request,'institute.html',context)  
     
+
+
+def admin(request):
+    return render(request, "admin.html")    
