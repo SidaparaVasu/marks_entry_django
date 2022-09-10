@@ -19,21 +19,20 @@ def institute(request):
 def addInstitute(request):
     if request.method == "POST":     
         form = InstituteForm(request.POST or None) 
-        #return HttpResponse(form) 
-        if form.is_valid():  
-            form.save()  
-            messages.success(request, "You are registered sucessfully in as {username}!")
+        if form.is_valid():   
+            form.save()
+            messages.error(request, "Institute added successfully!")
             return redirect("/superadmin/institute")
             #return render(request,'institute.html')  
         else:
-            messages.error(request, "Registration failed! {username}!")
+            messages.error(request, "Insertion failed!")
+            return render(request,'institute.html')  
     else:  
         form = InstituteForm()  
-    return render(request,'register.html',{'form':form})
+    return render(request,'institute.html',{'form':form})
 
 def showInstitute(request):
-    context ={"Institute":Institute.objects.all()}
-   
+    context = {"Institute":Institute.objects.all()}
     return render(request,'institute.html',context)  
     
 def deleteInstitute(request,id):

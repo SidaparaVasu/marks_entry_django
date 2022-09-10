@@ -35,12 +35,18 @@
                 <input type="text" name="instituteAddress" class="input" placeholder="institute address" />
                 <input type="submit" value="add institute" class="form-btn">
             </form>
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+                {% endfor %}
+    
+            {% endif %}
         </div>
         <!-- add institue ends -->
 
         <!-- show institue begins -->
         <div class="content-area">
-            <header class="content-area-header">Show Institutes Data</header>
+            <header class="content-area-header">Show Institutes</header>
             
             <div class="show-data-box">
                 <div class="field-header col-6">
@@ -52,65 +58,18 @@
                     <p><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></p>
                 </div>
             
-                {% for data in Institute %}
+                {% for data in context %}
                 <div class="col-6">
                     <p>{{ data.id }}</p>
                     <p>{{ data.instituteID }}</p>
                     <p class="jc-lft">{{ data.instituteName }}</p>
                     <p class="jc-lft">{{ data.instituteAddress }} </p>
+                    <!-- update institue data -->
                     <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
+                    <!-- delete institue data -->
                     <a href="{% url 'deleteInstitute' data.id %}"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
-                    
                 </div>
                 {% endfor %}
-            <!--    <div class="col-6">
-                    <p>1.</p>
-                    <p>20514789</p>
-                    <p class="jc-lft">Bachelor in Commerce</p>
-                    <p class="jc-lft">New LJ University Sarkhej </p>
-                    <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
-                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
-                </div>
-                <div class="col-6">
-                    <p>1.</p>
-                    <p>20514789</p>
-                    <p class="jc-lft">Bachelor in Commerce</p>
-                    <p class="jc-lft">New LJ University Sarkhej </p>
-                    <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
-                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
-                </div>
-                <div class="col-6">
-                    <p>1.</p>
-                    <p>20514789</p>
-                    <p class="jc-lft">Bachelor in Commerce</p>
-                    <p class="jc-lft">New LJ University Sarkhej </p>
-                    <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
-                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
-                </div>
-                <div class="col-6">
-                    <p>1.</p>
-                    <p>20514789</p>
-                    <p class="jc-lft">Bachelor in Commerce</p>
-                    <p class="jc-lft">New LJ University Sarkhej </p>
-                    <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
-                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
-                </div>
-                <div class="col-6">
-                    <p>1.</p>
-                    <p>20514789</p>
-                    <p class="jc-lft">Bachelor in Commerce</p>
-                    <p class="jc-lft">New LJ University Sarkhej </p>
-                    <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
-                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
-                </div>
-                <div class="col-6">
-                    <p>1.</p>
-                    <p>20514789</p>
-                    <p class="jc-lft">Bachelor in Commerce</p>
-                    <p class="jc-lft">New LJ University Sarkhej </p>
-                    <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
-                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
-                </div> -->
             </div>
 
         </div>
