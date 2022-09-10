@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect,HttpResponse 
 from superadmin.models import Institute
@@ -23,7 +23,8 @@ def addInstitute(request):
         if form.is_valid():  
             form.save()  
             messages.success(request, "You are registered sucessfully in as {username}!")
-            return render(request,'institute.html')  
+            return redirect("/superadmin/institute")
+            #return render(request,'institute.html')  
         else:
             messages.error(request, "Registration failed! {username}!")
     else:  
@@ -35,3 +36,10 @@ def showInstitute(request):
    
     return render(request,'institute.html',context)  
     
+def deleteInstitute(request,id):
+    context ={}
+    obj = get_object_or_404(Institute,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/superadmin/institute")
+    return render(request,'institute.html',context)

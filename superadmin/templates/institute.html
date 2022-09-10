@@ -59,7 +59,8 @@
                     <p class="jc-lft">{{ data.instituteName }}</p>
                     <p class="jc-lft">{{ data.instituteAddress }} </p>
                     <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
-                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
+                    <a href="{% url 'deleteInstitute' data.id %}"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
+                    
                 </div>
                 {% endfor %}
             <!--    <div class="col-6">
