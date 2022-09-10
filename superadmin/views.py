@@ -12,8 +12,10 @@ def profile(request):
     return render(request, "profile.html")
 
 def institute(request):
-    return render(request, "institute.html")
-
+    context ={"Institute":Institute.objects.all()}
+   
+    return render(request,'institute.html',context)  
+    
 def addInstitute(request):
     if request.method == "POST":     
         form = InstituteForm(request.POST or None) 
@@ -29,11 +31,7 @@ def addInstitute(request):
     return render(request,'register.html',{'form':form})
 
 def showInstitute(request):
-    context ={}
-    context["Institute"] = Institute.objects.all()
+    context ={"Institute":Institute.objects.all()}
+   
     return render(request,'institute.html',context)  
     
-
-
-def admin(request):
-    return render(request, "admin.html")    
