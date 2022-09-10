@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Course | Marks_Entry</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+
+    <script src="https://kit.fontawesome.com/2d2e379b4b.js" crossorigin="anonymous"></script>
+<style>
+.col-6{grid-template-columns: repeat(6, 5% 15% 45% 15% 10% 10%);}
+</style>
+</head>
+<body>
+    
+    {% include 'navbar.html' %}
+    {% include 'sidepanel.html' %}
+
+    {% block content %}
+
+    {% endblock %} 
+    <!-- Main Container -->
+    <section class="container">
+
+        <!-- add institue begins -->
+        <div class="content-area">
+            <header class="content-area-header">Add Courses</header>
+            <form action="addCourse" method="post" class="content-area-form">
+                {% csrf_token %}
+                <input type="text" name="courseId" class="input" placeholder="course id" />
+                <input type="text" name="courseName" class="input" placeholder="course name" />
+                <!-- <input type="text" name="instituteID" class="input" placeholder="institute id" /> -->
+                <input type="submit" value="add course" class="form-btn">
+            </form>
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+                {% endfor %}
+    
+            {% endif %}
+        </div>
+        <!-- add institue ends -->
+
+        <!-- show institue begins -->
+        <div class="content-area">
+            <header class="content-area-header">Show Courses</header>
+            
+            <div class="show-data-box">
+                <div class="field-header col-6">
+                    <p>sr no.</p>
+                    <p>Course ID</p>
+                    <p class="jc-lft">Course Name</p>
+                    <p class="jc-lft">Institute Id</p>
+                    <p><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></p>
+                    <p><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></p>
+                </div>
+            
+                {% for data in context %}
+                <div class="col-6">
+                    <p>{{ data.id }}</p>
+                    <p>{{ data.instituteID }}</p>
+                    <p class="jc-lft">{{ data.instituteName }}</p>
+                    <p class="jc-lft">{{ data.instituteAddress }} </p>
+                    <!-- update institue data -->
+                    <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
+                    <!-- delete institue data -->
+                    <a href="#"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <!-- show institue ends -->
+    
+    </section>
+    <script>
+        $(document).ready(showInstitute);
+    </script>
+</body>
+</html>
