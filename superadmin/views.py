@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect,HttpResponse 
-from superadmin.models import Course, Institute
-from superadmin.forms import InstituteForm, CourseForm
+from superadmin.models import Institute
+from superadmin.forms import InstituteForm
 
 # Create your views here.
 def indexDashboard(request):
@@ -12,21 +12,16 @@ def profile(request):
     return render(request, "profile.html")
 
 def institute(request):
-    context = Institute.objects.all()
-    return render(request,'institute.html',{'Institute':context})  
-
-def course(request):
-    # return render(request, "course.html")
-    context = Course.objects.all()
-    return render(request,'course.html',{'Course':context}) 
-
-# Institute CRUD starts   
+    context ={"Institute":Institute.objects.all()}
+   
+    return render(request,'institute.html',context)  
+    
 def addInstitute(request):
     if request.method == "POST":     
         form = InstituteForm(request.POST or None) 
         if form.is_valid():   
             form.save()
-            messages.success(request, "Institute added successfully!")
+            messages.error(request, "Institute added successfully!")
             return redirect("/superadmin/institute")
             #return render(request,'institute.html')  
         else:
@@ -35,40 +30,34 @@ def addInstitute(request):
     else:  
         form = InstituteForm()  
     return render(request,'institute.html',{'form':form})
- 
 
+def showInstitute(request):
+    context = {"Institute":Institute.objects.all()}
+    return render(request,'institute.html',context)  
+    
 def deleteInstitute(request,id):
     context ={}
     obj = get_object_or_404(Institute,id=id)
     if request.method == "GET":
         obj.delete()
-        messages.error(request, "Institute Deleted Succesfully!")
         return redirect("/superadmin/institute")
     return render(request,'institute.html',context)
 
-# Institute CRUD ends
+#Request UpdateInstitute Page
+def updateInstitute(request,id):
+    context = Institute.objects.get(id=id)
+    return render(request, "updateInstitute.html",{'context' : context})
 
-# Course CRUD starts
-def addCourse(request):
-    if request.method == "POST":     
-        form = CourseForm(request.POST or None) 
-        if form.is_valid():  
-            form.save()
-            messages.success(request, "Course added successfully!")
-            return redirect("/superadmin/course")
-        else:
-            messages.error(request, "Insertion failed!")
-            return redirect("/superadmin/course") 
-    else:  
-        form = CourseForm()  
-    return render(request,'course.html',{'form':form})
+#Update Function Of Institute
+def editInstitute(request,id):
+    context = {}
+    obj = get_object_or_404(Institute, id=id)
+    form = InstituteForm(request.POST or None, instance=obj)
 
-def deleteCourse(request,id):
-    context ={}
-    obj = get_object_or_404(Course,id=id)
-    if request.method == "GET":
-        obj.delete()
-        messages.error(request, "Course Deleted Succesfully!")
-        return redirect("/superadmin/course")
-    return render(request,'course.html',context)
-# Course CRUD ends
+    if form.is_valid():
+        #return HttpResponse(form)
+        form.save()
+        return redirect("/superadmin/institute")
+
+    context['form'] = form
+    return render(request, "institute.html",context)

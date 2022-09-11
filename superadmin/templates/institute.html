@@ -15,11 +15,13 @@
     <script src="https://kit.fontawesome.com/2d2e379b4b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    {% block content %}
     
     {% include 'navbar.html' %}
     {% include 'sidepanel.html' %}
 
+    {% block content %}
+
+    {% endblock %} 
     <!-- Main Container -->
     <section class="container">
 
@@ -55,7 +57,7 @@
                     <p><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></p>
                     <p><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></p>
                 </div>
-                
+            
                 {% for data in Institute %}
                 <div class="col-6">
                     <p>{{ data.id }}</p>
@@ -63,13 +65,9 @@
                     <p class="jc-lft">{{ data.instituteName }}</p>
                     <p class="jc-lft">{{ data.instituteAddress }} </p>
                     <!-- update institue data -->
-                    <a href="#">
-                        <img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg upd">
-                    </a>
+                    <a href="{% url 'updateInstitute' data.id  %}"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
                     <!-- delete institue data -->
-                    <a href="{% url 'deleteInstitute' data.id %}" onclick="confirm('do you want to delete this data?')">
-                        <img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg del">
-                    </a>
+                    <a href="{% url 'deleteInstitute' data.id %}"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
                 </div>
                 {% endfor %}
             </div>
@@ -78,9 +76,5 @@
         <!-- show institue ends -->
     
     </section>
-    {% endblock %} 
-    <script>
-        $(document).ready(institute);
-    </script>
 </body>
 </html>
