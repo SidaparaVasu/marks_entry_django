@@ -58,14 +58,14 @@
                     <p><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></p>
                 </div>
             
-                {% for data in context %}
+                {% for data in Institute %}
                 <div class="col-6">
                     <p>{{ data.id }}</p>
                     <p>{{ data.instituteID }}</p>
                     <p class="jc-lft">{{ data.instituteName }}</p>
                     <p class="jc-lft">{{ data.instituteAddress }} </p>
                     <!-- update institue data -->
-                    <a href="#"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
+                    <a href="{% url 'updateInstitute' data.id  %}"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
                     <!-- delete institue data -->
                     <a href="{% url 'deleteInstitute' data.id %}"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
                 </div>
@@ -76,8 +76,5 @@
         <!-- show institue ends -->
     
     </section>
-    <script>
-        $(document).ready(showInstitute);
-    </script>
 </body>
 </html>

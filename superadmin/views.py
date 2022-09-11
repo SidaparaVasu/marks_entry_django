@@ -42,3 +42,22 @@ def deleteInstitute(request,id):
         obj.delete()
         return redirect("/superadmin/institute")
     return render(request,'institute.html',context)
+
+#Request UpdateInstitute Page
+def updateInstitute(request,id):
+    context = Institute.objects.get(id=id)
+    return render(request, "updateInstitute.html",{'context' : context})
+
+#Update Function Of Institute
+def editInstitute(request,id):
+    context = {}
+    obj = get_object_or_404(Institute, id=id)
+    form = InstituteForm(request.POST or None, instance=obj)
+
+    if form.is_valid():
+        #return HttpResponse(form)
+        form.save()
+        return redirect("/superadmin/institute")
+
+    context['form'] = form
+    return render(request, "institute.html",context)

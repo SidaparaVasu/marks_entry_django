@@ -8,5 +8,7 @@ urlpatterns = [
     path('addInstitute', views.addInstitute, name="addInstitute"),
     path('showInstitute', views.showInstitute, name="showInstitute"),
     path('deleteInstitute<id>', views.deleteInstitute, name="deleteInstitute"),
+    path('updateInstitute<id>', views.updateInstitute, name="updateInstitute"),
+    path('editInstitute/<id>', views.editInstitute, name="editInstitute"),
 
 ]

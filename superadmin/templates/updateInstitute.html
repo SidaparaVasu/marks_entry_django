@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Institute | Marks_Entry</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+
+    <script src="https://kit.fontawesome.com/2d2e379b4b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    {% include 'navbar.html' %}
+    {% include 'sidepanel.html' %}
+
+    {% block content %}
+
+    {% endblock %} 
+    <!-- Main Container -->
+    <section class="container">
+
+        <!-- add institue begins -->
+        <div class="content-area">
+            <header class="content-area-header">Update Institutes</header>
+            <form action="editInstitute/{{ context.id }}" method="post" class="content-area-form">
+                <input type="hidden" name="id" id="id" value="{{ context.id }}">
+                {% csrf_token %}
+                <input type="text" name="instituteID" class="input" value="{{ context.instituteID }}" />
+                <input type="text" name="instituteName" class="input" value="{{ context.instituteName }}" />
+                <input type="text" name="instituteAddress" class="input" value="{{ context.instituteAddress }}" />
+                <button type="submit" value="update institute" class="form-btn">Update</button>
+
+            </form>
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+                {% endfor %}
+    
+            {% endif %}
+        </div>
+        <!-- add institue ends -->
+    </section>
+</body>
+</html>
