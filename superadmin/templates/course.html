@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
 
     <script src="https://kit.fontawesome.com/2d2e379b4b.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <style>
 .col-6{grid-template-columns: repeat(6, 5% 15% 45% 15% 10% 10%);}
 </style>
@@ -23,10 +25,15 @@
     {% include 'navbar.html' %}
     {% include 'sidepanel.html' %}
 
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
     <!-- Main Container -->
     <section class="container">
 
-        <!-- add course begins -->
+        <!-- add course form begins -->
         <div class="content-area">
             <header class="content-area-header">Add Courses</header>
             <form action="addCourse" method="post" class="content-area-form">
@@ -36,13 +43,8 @@
                 <input type="text" name="instituteID" class="input" placeholder="institute id" />
                 <input type="submit" value="add course" class="form-btn">
             </form>
-            {% if messages %}
-                {% for message in messages %}
-                    {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
-                {% endfor %}
-            {% endif %}
         </div>
-        <!-- add course ends -->
+        <!-- add course form ends -->
 
         <!-- show course begins -->
         <div class="content-area">
@@ -54,8 +56,8 @@
                     <p>Course ID</p>
                     <p class="jc-lft">Course Name</p>
                     <p class="jc-lft">Institute Id</p>
-                    <p><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></p>
-                    <p><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></p>
+                    <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
+                    <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
                 </div>
             
                 {% for data in Course %}
@@ -64,13 +66,17 @@
                     <p>{{ data.courseID }}</p>
                     <p class="jc-lft">{{ data.courseName }}</p>
                     <p class="jc-lft">{{ data.instituteID }} </p>
-                    <!-- update courses data -->
-                    <a href="#">
-                        <img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg upd">
+                    <!-- update course data -->
+                    <a href="{% url 'updateCourse' data.id  %}">
+                        <span class="icon-box gr-icon">
+                            <ion-icon name="create-outline" class="icon"></ion-icon>
+                        </span> 
                     </a>
-                    <!-- delete courses data -->
+                    <!-- delete course data -->
                     <a href="{% url 'deleteCourse' data.id %}">
-                        <img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg del">
+                        <span class="icon-box rd-icon">
+                            <ion-icon name="trash-outline" class="icon"></ion-icon>
+                        </span>
                     </a>
                 </div>
                 {% endfor %}
@@ -80,8 +86,5 @@
         <!-- show course ends -->
     </section>
     {% endblock %} 
-    <script>
-        $(document).ready(course);
-    </script>
 </body>
 </html>

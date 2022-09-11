@@ -1,11 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Institute (update) | Marks_Entry</title>
+    <title> Course (update) | Marks_Entry</title>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
@@ -14,39 +15,39 @@
 
     <script src="https://kit.fontawesome.com/2d2e379b4b.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     {% block content %}
-    
+
     {% include 'navbar.html' %}
     {% include 'sidepanel.html' %}
 
     {% if messages %}
         {% for message in messages %}
-            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+            {% if message.tags %}
+                <script>alert("{{ message }}")</script> {% endif %}
         {% endfor %}
     {% endif %}
-
     <!-- Main Container -->
     <section class="container">
 
-        <!-- update institue form begins -->
+        <!-- update course form begins -->
         <div class="content-area">
-            <header class="content-area-header">Update Institute</header>
-            <form action="editInstitute/{{ context.id }}" method="post" class="content-area-form">
+            <header class="content-area-header">Update Course</header>
+            <form action="editCourse/{{ context.id }}" method="post" class="content-area-form">
                 <input type="hidden" name="id" id="id" value="{{ context.id }}">
                 {% csrf_token %}
-                <input type="text" name="instituteID" class="input" value="{{ context.instituteID }}" />
-                <input type="text" name="instituteName" class="input" value="{{ context.instituteName }}" />
-                <input type="text" name="instituteAddress" class="input" value="{{ context.instituteAddress }}" />
+                <input type="text" name="courseID" class="input" placeholder="course id" />
+                <input type="text" name="courseName" class="input" placeholder="course name" />
+                <input type="text" name="instituteID" class="input" placeholder="institute id" />
                 <div class="two-btn-box">
-                    <button type="submit" value="update" class="form-btn">Update</button>    
-                    <a href="{% url 'institute' %}" class="cancel-btn">Cancel</a>
-                </div>     
+                    <button type="submit" value="update" class="form-btn">Update</button>
+                    <a href="{% url 'course' %}" class="cancel-btn">Cancel</a>
+                </div>
             </form>
-
         </div>
-        <!-- update institue form ends -->
+        <!-- update course form ends -->
     </section>
-    {% endblock %} 
+    {% endblock %}
 </body>
 </html>

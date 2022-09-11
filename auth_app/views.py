@@ -26,18 +26,19 @@ def registration(request):
     return render(request,'register.html',{'form':form})  
 
 def loginHandle(request):
-    
     if request.method == "POST":    
         form = RegisterForm(request.POST)
         un = request.POST.get("username")
         ps = request.POST.get("password")
-        uname = users.objects.all().filter(username=un)
-        
-       
-        if uname[0].username == un and uname[0].password == ps:
-            # return render(request, "institute.html")
-            return HttpResponseRedirect('/superadmin')
-        else:
+
+        flag = 0
+        data = users.objects.all()
+        for i in range(len(data)):
+            if data[i].username == un and data[i].password == ps:
+                return HttpResponseRedirect('/superadmin')
+            else:
+                flag = 1
+        if flag == 1:
             html = "Invaild Credentials! Please try again!" + "<a href='login'>Go back</a>"
             return HttpResponse(html)
     else:

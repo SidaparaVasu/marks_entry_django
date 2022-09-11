@@ -179,11 +179,13 @@
     padding: 10px 15px;
     border-radius: 6px;
     margin-bottom: 8px;
+    transition: 0.25s;
 }   
 .content-area-form > input[type="text"]:focus{
-    box-shadow: 0 0 0 3px #b59ff581;
+    box-shadow: 0 0 0 2px #ded6f681;
 }
 .form-btn{
+    width: 100%;
     padding: 10px 15px;
     border-radius: 6px;
     outline: none;
@@ -192,9 +194,33 @@
     color: var(--white);
     font-size: 16px;
     cursor: pointer;
+    transition: 0.25s ease-in-out;
 }
 .form-btn:is(:hover, :focus){
-    box-shadow: 0 0 0 3px #b59ff581;
+    box-shadow: 0 0 0 4px #b59ff581;
+    letter-spacing: 10px;
+}
+.two-btn-box{
+    margin-top: 10px;
+    width: 100%;
+    display: inline-flex;
+    gap: 10px;
+}
+.cancel-btn{
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #cccccc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cancel-btn:is(:hover, :focus){
+    box-shadow: 0 0 0 3px #e7e5ec81;
 }
 
 
@@ -214,16 +240,21 @@
     text-align: left;
 }
 
-
-.svg{
-    height: 16px;
-    background-color: rgb(217, 123, 1);
+.icon-box{
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+.icon{
+    color: white;
+}
+.blk-icon{
+    color: #111;
+    font-size: 20px;
 }
 
-.upd {
+.gr-icon{
     background-color: var(--green);
 }
-
-.del {
+.rd-icon{
     background-color: var(--red);
 }

@@ -13,19 +13,25 @@
     <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
 
     <script src="https://kit.fontawesome.com/2d2e379b4b.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
+    {% block content %}
     
     {% include 'navbar.html' %}
     {% include 'sidepanel.html' %}
 
-    {% block content %}
-
-    {% endblock %} 
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
     <!-- Main Container -->
     <section class="container">
 
-        <!-- add institue begins -->
+        <!-- add institue form begins -->
         <div class="content-area">
             <header class="content-area-header">Add Institutes</header>
             <form action="addInstitute" method="post" class="content-area-form">
@@ -35,14 +41,8 @@
                 <input type="text" name="instituteAddress" class="input" placeholder="institute address" />
                 <input type="submit" value="add institute" class="form-btn">
             </form>
-            {% if messages %}
-                {% for message in messages %}
-                    {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
-                {% endfor %}
-    
-            {% endif %}
         </div>
-        <!-- add institue ends -->
+        <!-- add institue form ends -->
 
         <!-- show institue begins -->
         <div class="content-area">
@@ -54,8 +54,8 @@
                     <p>Institute ID</p>
                     <p class="jc-lft">Institute Name</p>
                     <p class="jc-lft">Institute Address</p>
-                    <p><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></p>
-                    <p><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></p>
+                    <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
+                    <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
                 </div>
             
                 {% for data in Institute %}
@@ -65,9 +65,17 @@
                     <p class="jc-lft">{{ data.instituteName }}</p>
                     <p class="jc-lft">{{ data.instituteAddress }} </p>
                     <!-- update institue data -->
-                    <a href="{% url 'updateInstitute' data.id  %}"><img src="{% static 'assets/pen-to-square-regular.svg' %}" alt="upd" class="svg"></a>
+                    <a href="{% url 'updateInstitute' data.id  %}">
+                        <span class="icon-box gr-icon">
+                            <ion-icon name="create-outline" class="icon"></ion-icon>
+                        </span>
+                    </a>
                     <!-- delete institue data -->
-                    <a href="{% url 'deleteInstitute' data.id %}"><img src="{% static 'assets/trash-can-regular.svg' %}" alt="del" class="svg"></a>
+                    <a href="{% url 'deleteInstitute' data.id %}">
+                        <span class="icon-box rd-icon">
+                            <ion-icon name="trash-outline" class="icon"></ion-icon>
+                        </span>
+                    </a>
                 </div>
                 {% endfor %}
             </div>
@@ -76,5 +84,6 @@
         <!-- show institue ends -->
     
     </section>
+    {% endblock %} 
 </body>
 </html>
