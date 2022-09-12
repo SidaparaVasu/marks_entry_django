@@ -118,12 +118,10 @@ def deleteCourse(request,id):
 
 
 # Admin CRUD starts 
-
 def admin(request):
     context ={"Admin":users.objects.all().filter(type="2")}
     return render(request,'admin.html',context)
 
-#add admin
 def addAdmin(request):
     if request.method == "POST":     
         form = RegisterForm(request.POST or None)  
@@ -138,12 +136,12 @@ def addAdmin(request):
         form = RegisterForm()  
     return render(request,'admin.html',{'form':form})
 
-# Request UpdateCourse Page
+# Request Update Admin Page
 def updateAdmin(request,id):
     context = users.objects.get(id=id)
     return render(request, "updateAdmin.html",{'context' : context})
 
-# Update Function Of Course
+# Update Function Of Admin
 def editAdmin(request,id):
     context = {}
     obj = get_object_or_404(users, id=id)
@@ -169,4 +167,4 @@ def deleteAdmin(request,id):
         else:
             messages.error(request," deletion failed for Id : " + str(id))
     return render(request,'admin.html',context)
-# Course CRUD ends hereCourseForm
+# Admin CRUD ends here
