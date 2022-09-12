@@ -56,7 +56,7 @@ def deleteInstitute(request,id):
     obj = get_object_or_404(Institute,id=id)
     if request.method == "GET":
         if obj.delete():
-            messages.error(request,"Data deleted successfully for Id : " + str(id))
+            messages.success(request,"Data deleted successfully for Id : " + str(id))
             return redirect("/superadmin/institute")
         else:
             messages.error(request," deletion failed for Id : " + str(id))
@@ -74,7 +74,7 @@ def addCourse(request):
         form = CourseForm(request.POST or None) 
         if form.is_valid():   
             form.save()
-            messages.error(request, "Course added successfully!")
+            messages.success(request, "Course added successfully!")
             return redirect("/superadmin/course") 
         else:
             messages.error(request, "Insertion failed!")
@@ -109,7 +109,7 @@ def deleteCourse(request,id):
     obj = get_object_or_404(Course,id=id)
     if request.method == "GET":
         if obj.delete():
-            messages.error(request,"Data deleted successfully for Id : " + str(id))
+            messages.success(request,"Data deleted successfully for Id : " + str(id))
             return redirect("/superadmin/course")
         else:
             messages.error(request," deletion failed for Id : " + str(id))
@@ -151,7 +151,7 @@ def editAdmin(request,id):
 
     if form.is_valid():
         if form.save():
-            messages.error(request, "Admin updation successfully!")
+            messages.success(request, "Admin updation successfully!")
         else:
             messages.error(request, "Admin updation failed!")
         return redirect("/superadmin/admin")
@@ -164,7 +164,7 @@ def deleteAdmin(request,id):
     obj = get_object_or_404(users,id=id)
     if request.method == "GET":
         if obj.delete():
-            messages.error(request,"Data deleted successfully for Id : " + str(id))
+            messages.success(request,"Data deleted successfully for Id : " + str(id))
             return redirect("/superadmin/admin")
         else:
             messages.error(request," deletion failed for Id : " + str(id))
