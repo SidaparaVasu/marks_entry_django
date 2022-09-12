@@ -66,7 +66,8 @@ def deleteInstitute(request,id):
 
 # Course CRUD starts here
 def course(request):
-    context ={"Course":Course.objects.all()}   
+    context ={"Course":Course.objects.all().select_related('instituteName'),'Institutes':Institute.objects.all()}
+   
     return render(request,'course.html',context)  
 
 def addCourse(request):

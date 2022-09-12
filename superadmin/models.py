@@ -9,4 +9,4 @@ class Institute(models.Model):
 class Course(models.Model):
     courseID = models.IntegerField(unique=True)
     courseName = models.TextField(blank = True, max_length=50)
-    instituteID = models.ForeignKey(Institute, on_delete=models.CASCADE)
+    instituteName = models.ForeignKey(Institute, on_delete=models.CASCADE,related_name='institute')

@@ -40,7 +40,13 @@
                 {% csrf_token %}
                 <input type="text" name="courseID" class="input" placeholder="course id" />
                 <input type="text" name="courseName" class="input" placeholder="course name" />
-                <input type="text" name="instituteID" class="input" placeholder="institute id" />
+              
+                <select name="instituteName" class="input" >
+                    <option> Select an option</option>
+                    {% for data in Institutes %}
+                        <option value="{{ data.id }}"> {{ data.instituteName }}</option>
+                    {% endfor%}
+                </select>
                 <input type="submit" value="add course" class="form-btn">
             </form>
         </div>
@@ -55,17 +61,18 @@
                     <p>sr no.</p>
                     <p>Course ID</p>
                     <p class="jc-lft">Course Name</p>
-                    <p class="jc-lft">Institute Id</p>
+                    <p class="jc-lft">Institute Name</p>
                     <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
                     <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
                 </div>
-            
+             
                 {% for data in Course %}
+          
                 <div class="col-6">
                     <p>{{ data.id }}</p>
                     <p>{{ data.courseID }}</p>
                     <p class="jc-lft">{{ data.courseName }}</p>
-                    <p class="jc-lft">{{ data.instituteID }} </p>
+                    <p class="jc-lft">{{ data.instituteName.instituteName }} </p>
                     <!-- update course data -->
                     <a href="{% url 'updateCourse' data.id  %}">
                         <span class="icon-box gr-icon">
