@@ -134,7 +134,7 @@ def addAdmin(request):
             messages.error(request, "Registration failed! {username}!")
     else:  
         form = RegisterForm()  
-    return render(request,'admin.html',{'form':form})
+    return redirect("/superadmin/admin",{'form':form})
 
 # Request Update Admin Page
 def updateAdmin(request,id):
@@ -155,7 +155,7 @@ def editAdmin(request,id):
         return redirect("/superadmin/admin")
 
     context['form'] = form
-    return render(request, "admin.html",context)
+    return redirect("/superadmin/admin", context)
 
 def deleteAdmin(request,id):
     context ={}
