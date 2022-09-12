@@ -18,5 +18,12 @@ urlpatterns = [
     path('updateCourse<id>', views.updateCourse, name="updateCourse"),
     path('editCourse/<id>', views.editCourse, name="editCourse"),
     path('deleteCourse<id>', views.deleteCourse, name="deleteCourse"),
+
+    #admin urls
+    path('admin', views.admin,name="admin"),
+    path('addAdmin', views.addAdmin, name="addAdmin"),
+    path('updateAdmin<id>', views.updateAdmin, name="updateAdmin"),
+    path('editAdmin/<id>', views.editAdmin, name="editAdmin"),
+    path('deleteAdmin<id>', views.deleteAdmin, name="deleteAdmin"),
     
 ]
