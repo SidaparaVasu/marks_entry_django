@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'home',
     'auth_app',
     'superadmin',
-    # 'admin',
+    'administrator',
     'faculty',
 ]
 

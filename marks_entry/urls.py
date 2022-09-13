@@ -21,6 +21,6 @@ urlpatterns = [
     path('', include('home.urls')),
     path('auth/', include('auth_app.urls')),
     path('superadmin/', include('superadmin.urls')),
-    # path('admin/', include('admin.urls')),
-    # path('faculty/', include('faculty.urls')),
+    path('administrator/', include('administrator.urls')),
+    path('faculty/', include('faculty.urls')),
 ]

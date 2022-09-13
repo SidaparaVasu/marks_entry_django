@@ -1,0 +1,17 @@
+{% load static %}
+
+<!-- Side Navigation Bar -->
+<section class="side-panel">
+    <div class="user-name-box">
+        <a href="{% url 'adminIndex' %}">Admin</a>
+    </div>
+
+    <ul class="list">
+        {% comment %} <li class="list-items"><a href="{% url 'admin' %}" class="links">Admin</a></li> {% endcomment %}
+    </ul>
+
+    <p class="credits">
+        Copyright &copy; <script>document.write(new Date().getFullYear())</script> 
+        | All Rights Reserved 
+    </p>
+</section>
