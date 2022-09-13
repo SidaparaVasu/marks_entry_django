@@ -35,7 +35,12 @@ def loginHandle(request):
         data = users.objects.all()
         for i in range(len(data)):
             if data[i].username == un and data[i].password == ps:
-                return HttpResponseRedirect('/superadmin')
+                if data[i].type == 1:
+                    return HttpResponseRedirect('/superadmin')
+                elif data[i].type == 2:
+                    return HttpResponseRedirect('/administrator')
+                elif data[i].type == 3:
+                    return HttpResponseRedirect('/faculty')
             else:
                 flag = 1
         if flag == 1:
