@@ -24,9 +24,9 @@
 </head>
 <body>
     {% block content %}
-    
-    {% include 'navbar.html' %}
-    {% include 'sidepanel.html' %}
+ 
+    {% include './navbar_admin.html' %}
+    {% include 'sidepanel_admin.html' %}
 
     {% if messages %}
         {% for message in messages %}
@@ -45,15 +45,15 @@
                 <input type="email" name="email" class="input" placeholder="email" required/>
                 <input type="tel" name="phoneno" class="input" placeholder="phoneno" required/>
                 <input type="text" name="password" class="input" placeholder="password" required/>
-                <input type="hidden" name="type" value="2" class="input" placeholder="type" />
-                <input type="submit" value="add admin" class="form-btn">
+                <input type="hidden" name="type" value="3" class="input" placeholder="type" />
+                <input type="submit" value="add faculty" class="form-btn">
             </form>
         </div>
         <!-- add institue form ends -->
 
         <!-- show institue begins -->
         <div class="content-area">
-            <header class="content-area-header">Show Admins</header>
+            <header class="content-area-header">Show Faculties</header>
             
             <div class="show-data-box">
                 <div class="field-header col-6">
@@ -65,7 +65,7 @@
                     <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
                 </div>
             
-                {% for data in Admin %}
+                {% for data in faculty %}
                 <div class="col-6">
                     <p>{{ data.id }}</p>
                     <p class="jc-lft">{{ data.username }}</p>
