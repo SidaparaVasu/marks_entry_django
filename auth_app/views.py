@@ -5,6 +5,14 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponseRedirect
 from . models import users
+
+
+#
+import logging,traceback
+logger = logging.getLogger('django')
+#
+
+
 # Create your views here.
 def loginPage(request):
     return render(request, 'login.html')
@@ -36,10 +44,13 @@ def loginHandle(request):
         for i in range(len(data)):
             if data[i].username == un and data[i].password == ps:
                 if data[i].type == 1:
+                    logger.info("super admin: " + data[i].username + " is logged in")
                     return HttpResponseRedirect('/superadmin')
                 elif data[i].type == 2:
+                    logger.info("admin: " + data[i].username + " is logged in")
                     return HttpResponseRedirect('/administrator')
                 elif data[i].type == 3:
+                    logger.info("faculty: " + data[i].username + " is logged in")
                     return HttpResponseRedirect('/faculty')
             else:
                 flag = 1

@@ -191,3 +191,4 @@ INFO 2022-09-15 23:40:24,072 basehttp 19552 1884 "POST /superadmin/editAdmin/8 H
 INFO 2022-09-15 23:40:24,082 basehttp 19552 1884 "GET /superadmin/admin HTTP/1.1" 200 4766
 INFO 2022-09-15 23:45:30,785 basehttp 19552 19132 "GET /superadmin/course HTTP/1.1" 200 4553
 INFO 2022-09-15 23:46:49,838 autoreload 19552 4360 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\auth_app\views.py changed, reloading.
+INFO 2022-09-15 23:48:05,236 autoreload 21056 8528 Watching for file changes with StatReloader

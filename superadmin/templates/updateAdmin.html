@@ -37,10 +37,10 @@
             <form action="editAdmin/{{ context.id }}" method="post" class="content-area-form">
                 <input type="hidden" name="id" id="id" value="{{ context.id }}">
                 {% csrf_token %}
-                <input type="text" name="username" class="input" placeholder="username" required />
-                <input type="email" name="email" class="input" placeholder="email" required/>
-                <input type="tel" name="phoneno" class="input" placeholder="phoneno" required/>
-                <input type="text" name="password" class="input" placeholder="password" required/>
+                <input type="text" name="username" class="input" value="{{ context.username }}"  placeholder="username" required />
+                <input type="email" name="email" class="input" value="{{ context.email }}" placeholder="email" required/>
+                <input type="tel" name="phoneno" class="input" value="{{ context.phoneno }}" placeholder="phoneno" required/>
+                <input type="text" name="password" class="input" value="{{ context.password }}" placeholder="password" required/>
                 <div class="two-btn-box">
                     <button type="submit" value="update" class="form-btn">Update</button>
                     <a href="{% url 'admin' %}" class="cancel-btn">Cancel</a>
