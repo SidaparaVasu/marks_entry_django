@@ -141,22 +141,31 @@ STATIC_ROOT = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-# 
+# logger
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'loggers':{
-        'django':{
-            'handlers':['authentication'],
+        'authLogger':{
+            'handlers':['authenticationHandler'],
+            'level':'INFO',
+        },
+        'superadminLogger':{
+            'handlers':['superAdminHandler'],
             'level':'INFO',
         }
     },
     'handlers':{
-        'authentication':{
+        'authenticationHandler':{
             'level':'INFO',
             'class':'logging.FileHandler',
             'filename':'./logs/auth_info.log',
+            'formatter':'verbose',
+        },
+        'superAdminHandler':{
+            'level':'INFO',
+            'class':'logging.FileHandler',
+            'filename':'./logs/superadmin_info.log',
             'formatter':'verbose',
         }
     },

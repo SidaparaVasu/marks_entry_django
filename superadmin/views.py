@@ -6,6 +6,13 @@ from superadmin.forms import InstituteForm, CourseForm
 from auth_app.models import users
 from auth_app.forms import RegisterForm
 
+
+# logger
+import logging,traceback
+logger = logging.getLogger('superadminLogger')
+#
+
+
 # Create your views here.
 def indexDashboard(request):
     return render(request, "index.html")
@@ -24,9 +31,11 @@ def addInstitute(request):
         form = InstituteForm(request.POST or None) 
         if form.is_valid():   
             if form.save():
+                logger.info("Institute added!")
                 messages.success(request, "Institute added successfully!")
                 return redirect("/superadmin/institute") 
             else:
+                logger.info("Institute insertion failed!")
                 messages.error(request, "Institute insertion failed!")
         else:
             messages.error(request, "Form is not valid! please fill up form curreclty!")
@@ -48,10 +57,12 @@ def editInstitute(request,id):
 
     if form.is_valid():
         if form.save():
-            messages.success(request, "Course updation successfully!")
+            logger.info("Institute updation successfully!")
+            messages.success(request, "Institute updation successfully!")
             return redirect("/superadmin/institute")
         else:
-            messages.error(request, "Course updation failed!")
+            logger.info("Institute updation failed!")
+            messages.error(request, "Institute updation failed!")
     else:
         messages.error(request, "Form is not valid! please fill up form curreclty!")
     context['form'] = form
@@ -62,9 +73,11 @@ def deleteInstitute(request,id):
     obj = get_object_or_404(Institute,id=id)
     if request.method == "GET":
         if obj.delete():
+            logger.info("Institute deleted successfully for Id : " + str(id))
             messages.success(request,"Institute deleted successfully for Id : " + str(id))
             return redirect("/superadmin/institute")
         else:
+            logger.info("Institute deleted successfully for Id : " + str(id))
             messages.error(request,"Institute deletion failed for Id : " + str(id))
     return render(request,'institute.html',context)
 # Institute CRUD ends here
@@ -80,9 +93,11 @@ def addCourse(request):
         form = CourseForm(request.POST or None) 
         if form.is_valid():   
             if form.save():
+                logger.info("Course added successfully!")
                 messages.success(request, "Course added successfully!")
                 return redirect("/superadmin/course") 
             else:
+                logger.info("Course insertion failed!")
                 messages.error(request, "Course insertion failed!")
         else:
             messages.error(request, "Form is not valid! please fill up form curreclty!")
@@ -104,9 +119,11 @@ def editCourse(request,id):
 
     if form.is_valid():
         if form.save():
+            logger.info("Course updation successfully!")
             messages.success(request, "Course updation successfully!")
             return redirect("/superadmin/course")
         else:
+            logger.info("Course updation failed!")
             messages.error(request, "Course updation failed!")
     else:
         messages.error(request, "Form is not valid! please fill up form curreclty!")
@@ -119,9 +136,11 @@ def deleteCourse(request,id):
     obj = get_object_or_404(Course,id=id)
     if request.method == "GET":
         if obj.delete():
+            logger.info("Course deleted successfully for Id : " + str(id))
             messages.success(request,"Course deleted successfully for Id : " + str(id))
             return redirect("/superadmin/course")
         else:
+            logger.info("Course deleted failed for Id : " + str(id))
             messages.error(request,"Course deletion failed for Id : " + str(id))
     return render(request,'course.html',context)
 # Course CRUD ends hereCourseForm
@@ -137,9 +156,11 @@ def addAdmin(request):
         form = RegisterForm(request.POST or None)  
         if form.is_valid():  
             if form.save():  
+                logger.info("Admin added successfully!")
                 messages.success(request, "Admin added successfully!")
                 return redirect("/superadmin/admin") 
             else:
+                logger.info("Admin added failed!")
                 messages.error(request, "Admin insertion failed!")  
         else:
             messages.error(request, "Form is not valid! please fill up form curreclty!")
@@ -160,9 +181,11 @@ def editAdmin(request,id):
 
     if form.is_valid():
         if form.save():
+            logger.info("Admin updation successfully!")
             messages.success(request, "Admin updation successfully!")
             return redirect("/superadmin/admin")
         else:
+            logger.info("Admin updation failed!")
             messages.error(request, "Admin updation failed!")
     else:
         messages.error(request, "Form is not valid! please fill up form curreclty!")
@@ -174,9 +197,11 @@ def deleteAdmin(request,id):
     obj = get_object_or_404(users,id=id)
     if request.method == "GET":
         if obj.delete():
+            logger.info(request,"Admin deleted successfully for Id : " + str(id))
             messages.success(request,"Admin deleted successfully for Id : " + str(id))
             return redirect("/superadmin/admin")
         else:
+            logger.info(request,"Admin deleted failed for Id : " + str(id))
             messages.error(request,"Admin deletion failed for Id : " + str(id))
     return render(request,'admin.html',context)
 # Admin CRUD ends here
