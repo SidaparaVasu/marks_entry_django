@@ -43,7 +43,8 @@ def editFaculty(request,id):
         else:
             messages.error(request, "Faculty data updation failed!")
         return redirect("/administrator/faculty")
-
+    else:
+        messages.error(request, "Form is not valid! please fill up form currectly!")
     context['form'] = form
     return redirect("/administrator/faculty", context)
 

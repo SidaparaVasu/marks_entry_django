@@ -60,7 +60,7 @@
             
                 {% for data in Institute %}
                 <div class="col-6">
-                    <p>{{ data.id }}</p>
+                    <p>{{ forloop.counter }}</p>
                     <p>{{ data.instituteID }}</p>
                     <p class="jc-lft">{{ data.instituteName }}</p>
                     <p class="jc-lft">{{ data.instituteAddress }} </p>

@@ -67,7 +67,7 @@
             
                 {% for data in faculty %}
                 <div class="col-6">
-                    <p>{{ data.id }}</p>
+                    <p>{{ forloop.counter }}</p>
                     <p class="jc-lft">{{ data.username }}</p>
                     <p class="jc-lft">{{ data.phoneno }}</p>
                     <p class="jc-lft">{{ data.email }} </p>
