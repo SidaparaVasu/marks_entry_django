@@ -192,3 +192,6 @@ INFO 2022-09-15 23:40:24,082 basehttp 19552 1884 "GET /superadmin/admin HTTP/1.1
 INFO 2022-09-15 23:45:30,785 basehttp 19552 19132 "GET /superadmin/course HTTP/1.1" 200 4553
 INFO 2022-09-15 23:46:49,838 autoreload 19552 4360 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\auth_app\views.py changed, reloading.
 INFO 2022-09-15 23:48:05,236 autoreload 21056 8528 Watching for file changes with StatReloader
+INFO 2022-09-16 00:01:38,563 views 15120 22916 super admin: superadmin is logged in
+INFO 2022-09-16 00:02:19,769 views 15120 17172 admin: admin_1 is logged in
+INFO 2022-09-16 00:11:27,928 views 11044 20960 super admin: superadmin is logged in

@@ -7,9 +7,9 @@ from django.http import HttpResponseRedirect
 from . models import users
 
 
-#
+# logger
 import logging,traceback
-logger = logging.getLogger('django')
+logger = logging.getLogger('authLogger')
 #
 
 
