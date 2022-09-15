@@ -141,8 +141,7 @@ STATIC_ROOT = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-# 
+# logger
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
