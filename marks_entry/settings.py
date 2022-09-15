@@ -140,3 +140,30 @@ STATIC_ROOT = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'loggers':{
+        'django':{
+            'handlers':['authentication'],
+            'level':'INFO',
+        }
+    },
+    'handlers':{
+        'authentication':{
+            'level':'INFO',
+            'class':'logging.FileHandler',
+            'filename':'./logs/auth_info.log',
+            'formatter':'verbose',
+        }
+    },
+    'formatters':{
+        'verbose':{
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style':'{',
+        }
+    }
+}

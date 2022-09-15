@@ -37,9 +37,9 @@
             <form action="editCourse/{{ context.id }}" method="post" class="content-area-form">
                 <input type="hidden" name="id" id="id" value="{{ context.id }}">
                 {% csrf_token %}
-                <input type="text" name="courseID" class="input" placeholder="course id" />
-                <input type="text" name="courseName" class="input" placeholder="course name" />
-                <input type="text" name="instituteID" class="input" placeholder="institute id" />
+                <input type="text" name="courseID" class="input" value="{{ context.courseID }}" placeholder="course id" />
+                <input type="text" name="courseName" class="input" value="{{ context.courseName }}" placeholder="course name" />
+                <input type="text" name="instituteName" class="input" value="{{ context.instituteName.instituteName }}" placeholder="institute id" />
                 <div class="two-btn-box">
                     <button type="submit" value="update" class="form-btn">Update</button>
                     <a href="{% url 'course' %}" class="cancel-btn">Cancel</a>

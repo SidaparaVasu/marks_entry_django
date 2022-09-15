@@ -55,7 +55,7 @@ def editInstitute(request,id):
     else:
         messages.error(request, "Form is not valid! please fill up form curreclty!")
     context['form'] = form
-    return render(request, "institute.html",context)
+    return redirect("/superadmin/institute",context)
 
 def deleteInstitute(request,id):
     context ={}
@@ -105,13 +105,14 @@ def editCourse(request,id):
     if form.is_valid():
         if form.save():
             messages.success(request, "Course updation successfully!")
+            return redirect("/superadmin/course")
         else:
             messages.error(request, "Course updation failed!")
-        return redirect("/superadmin/course")
     else:
         messages.error(request, "Form is not valid! please fill up form curreclty!")
     context['form'] = form
-    return render(request, "course.html",context)
+    return redirect("/superadmin/course",context)
+
 
 def deleteCourse(request,id):
     context ={}
@@ -160,9 +161,9 @@ def editAdmin(request,id):
     if form.is_valid():
         if form.save():
             messages.success(request, "Admin updation successfully!")
+            return redirect("/superadmin/admin")
         else:
             messages.error(request, "Admin updation failed!")
-        return redirect("/superadmin/admin")
     else:
         messages.error(request, "Form is not valid! please fill up form curreclty!")
     context['form'] = form
