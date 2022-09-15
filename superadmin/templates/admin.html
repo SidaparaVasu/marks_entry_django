@@ -43,7 +43,7 @@
                 {% csrf_token %}
                 <input type="text" name="username" class="input" placeholder="username" required />
                 <input type="email" name="email" class="input" placeholder="email" required/>
-                <input type="tel" name="phoneno" class="input" placeholder="phoneno" required/>
+                <input type="tel" name="phoneno" class="input" maxlength="10" placeholder="phoneno" required/>
                 <input type="text" name="password" class="input" placeholder="password" required/>
                 <input type="hidden" name="type" value="2" class="input" placeholder="type" />
                 <input type="submit" value="add admin" class="form-btn">
@@ -68,6 +68,7 @@
                 {% for data in Admin %}
                 <div class="col-6">
                     <p>{{ forloop.counter }}</p>
+                    <!-- <input type="text" name="username" class="input" value="{{ data.username }}" placeholder="username" required />  -->
                     <p class="jc-lft">{{ data.username }}</p>
                     <p class="jc-lft">{{ data.phoneno }}</p>
                     <p class="jc-lft">{{ data.email }} </p>
