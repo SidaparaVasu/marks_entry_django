@@ -1,0 +1,193 @@
+INFO 2022-09-15 23:18:36,935 autoreload 16332 16212 Watching for file changes with StatReloader
+INFO 2022-09-15 23:18:41,324 basehttp 16332 16388 "GET / HTTP/1.1" 200 1509
+INFO 2022-09-15 23:18:42,393 basehttp 16332 16388 "GET /auth/login HTTP/1.1" 200 2799
+INFO 2022-09-15 23:18:46,328 views 16332 16388 super admin: superadmin is logged in
+INFO 2022-09-15 23:18:46,328 basehttp 16332 16388 "POST /auth/loginHandle HTTP/1.1" 302 0
+INFO 2022-09-15 23:18:46,332 basehttp 16332 16388 "GET /superadmin HTTP/1.1" 301 0
+INFO 2022-09-15 23:18:46,340 basehttp 16332 16388 "GET /superadmin/ HTTP/1.1" 200 1637
+INFO 2022-09-15 23:19:11,336 basehttp 16332 12000 "GET /auth/login HTTP/1.1" 200 2799
+INFO 2022-09-15 23:19:18,007 views 16332 12000 super admin: superadmin is logged in
+INFO 2022-09-15 23:19:18,007 basehttp 16332 12000 "POST /auth/loginHandle HTTP/1.1" 302 0
+INFO 2022-09-15 23:19:18,011 basehttp 16332 12000 "GET /superadmin HTTP/1.1" 301 0
+INFO 2022-09-15 23:19:18,014 basehttp 16332 12000 "GET /superadmin/ HTTP/1.1" 200 1637
+INFO 2022-09-15 23:19:36,817 basehttp 16332 15384 "GET /superadmin/institute HTTP/1.1" 200 4342
+INFO 2022-09-15 23:19:39,569 basehttp 16332 21240 "GET /superadmin/updateInstitute1 HTTP/1.1" 200 2756
+INFO 2022-09-15 23:19:42,941 basehttp 16332 21240 "POST /superadmin/editInstitute/1 HTTP/1.1" 302 0
+INFO 2022-09-15 23:19:42,950 basehttp 16332 21240 "GET /superadmin/institute HTTP/1.1" 200 4437
+INFO 2022-09-15 23:19:46,854 basehttp 16332 21240 "GET /superadmin/updateInstitute1 HTTP/1.1" 200 2757
+INFO 2022-09-15 23:19:49,294 basehttp 16332 3204 "POST /superadmin/editInstitute/1 HTTP/1.1" 302 0
+INFO 2022-09-15 23:19:49,302 basehttp 16332 3204 "GET /superadmin/institute HTTP/1.1" 200 4436
+INFO 2022-09-15 23:20:05,218 basehttp 16332 23952 "GET /superadmin/institute HTTP/1.1" 200 4342
+INFO 2022-09-15 23:20:08,814 basehttp 16332 13772 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:20:10,639 basehttp 16332 13772 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2725
+INFO 2022-09-15 23:20:12,799 basehttp 16332 13772 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:21:07,120 basehttp 16332 8504 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:21:08,523 basehttp 16332 8504 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2761
+INFO 2022-09-15 23:21:11,523 basehttp 16332 19200 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:21:53,084 basehttp 16332 21136 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:21:54,248 basehttp 16332 21136 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2781
+INFO 2022-09-15 23:21:57,205 basehttp 16332 21136 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:22:29,674 basehttp 16332 20540 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:22:30,880 basehttp 16332 20540 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2971
+INFO 2022-09-15 23:22:46,773 basehttp 16332 8892 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2971
+INFO 2022-09-15 23:22:49,183 basehttp 16332 16324 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2971
+INFO 2022-09-15 23:23:09,245 basehttp 16332 20508 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:23:15,576 basehttp 16332 20508 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:24:20,811 basehttp 16332 17668 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:24:28,848 basehttp 16332 8560 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:24:31,533 basehttp 16332 8560 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:24:32,127 basehttp 16332 8560 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:24:43,403 basehttp 16332 8768 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:24:44,956 basehttp 16332 18756 "GET /superadmin/updateAdmin2 HTTP/1.1" 200 2785
+INFO 2022-09-15 23:24:50,890 basehttp 16332 18756 "POST /superadmin/editAdmin/2 HTTP/1.1" 302 0
+INFO 2022-09-15 23:24:50,899 basehttp 16332 18756 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:24:59,902 basehttp 16332 22328 "GET /superadmin/institute HTTP/1.1" 200 4342
+INFO 2022-09-15 23:25:00,964 basehttp 16332 22328 "GET /superadmin/updateInstitute1 HTTP/1.1" 200 2756
+INFO 2022-09-15 23:25:01,853 basehttp 16332 22328 "GET /superadmin/institute HTTP/1.1" 200 4342
+INFO 2022-09-15 23:25:02,759 basehttp 16332 22328 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:25:04,618 basehttp 16332 16088 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:25:05,535 basehttp 16332 16088 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:25:07,046 basehttp 16332 16088 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:25:46,912 basehttp 16332 17856 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:25:49,261 basehttp 16332 17856 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:25:52,293 basehttp 16332 17856 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:26:09,906 autoreload 16332 16212 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:26:11,195 autoreload 21544 12172 Watching for file changes with StatReloader
+INFO 2022-09-15 23:26:11,624 basehttp 21544 16192 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3571
+INFO 2022-09-15 23:26:13,451 basehttp 21544 16192 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:26:16,757 basehttp 21544 16192 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:26:21,506 basehttp 21544 16192 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3571
+INFO 2022-09-15 23:26:31,378 autoreload 21544 12172 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:26:32,463 autoreload 24272 21028 Watching for file changes with StatReloader
+INFO 2022-09-15 23:26:36,399 autoreload 24272 21028 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:26:37,354 autoreload 18388 21984 Watching for file changes with StatReloader
+INFO 2022-09-15 23:26:50,901 autoreload 18388 21984 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:26:52,073 autoreload 12204 9704 Watching for file changes with StatReloader
+INFO 2022-09-15 23:26:54,471 basehttp 12204 9252 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:26:57,705 basehttp 12204 9252 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:26:59,314 basehttp 12204 9252 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:27:01,387 basehttp 12204 9252 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:27:05,663 basehttp 12204 20296 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:27:14,663 autoreload 12204 9704 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:27:15,682 autoreload 1456 5352 Watching for file changes with StatReloader
+INFO 2022-09-15 23:27:18,666 autoreload 1456 5352 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:27:19,798 autoreload 21052 21136 Watching for file changes with StatReloader
+INFO 2022-09-15 23:27:27,992 autoreload 21052 21136 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:27:28,947 autoreload 16436 21048 Watching for file changes with StatReloader
+INFO 2022-09-15 23:27:32,933 autoreload 16436 21048 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:27:34,102 autoreload 19252 22416 Watching for file changes with StatReloader
+INFO 2022-09-15 23:27:35,906 autoreload 19252 22416 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:27:37,059 autoreload 10540 16352 Watching for file changes with StatReloader
+INFO 2022-09-15 23:27:43,089 autoreload 10540 16352 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:27:44,117 autoreload 1724 13036 Watching for file changes with StatReloader
+INFO 2022-09-15 23:27:44,509 basehttp 1724 24132 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:27:46,507 basehttp 1724 24132 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:27:49,557 basehttp 1724 24132 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3571
+INFO 2022-09-15 23:27:52,092 basehttp 1724 24132 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:28:02,972 autoreload 1724 13036 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:28:04,007 autoreload 24140 4020 Watching for file changes with StatReloader
+INFO 2022-09-15 23:28:08,009 autoreload 24140 4020 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:28:09,158 autoreload 6016 19740 Watching for file changes with StatReloader
+INFO 2022-09-15 23:28:10,288 basehttp 6016 21824 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:28:11,470 basehttp 6016 21824 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:28:14,158 basehttp 6016 21824 "POST /superadmin/editCourse/3 HTTP/1.1" 302 0
+INFO 2022-09-15 23:28:14,168 basehttp 6016 21824 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:28:43,292 basehttp 6016 2056 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:28:44,993 basehttp 6016 16728 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:28:46,960 basehttp 6016 16728 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:29:03,057 basehttp 6016 14708 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:29:05,835 basehttp 6016 12520 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:29:17,662 basehttp 6016 21932 "POST /superadmin/editCourse/3 HTTP/1.1" 302 0
+INFO 2022-09-15 23:29:17,671 basehttp 6016 21932 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:29:30,775 autoreload 6016 19740 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:29:31,825 autoreload 13472 13328 Watching for file changes with StatReloader
+INFO 2022-09-15 23:29:36,146 basehttp 13472 8336 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:30:01,798 autoreload 13472 13328 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\marks_entry\settings.py changed, reloading.
+INFO 2022-09-15 23:30:02,852 autoreload 16436 12192 Watching for file changes with StatReloader
+INFO 2022-09-15 23:30:16,378 autoreload 16436 12192 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\administrator\views.py changed, reloading.
+INFO 2022-09-15 23:30:17,392 autoreload 2788 16244 Watching for file changes with StatReloader
+INFO 2022-09-15 23:30:22,431 autoreload 2788 16244 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\administrator\views.py changed, reloading.
+INFO 2022-09-15 23:30:23,668 autoreload 23336 9664 Watching for file changes with StatReloader
+INFO 2022-09-15 23:30:46,674 autoreload 23336 9664 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\marks_entry\settings.py changed, reloading.
+INFO 2022-09-15 23:31:03,953 autoreload 21232 24260 Watching for file changes with StatReloader
+INFO 2022-09-15 23:31:04,367 basehttp 21232 9760 "GET /auth/login HTTP/1.1" 200 2799
+INFO 2022-09-15 23:31:07,002 basehttp 21232 7320 "GET /auth/login HTTP/1.1" 200 2799
+INFO 2022-09-15 23:31:10,583 views 21232 7320 super admin: superadmin is logged in
+INFO 2022-09-15 23:31:10,583 basehttp 21232 7320 "POST /auth/loginHandle HTTP/1.1" 302 0
+INFO 2022-09-15 23:31:10,588 basehttp 21232 7320 "GET /superadmin HTTP/1.1" 301 0
+INFO 2022-09-15 23:31:10,600 basehttp 21232 7320 "GET /superadmin/ HTTP/1.1" 200 1637
+INFO 2022-09-15 23:31:27,398 basehttp 21232 11476 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:31:29,426 basehttp 21232 11476 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:31:31,960 basehttp 21232 11476 "GET /superadmin/updateAdmin2 HTTP/1.1" 200 2823
+INFO 2022-09-15 23:31:33,697 basehttp 21232 17768 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:32:00,243 basehttp 21232 9716 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:32:01,682 basehttp 21232 9716 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2725
+INFO 2022-09-15 23:32:04,036 basehttp 21232 9716 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:32:05,845 basehttp 21232 22412 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2725
+INFO 2022-09-15 23:32:17,340 basehttp 21232 21084 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:32:25,460 basehttp 21232 6668 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:32:27,472 basehttp 21232 6668 "GET /superadmin/updateCourse3 HTTP/1.1" 200 2725
+INFO 2022-09-15 23:32:39,574 basehttp 21232 9820 "POST /superadmin/editCourse/3 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:32:44,007 basehttp 21232 9820 "GET /superadmin/course HTTP/1.1" 200 5395
+INFO 2022-09-15 23:32:46,665 basehttp 21232 18096 "GET /superadmin/deleteCourse3 HTTP/1.1" 302 0
+INFO 2022-09-15 23:32:46,677 basehttp 21232 18096 "GET /superadmin/course HTTP/1.1" 200 4633
+INFO 2022-09-15 23:32:49,396 basehttp 21232 18096 "GET /superadmin/institute HTTP/1.1" 200 4342
+INFO 2022-09-15 23:32:53,306 basehttp 21232 18096 "GET /superadmin/deleteInstitute1 HTTP/1.1" 302 0
+INFO 2022-09-15 23:32:53,315 basehttp 21232 18096 "GET /superadmin/institute HTTP/1.1" 200 3573
+INFO 2022-09-15 23:32:55,605 basehttp 21232 10648 "GET /superadmin/course HTTP/1.1" 200 3571
+INFO 2022-09-15 23:32:57,170 basehttp 21232 10648 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:32:58,460 basehttp 21232 10648 "GET /superadmin/deleteAdmin2 HTTP/1.1" 302 0
+INFO 2022-09-15 23:32:58,467 basehttp 21232 10648 "GET /superadmin/admin HTTP/1.1" 200 3857
+INFO 2022-09-15 23:34:13,884 basehttp 21232 10296 "GET /superadmin/admin HTTP/1.1" 200 3755
+INFO 2022-09-15 23:34:15,815 basehttp 21232 10296 "GET /superadmin/admin HTTP/1.1" 200 3755
+INFO 2022-09-15 23:34:27,341 basehttp 21232 10296 "POST /superadmin/addAdmin HTTP/1.1" 302 0
+INFO 2022-09-15 23:34:27,350 basehttp 21232 10296 "GET /superadmin/admin HTTP/1.1" 200 4742
+INFO 2022-09-15 23:34:31,616 basehttp 21232 10296 "GET /superadmin/updateAdmin8 HTTP/1.1" 200 2899
+INFO 2022-09-15 23:34:40,079 basehttp 21232 7716 "POST /superadmin/editAdmin/8 HTTP/1.1" 302 0
+INFO 2022-09-15 23:34:40,088 basehttp 21232 7716 "GET /superadmin/admin HTTP/1.1" 200 4766
+INFO 2022-09-15 23:35:18,759 autoreload 21232 24260 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:35:20,027 autoreload 3580 17660 Watching for file changes with StatReloader
+INFO 2022-09-15 23:35:45,264 autoreload 3580 17660 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:35:46,338 autoreload 9760 13112 Watching for file changes with StatReloader
+INFO 2022-09-15 23:36:05,094 autoreload 9760 13112 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:36:06,149 autoreload 1116 17696 Watching for file changes with StatReloader
+INFO 2022-09-15 23:36:13,291 autoreload 1116 17696 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:36:14,350 autoreload 12204 18060 Watching for file changes with StatReloader
+INFO 2022-09-15 23:36:15,555 basehttp 12204 6508 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:36:17,533 basehttp 12204 6508 "GET /superadmin/updateAdmin8 HTTP/1.1" 200 2899
+INFO 2022-09-15 23:36:20,473 basehttp 12204 6508 "POST /superadmin/editAdmin/8 HTTP/1.1" 302 0
+INFO 2022-09-15 23:36:20,482 basehttp 12204 6508 "GET /superadmin/admin HTTP/1.1" 200 4766
+INFO 2022-09-15 23:36:28,263 basehttp 12204 2860 "GET /superadmin/course HTTP/1.1" 200 3571
+INFO 2022-09-15 23:36:31,499 basehttp 12204 2860 "GET /superadmin/institute HTTP/1.1" 200 3467
+INFO 2022-09-15 23:36:48,428 basehttp 12204 6312 "POST /superadmin/addInstitute HTTP/1.1" 302 0
+INFO 2022-09-15 23:36:48,437 basehttp 12204 6312 "GET /superadmin/institute HTTP/1.1" 200 4448
+INFO 2022-09-15 23:36:51,867 basehttp 12204 6312 "GET /superadmin/course HTTP/1.1" 200 3675
+INFO 2022-09-15 23:36:59,755 basehttp 12204 21680 "POST /superadmin/addCourse HTTP/1.1" 302 0
+INFO 2022-09-15 23:36:59,768 basehttp 12204 21680 "GET /superadmin/course HTTP/1.1" 200 4644
+INFO 2022-09-15 23:37:58,790 basehttp 12204 23792 "GET /superadmin/course HTTP/1.1" 200 4553
+INFO 2022-09-15 23:38:11,299 basehttp 12204 22844 "GET /superadmin/course HTTP/1.1" 200 4553
+INFO 2022-09-15 23:38:24,031 basehttp 12204 23972 "GET /superadmin/course HTTP/1.1" 200 4553
+INFO 2022-09-15 23:38:32,114 basehttp 12204 17424 "GET /superadmin/updateCourse4 HTTP/1.1" 200 2783
+INFO 2022-09-15 23:38:48,598 basehttp 12204 18044 "GET /superadmin/updateCourse4 HTTP/1.1" 200 2793
+INFO 2022-09-15 23:38:59,444 basehttp 12204 15212 "GET /superadmin/updateCourse4 HTTP/1.1" 200 2795
+INFO 2022-09-15 23:39:03,665 basehttp 12204 15212 "POST /superadmin/editCourse/4 HTTP/1.1" 200 3685
+INFO 2022-09-15 23:39:08,156 basehttp 12204 18980 "GET /superadmin/course HTTP/1.1" 200 4553
+INFO 2022-09-15 23:39:24,435 autoreload 12204 18060 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:39:25,496 autoreload 23252 15756 Watching for file changes with StatReloader
+INFO 2022-09-15 23:39:33,708 autoreload 23252 15756 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:39:34,771 autoreload 8660 23096 Watching for file changes with StatReloader
+INFO 2022-09-15 23:39:35,129 basehttp 8660 552 "GET /superadmin/course HTTP/1.1" 200 4553
+INFO 2022-09-15 23:39:36,219 basehttp 8660 16336 "GET /superadmin/updateCourse4 HTTP/1.1" 200 2795
+INFO 2022-09-15 23:39:40,295 basehttp 8660 16336 "POST /superadmin/editCourse/4 HTTP/1.1" 302 0
+INFO 2022-09-15 23:39:40,314 basehttp 8660 16336 "GET /superadmin/course HTTP/1.1" 200 4667
+INFO 2022-09-15 23:40:03,284 autoreload 8660 23096 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:40:04,401 autoreload 13812 19892 Watching for file changes with StatReloader
+INFO 2022-09-15 23:40:10,478 autoreload 13812 19892 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\superadmin\views.py changed, reloading.
+INFO 2022-09-15 23:40:11,562 autoreload 19552 4360 Watching for file changes with StatReloader
+INFO 2022-09-15 23:40:12,461 basehttp 19552 11172 "GET /superadmin/course HTTP/1.1" 200 4553
+INFO 2022-09-15 23:40:14,444 basehttp 19552 11172 "GET /superadmin/admin HTTP/1.1" 200 4652
+INFO 2022-09-15 23:40:21,234 basehttp 19552 1884 "GET /superadmin/updateAdmin8 HTTP/1.1" 200 2899
+INFO 2022-09-15 23:40:24,072 basehttp 19552 1884 "POST /superadmin/editAdmin/8 HTTP/1.1" 302 0
+INFO 2022-09-15 23:40:24,082 basehttp 19552 1884 "GET /superadmin/admin HTTP/1.1" 200 4766
+INFO 2022-09-15 23:45:30,785 basehttp 19552 19132 "GET /superadmin/course HTTP/1.1" 200 4553
+INFO 2022-09-15 23:46:49,838 autoreload 19552 4360 C:\Users\HP\OneDrive\Documents\GitHub\marks_entry_django\auth_app\views.py changed, reloading.
