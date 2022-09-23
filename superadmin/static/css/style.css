@@ -226,11 +226,12 @@
 
 
 .col-6{
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     display: grid;
     grid-template-columns: repeat(6, 5% 15% 35% 35% 5% 5%);
     text-align: center;
+    align-items: center;
     border-bottom: 1px solid var(--grey);
 }
 .col-6:nth-child(3), 
@@ -258,4 +259,17 @@
 }
 .rd-icon{
     background-color: var(--red);
+}
+
+.img-size{
+    height: 38px;
+    width: 38px;
+    object-fit: cover;
+    border: 1px solid var(--grey);
+    border-radius: 100%;
+}
+
+.img-size img{
+    height: 100%;
+    width: 100%;
 }

@@ -21,6 +21,10 @@ def profile(request):
     return render(request, "profile.html")
 
 
+
+# Image Upload for user's
+
+
 # Institute CRUD starts here
 def institute(request):
     context ={"Institute":Institute.objects.all()}   
@@ -153,7 +157,9 @@ def admin(request):
 
 def addAdmin(request):
     if request.method == "POST":     
-        form = RegisterForm(request.POST or None)  
+        form = RegisterForm(request.POST or None, request.FILES)  
+        if len(request.FILES) != 0:
+            form.image = request.FILES['image']
         if form.is_valid():  
             if form.save():  
                 logger.info("Admin added successfully!")

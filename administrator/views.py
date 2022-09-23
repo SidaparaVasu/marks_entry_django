@@ -14,24 +14,25 @@ def faculty(request):
 
 def addFaculty(request):
     if request.method == "POST":     
-        form = RegisterForm(request.POST or None)  
+        form = RegisterForm(request.POST or None, request.FILES)  
+        if len(request.FILES) != 0:
+            form.image = request.FILES['image']  
         if form.is_valid():  
             form.save()  
             messages.success(request, "Faculty added successfully!")
-            return redirect("/administrator/faculty")
-            #return render(request,'admin.html')  
+            return redirect("/administrator/faculty")  
         else:
             messages.error(request, "Error in registration for faculty!")
     else:  
         form = RegisterForm()  
     return redirect("/administrator/faculty",{'form':form})
 
-# Request Update Admin Page
-def updateAdmin(request,id):
+# Request Update faculty Page
+def updateFaculty(request,id):
     context = users.objects.get(id=id)
-    return render(request, "updateAdmin.html",{'context' : context})
+    return render(request, "updateFaculty.html",{'context' : context})
 
-# Update Function Of Admin
+# Update Function Of faculty
 def editFaculty(request,id):
     context = {}
     obj = get_object_or_404(users, id=id)
