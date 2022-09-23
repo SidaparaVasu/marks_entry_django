@@ -10,6 +10,7 @@ class users(models.Model):
     email = models.EmailField(blank = True,max_length=50)
     phoneno = models.TextField(max_length = 10)
     password = models.TextField(max_length = 50)
+    image = models.ImageField(upload_to='uploads/', null=True, blank=True)
     type = models.IntegerField()
     def __str__(self):
         return self.name  
