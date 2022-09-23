@@ -4,4 +4,4 @@ from auth_app.models import users
 class RegisterForm(forms.ModelForm):  
     class Meta:  
         model = users  
-        fields = ('username','email','phoneno','password','type') 
+        fields = ('username','email','phoneno','password','image','type') 

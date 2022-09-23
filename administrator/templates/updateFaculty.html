@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Admin (update) | Marks_Entry</title>
+    <title> Faculty (update) | Marks_Entry</title>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
@@ -19,8 +19,8 @@
 <body>
     {% block content %}
 
-    {% include 'navbar.html' %}
-    {% include 'sidepanel.html' %}
+    {% include 'navbar_admin.html' %}
+    {% include 'sidepanel_admin.html' %}
 
     {% if messages %}
         {% for message in messages %}
@@ -31,15 +31,16 @@
     <!-- Main Container -->
     <section class="container">
 
-        <!-- update admin form begins -->
+        <!-- update faculty form begins -->
         <div class="content-area">
-            <header class="content-area-header">Update Course</header>
-            <form action="editAdmin/{{ context.id }}" method="post" enctype="multipart/form-data" class="content-area-form">
+            <header class="content-area-header">Update Faculty</header>
+            <form action="editFaculty/{{ context.id }}" method="post" class="content-area-form">
                 <input type="hidden" name="id" id="id" value="{{ context.id }}">
                 {% csrf_token %}
                 <input type="text" name="username" class="input" value="{{ context.username }}"  placeholder="username" required />
                 <input type="email" name="email" class="input" value="{{ context.email }}" placeholder="email" required/>
                 <input type="tel" name="phoneno" class="input" value="{{ context.phoneno }}" maxlength="10" placeholder="phoneno" required/>
+                <input type="hidden" name="type" value="3" class="input" placeholder="type" />
                 <input type="password" name="password" class="input" value="{{ context.password }}" placeholder="password" required/>
                 <div class="two-btn-box">
                     <button type="submit" value="update" class="form-btn">Update</button>
@@ -47,7 +48,7 @@
                 </div>
             </form>
         </div>
-        <!-- update admin form ends -->
+        <!-- update faculty form ends -->
     </section>
     {% endblock %}
 </body>
