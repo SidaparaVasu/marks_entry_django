@@ -36,7 +36,7 @@
     <!-- Main Container -->
     <section class="container">
 
-        <!-- add institue form begins -->
+        <!-- add Faculty form begins -->
         <div class="content-area">
             <header class="content-area-header">Add Faculties</header>
             <form action="addFaculty" method="post" enctype="multipart/form-data" class="content-area-form">
@@ -50,9 +50,9 @@
                 <input type="submit" value="add faculty" class="form-btn">
             </form>
         </div>
-        <!-- add institue form ends -->
+        <!-- add Faculty form ends -->
 
-        <!-- show institue begins -->
+        <!-- show Faculty begins -->
         <div class="content-area">
             <header class="content-area-header">Show Faculties</header>
             
@@ -69,7 +69,7 @@
                 {% for data in faculty %}
                 <div class="col-6">
                     <!-- <p>{{ forloop.counter }}</p> -->
-                    {% if p.image %}
+                    {% if data.image %}
                         <img src="{{ data.image.url }}" alt="" class="img-size">
                     {% else %}
                         <img src="{% static 'assets/user-default.png' %}" alt="" class="img-size">
@@ -78,13 +78,13 @@
                     <p class="jc-lft">{{ data.phoneno }}</p>
                     <p class="jc-lft">{{ data.email }} </p>
                     
-                    <!-- update institue data -->
+                    <!-- update Faculty data -->
                     <a href="{% url 'updateFaculty' data.id  %}">
                         <span class="icon-box gr-icon">
                             <ion-icon name="create-outline" class="icon"></ion-icon>
                         </span>
                     </a>
-                    <!-- delete institue data -->
+                    <!-- delete Faculty data -->
                     <a href="{% url 'deleteAdmin' data.id %}">
                         <span class="icon-box rd-icon">
                             <ion-icon name="trash-outline" class="icon"></ion-icon>
@@ -95,7 +95,7 @@
             </div>
 
         </div>
-        <!-- show institue ends -->
+        <!-- show Faculty ends -->
     
     </section>
     {% endblock %} 
