@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Institute | Marks_Entry</title>
+    <title> Admin | Marks_Entry</title>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
@@ -36,7 +36,7 @@
     <!-- Main Container -->
     <section class="container">
 
-        <!-- add institue form begins -->
+        <!-- add admin form begins -->
         <div class="content-area">
             <header class="content-area-header">Add Admins</header>
             <form action="addAdmin" method="post" enctype="multipart/form-data" class="content-area-form">
@@ -51,9 +51,9 @@
                 <input type="submit" value="add admin" class="form-btn">
             </form>
         </div>
-        <!-- add institue form ends -->
+        <!-- add admin form ends -->
 
-        <!-- show institue begins -->
+        <!-- show admin begins -->
         <div class="content-area">
             <header class="content-area-header">Show Admins</header>
             
@@ -83,13 +83,13 @@
                     <p class="jc-lft">{{ data.phoneno }}</p>
                     <p class="jc-lft">{{ data.email }} </p>
                     
-                    <!-- update institue data -->
+                    <!-- update admin data -->
                     <a href="{% url 'updateAdmin' data.id  %}">
                         <span class="icon-box gr-icon">
                             <ion-icon name="create-outline" class="icon"></ion-icon>
                         </span>
                     </a>
-                    <!-- delete institue data -->
+                    <!-- delete admin data -->
                     <a href="{% url 'deleteAdmin' data.id %}">
                         <span class="icon-box rd-icon">
                             <ion-icon name="trash-outline" class="icon"></ion-icon>
@@ -100,17 +100,8 @@
             </div>
 
         </div>
-        <!-- show institue ends -->
+        <!-- show admin ends -->
     
-        <div class="content-area">
-            {% for data in Admin %}
-                {% if data.image %}
-                    <img src="{{ data.image.url }}" alt="" class="img-size">
-                    {{ data.image.url }}
-                    <!-- <img src="{% static 'assets/logo.png' %}" alt="assasasd" class="img-size"> -->
-                {% endif %}
-            {% endfor %}
-        </div>
     </section>
     {% endblock %} 
 </body>
