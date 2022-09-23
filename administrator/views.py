@@ -2,6 +2,10 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from auth_app.models import users
 from auth_app.forms import RegisterForm
+from superadmin.models import Course
+from superadmin.forms import CourseForm
+from .models import Batch
+from .forms import BatchForm
 
 # Create your views here.
 def adminIndex(request):
@@ -60,3 +64,23 @@ def deleteFaculty(request,id):
     return redirect("/administrator/faculty", context)
 # Admin CRUD ends here
 
+#BATCH CRUD starts
+
+def batch(request):
+    context = {'Batch':Batch.objects.all().select_related('courseName'),'Courses':Course.objects.all()}
+    return render(request,'batch.html',context)
+
+def addBatch(request):
+    if request.method == "POST":     
+        form = BatchForm(request.POST or None)  
+        if form.is_valid():  
+            form.save()  
+            messages.success(request, "Batch added successfully!")
+            return redirect("/administrator/batch")
+            #return render(request,'admin.html')  
+        else:
+            messages.error(request, "Error in registration for batch!")
+    else:  
+        form = BatchForm()  
+    return redirect("/administrator/batch",{'form':form})
+#
