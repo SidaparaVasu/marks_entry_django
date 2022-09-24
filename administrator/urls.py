@@ -11,6 +11,7 @@ urlpatterns = [
     path('editFaculty/<id>', views.editFaculty, name="editFaculty"),
     path('updateFaculty<id>', views.updateFaculty, name="updateFaculty"), 
     path('deleteFaculty<id>', views.deleteFaculty, name="deleteFaculty"), 
+    path('batch',views.batch,name="batch"),
 ]
 
 if settings.DEBUG:
