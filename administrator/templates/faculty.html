@@ -36,28 +36,29 @@
     <!-- Main Container -->
     <section class="container">
 
-        <!-- add institue form begins -->
+        <!-- add Faculty form begins -->
         <div class="content-area">
             <header class="content-area-header">Add Faculties</header>
-            <form action="addFaculty" method="post" class="content-area-form">
+            <form action="addFaculty" method="post" enctype="multipart/form-data" class="content-area-form">
                 {% csrf_token %}
                 <input type="text" name="username" class="input" placeholder="username" required />
                 <input type="email" name="email" class="input" placeholder="email" required/>
                 <input type="tel" name="phoneno" class="input" placeholder="phoneno" required/>
-                <input type="text" name="password" class="input" placeholder="password" required/>
+                <input type="password" name="password" class="input" placeholder="password" required/>
+                <input type="file" name="image" class="input">
                 <input type="hidden" name="type" value="3" class="input" placeholder="type" />
                 <input type="submit" value="add faculty" class="form-btn">
             </form>
         </div>
-        <!-- add institue form ends -->
+        <!-- add Faculty form ends -->
 
-        <!-- show institue begins -->
+        <!-- show Faculty begins -->
         <div class="content-area">
             <header class="content-area-header">Show Faculties</header>
             
             <div class="show-data-box">
                 <div class="field-header col-6">
-                    <p class="jc-lft">Sr no.</p>
+                    <p class="jc-lft">Image</p>
                     <p class="jc-lft">Username</p>
                     <p class="jc-lft">Phone no</p>
                     <p class="jc-lft">Email</p>
@@ -67,18 +68,23 @@
             
                 {% for data in faculty %}
                 <div class="col-6">
-                    <p>{{ forloop.counter }}</p>
+                    <!-- <p>{{ forloop.counter }}</p> -->
+                    {% if data.image %}
+                        <img src="{{ data.image.url }}" alt="" class="img-size">
+                    {% else %}
+                        <img src="{% static 'assets/user-default.png' %}" alt="" class="img-size">
+                    {% endif %}
                     <p class="jc-lft">{{ data.username }}</p>
                     <p class="jc-lft">{{ data.phoneno }}</p>
                     <p class="jc-lft">{{ data.email }} </p>
                     
-                    <!-- update institue data -->
-                    <a href="{% url 'updateAdmin' data.id  %}">
+                    <!-- update Faculty data -->
+                    <a href="{% url 'updateFaculty' data.id  %}">
                         <span class="icon-box gr-icon">
                             <ion-icon name="create-outline" class="icon"></ion-icon>
                         </span>
                     </a>
-                    <!-- delete institue data -->
+                    <!-- delete Faculty data -->
                     <a href="{% url 'deleteAdmin' data.id %}">
                         <span class="icon-box rd-icon">
                             <ion-icon name="trash-outline" class="icon"></ion-icon>
@@ -89,7 +95,7 @@
             </div>
 
         </div>
-        <!-- show institue ends -->
+        <!-- show Faculty ends -->
     
     </section>
     {% endblock %} 
