@@ -1,11 +1,11 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 from django.contrib import messages
 from auth_app.models import users
 from auth_app.forms import RegisterForm
 from superadmin.models import Course
 from superadmin.forms import CourseForm
-from .models import Batch
-from .forms import BatchForm
+from .models import Batch,Semester,Subject
+from .forms import BatchForm,SemesterForm,SubjectForm
 
 # Create your views here.
 def adminIndex(request):
@@ -84,4 +84,51 @@ def addBatch(request):
     else:  
         form = BatchForm()  
     return redirect("/administrator/batch",{'form':form})
-#
+
+
+
+#SEMESTER CRUD STARTS
+
+def semester(request):
+    context = {'Semester':Semester.objects.all().select_related('courseName'),'Courses':Course.objects.all()}
+    return render(request,'semester.html',context)
+
+def addSemester(request):
+    if request.method == "POST":     
+        form = SemesterForm(request.POST or None)  
+        if form.is_valid():  
+            form.save()  
+            messages.success(request, "Semester added successfully!")
+            return redirect("/administrator/semester")
+            #return render(request,'admin.html')  
+        else:
+            messages.error(request, "Error in registration for Semester!")
+    else:  
+        form = BatchForm()  
+    return redirect("/administrator/Semester",{'form':form})
+
+def updateSemester(request,id):
+    context = Semester.objects.get(id=id)
+    return render(request, "updateSemester.html",{'context' : context})
+
+
+# Subject crud starts
+
+def subject(request):
+    context = {'Subject':Subject.objects.all().select_related('semester'),'Semesters':Semester.objects.all()}
+    return render(request,'subject.html',context)
+
+def addSubject(request):
+    if request.method == "POST":     
+        form = SubjectForm(request.POST or None)  
+        #return HttpResponse(form)
+        if form.is_valid():  
+            form.save()  
+            messages.success(request, "Subject added successfully!")
+            return redirect("/administrator/subject")
+            #return render(request,'admin.html')  
+        else:
+            messages.error(request, "Error in registration for Subject!")
+    else:  
+        form = BatchForm()  
+    return redirect("/administrator/subject",{'form':form})

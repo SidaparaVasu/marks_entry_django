@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Batch | Marks_Entry</title>
+    <title> Semester | Marks_Entry</title>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
@@ -38,10 +38,10 @@
 
         <!-- add institue form begins -->
         <div class="content-area">
-            <header class="content-area-header">Add Faculties</header>
-            <form action="addBatch" method="post" class="content-area-form">
+            <header class="content-area-header">Add Semester</header>
+            <form action="addSemester" method="post" class="content-area-form">
                 {% csrf_token %}
-                <input type="text" name="batchName" class="input" placeholder="batch" required />
+                <input type="text" name="semester" class="input" placeholder="semester" required />
                 <select name="courseName" class="input" >
                     <option> Select an option</option>
                     {% for data in Courses %}
@@ -50,28 +50,28 @@
                 </select>                
 
 
-                <input type="submit" value="add batch" class="form-btn">
+                <input type="submit" value="add semester" class="form-btn">
             </form>
         </div>
         <!-- add institue form ends -->
 
         <!-- show institue begins -->
         <div class="content-area">
-            <header class="content-area-header">Show Faculties</header>
+            <header class="content-area-header">Show Semesters</header>
             
             <div class="show-data-box">
                 <div class="col-6">
                     <p class="jc-lft">Srno.</p>
-                    <p class="jc-lft">Batch Name</p>
+                    <p class="jc-lft">Semester</p>
                     <p class="jc-lft">Course Name</p>
                     <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
                     <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
                 </div>
             
-                {% for data in Batch %}
+                {% for data in Semester %}
                 <div class="col-6">
                     <p>{{ forloop.counter }}</p>
-                    <p class="jc-lft">{{ data.batchName }}</p>
+                    <p class="jc-lft">{{ data.semester }}</p>
                     <p class="jc-lft">{{ data.courseName.courseName }} </p>
                     
                     <!-- update institue data -->
