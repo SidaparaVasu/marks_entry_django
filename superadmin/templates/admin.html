@@ -71,7 +71,9 @@
                 <div class="col-6">
                     <!-- <p>{{ forloop.counter }}</p> -->
                     {% if data.image %}
+                        <!-- <p>{{ data.image.url }}</p> -->
                         <img src="{{ data.image.url }}" alt="" class="img-size">
+                        <!-- <img src="media/uploads/20220923192816wallpaperflare.com_wallpaper_3.jpg" alt="" class="img-size"> -->
                     {% else %}
                         <img src="{% static 'assets/user-default.png' %}" alt="" class="img-size">
                     {% endif %}

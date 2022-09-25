@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 </head>
 <body>
     
@@ -20,10 +21,28 @@
     {% block content %}
 
     {% endblock %} 
-    <!-- Main Container -->
-    <section class="container">
-        <div class="content-area">
 
+    <section class="container">
+        <div class="content-area" style="padding: 5px; height: 85vh;">
+            <div class="banner">
+                <div class="image-box">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="user-details">
+                <p class="user-info">
+                    <label for="user-fetched-info" class="info-label">Username</label>
+                    <span class="user-fetched-info">{{ request.session.username }}</span>
+                </p>
+                <p class="user-info">
+                    <label for="user-fetched-info" class="info-label">Email</label>
+                    <span class="user-fetched-info">{{ request.session.email }}</span>
+                </p>
+                <p class="user-info">
+                    <label for="user-fetched-info" class="info-label">Phone no</label>
+                    <span class="user-fetched-info">{{ request.session.phoneno }}</span>
+                </p>
+            </div>
         </div>
     </section>
 </body>
