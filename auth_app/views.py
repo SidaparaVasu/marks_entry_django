@@ -4,8 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponseRedirect
+# from django.contrib.sessions import sessions
 from . models import users
-
+from django.forms.models import model_to_dict
 
 # logger
 import logging,traceback
@@ -43,15 +44,24 @@ def loginHandle(request):
         data = users.objects.all()
         for i in range(len(data)):
             if data[i].username == un and data[i].password == ps:
+                request.session['username'] = data[i].username
+                request.session['email'] = data[i].email
+                request.session['phoneno'] = data[i].phoneno
+            
+                username = request.session['username']
+                email = request.session['email']
+                phoneno = request.session['phoneno']
+                session_user = {'username': username, 'email': email, 'phoneno': phoneno, 'image': data[i].image}
+                    
                 if data[i].type == 1:
                     logger.info("super admin: " + data[i].username + " is logged in")
-                    return HttpResponseRedirect('/superadmin')
+                    return HttpResponseRedirect('/superadmin', session_user)
                 elif data[i].type == 2:
                     logger.info("admin: " + data[i].username + " is logged in")
-                    return HttpResponseRedirect('/administrator')
+                    return HttpResponseRedirect('/administrator', session_user)
                 elif data[i].type == 3:
                     logger.info("faculty: " + data[i].username + " is logged in")
-                    return HttpResponseRedirect('/faculty')
+                    return HttpResponseRedirect('/faculty', session_user)
             else:
                 flag = 1
         if flag == 1:
@@ -66,3 +76,8 @@ def logoutHandle(request):
         logout(request)
         messages.success(request, "Successfully Logged Out!")
         return redirect("/")
+    # try:
+    #     del request.session['username']
+    # except:
+    #     return HttpResponse("nope")
+    # return HttpResponse("<strong>You are logged out.</strong>")

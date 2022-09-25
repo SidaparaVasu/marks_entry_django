@@ -153,7 +153,7 @@ def deleteCourse(request,id):
 # Admin CRUD starts 
 def admin(request):
     context ={"Admin":users.objects.all().filter(type="2")}
-    return render(request,'admin.html',context)
+    return render(request,'admin.html',context) 
 
 def addAdmin(request):
     if request.method == "POST":     
