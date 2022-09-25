@@ -115,7 +115,7 @@ def updateSemester(request,id):
 # Subject crud starts
 
 def subject(request):
-    context = {'Subject':Subject.objects.all().select_related('semester'),'Semesters':Semester.objects.all()}
+    context = {'Subjects':Subject.objects.all().select_related('semester'),'Semesters':Semester.objects.all()}
     return render(request,'subject.html',context)
 
 def addSubject(request):
@@ -130,5 +130,5 @@ def addSubject(request):
         else:
             messages.error(request, "Error in registration for Subject!")
     else:  
-        form = BatchForm()  
+        form = SubjectForm()  
     return redirect("/administrator/subject",{'form':form})

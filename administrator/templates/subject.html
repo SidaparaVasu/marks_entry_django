@@ -47,7 +47,7 @@
                 <select name="semester" class="input" >
                     <option> Select an option</option>
                     {% for data in Semesters %}
-                        <option value="{{ data.id }}"> {{ data.semester }}</option>
+                        <option value="{{ data.semesterId }}"> {{ data.semester }}</option>
                     {% endfor%}
                 </select>                
 
@@ -64,17 +64,19 @@
             <div class="show-data-box">
                 <div class="col-6">
                     <p class="jc-lft">Srno.</p>
+                    <p class="jc-lft">Subject</p>
+                    <p class="jc-lft">Credits</p>
                     <p class="jc-lft">Semester</p>
-                    <p class="jc-lft">Course Name</p>
                     <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
                     <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
                 </div>
             
-                {% for data in Semester %}
+                {% for data in Subjects %}
                 <div class="col-6">
                     <p>{{ forloop.counter }}</p>
-                    <p class="jc-lft">{{ data.semester }}</p>
-                    <p class="jc-lft">{{ data.courseName.courseName }} </p>
+                    <p class="jc-lft">{{ data.subject }}</p>
+                    <p class="jc-lft">{{ data.credits }}</p>
+                    <p class="jc-lft">{{ data.semester.semester }} </p>
                     
                     <!-- update institue data -->
                     <a href="#">
