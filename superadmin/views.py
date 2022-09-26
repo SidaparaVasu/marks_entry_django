@@ -5,6 +5,8 @@ from superadmin.models import Institute, Course
 from superadmin.forms import InstituteForm, CourseForm
 from auth_app.models import users
 from auth_app.forms import RegisterForm
+from django.conf import settings
+from django.core.mail import send_mail
 
 
 # logger
@@ -157,11 +159,23 @@ def admin(request):
 
 def addAdmin(request):
     if request.method == "POST":     
-        form = RegisterForm(request.POST or None, request.FILES)  
+        form = RegisterForm(request.POST or None, request.FILES) 
+        un = request.POST.get("username")
+        ps = request.POST.get("password") 
+        email = request.POST.get("email") 
         if len(request.FILES) != 0:
             form.image = request.FILES['image']
         if form.is_valid():  
-            if form.save():  
+            if form.save():                 
+                # sending email to added admin 
+                subject = f'welcome {un}!!!'
+                message = f'Greetings! You are registered as an admin. Your Username: { un }, Your Password: { ps }'
+                email_from = settings.EMAIL_HOST_USER
+                # email_from = 'vasupatel303@gmail.com'
+                recipient_list = [email]
+                # return HttpResponse(recipient_list)
+                send_mail( subject, message, email_from, recipient_list )
+                
                 logger.info("Admin added successfully!")
                 messages.success(request, "Admin added successfully!")
                 return redirect("/superadmin/admin") 
