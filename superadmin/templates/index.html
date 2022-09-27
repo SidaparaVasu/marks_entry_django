@@ -26,7 +26,11 @@
         <div class="content-area" style="padding: 5px; height: 85vh;">
             <div class="banner">
                 <div class="image-box">
-                    <img src="" alt="">
+                    {% if data.image %}
+                        <img src="{{ request.session.image }}" alt="" class="img-size">
+                    {% else %}
+                        <img src="{% static 'assets/user-default.png' %}" alt="" class="img-size">
+                    {% endif %}
                 </div>
             </div>
             <div class="user-details">

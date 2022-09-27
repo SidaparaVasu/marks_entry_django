@@ -39,6 +39,7 @@ def loginHandle(request):
         form = RegisterForm(request.POST)
         un = request.POST.get("username")
         ps = request.POST.get("password")
+        image_path = request.POST.get("image")
 
         flag = 0
         data = users.objects.all()
@@ -51,8 +52,8 @@ def loginHandle(request):
                 username = request.session['username']
                 email = request.session['email']
                 phoneno = request.session['phoneno']
-                session_user = {'username': username, 'email': email, 'phoneno': phoneno, 'image': data[i].image}
-                    
+                session_user = {'username': username, 'email': email, 'phoneno': phoneno, 'image_path': image_path}
+                
                 if data[i].type == 1:
                     logger.info("super admin: " + data[i].username + " is logged in")
                     return HttpResponseRedirect('/superadmin', session_user)

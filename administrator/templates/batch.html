@@ -41,13 +41,13 @@
             <header class="content-area-header">Add Faculties</header>
             <form action="addBatch" method="post" class="content-area-form">
                 {% csrf_token %}
-                <input type="text" name="batchName" class="input" placeholder="batch" required />
                 <select name="courseName" class="input" >
-                    <option> Select an option</option>
+                    <option> Select a Course </option>
                     {% for data in Courses %}
                         <option value="{{ data.id }}"> {{ data.courseName }}</option>
                     {% endfor%}
                 </select>                
+                <input type="text" name="batchName" class="input" placeholder="batch" required />
 
 
                 <input type="submit" value="add batch" class="form-btn">
