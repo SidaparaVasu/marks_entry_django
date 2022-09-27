@@ -19,6 +19,11 @@
     border: 5px solid #eee;
     border-radius: 100%;
 }
+.banner .image-box img{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
 
 .user-details{
     width: 100%;
