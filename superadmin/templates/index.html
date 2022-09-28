@@ -25,11 +25,12 @@
     <section class="container">
         <div class="content-area" style="padding: 5px; height: 85vh;">
             <div class="banner">
+                <img src="{% static 'assets/banner_2.jpg' %}" alt="">
                 <div class="image-box">
                     {% if data.image %}
-                        <img src="{{ request.session.image }}" alt="" class="img-size">
+                        <img src="{{ request.session.image }}" alt="">
                     {% else %}
-                        <img src="{% static 'assets/user-default.png' %}" alt="" class="img-size">
+                        <img src="{% static 'assets/user_2.jpg' %}" alt="">
                     {% endif %}
                 </div>
             </div>
