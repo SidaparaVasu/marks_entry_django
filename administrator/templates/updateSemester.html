@@ -37,13 +37,13 @@
             <form action="editSemester/{{ context.id }}" method="post" class="content-area-form">
                 <input type="hidden" name="id" id="id" value="{{ context.id }}">
                 {% csrf_token %}
-                <input type="text" name="semester" class="input" placeholder="semester" required />
                 <select name="courseName" class="input" >
-                    <option> Select an option</option>
+                    <option> Select a Course</option>
                     {% for data in Courses %}
                         <option value="{{ data.id }}"> {{ data.courseName }}</option>
                     {% endfor%}
                 </select>        
+                <input type="text" name="semester" class="input" placeholder="semester" required />
                 <div class="two-btn-box">
                     <button type="submit" value="update" class="form-btn">Update</button>
                     <a href="{% url 'admin' %}" class="cancel-btn">Cancel</a>

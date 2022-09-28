@@ -41,15 +41,15 @@
             <header class="content-area-header">Add Subject</header>
             <form action="addSubject" method="post" class="content-area-form">
                 {% csrf_token %}
-                <input type="text" name="subject" class="input" placeholder="subject" required />
-                <input type="text" name="credits" class="input" placeholder="credits" required />
-
                 <select name="semester" class="input" >
-                    <option> Select an option</option>
+                    <option> Select an Semester</option>
                     {% for data in Semesters %}
                         <option value="{{ data.semesterId }}"> {{ data.semester }}</option>
                     {% endfor%}
                 </select>                
+                <input type="text" name="subject" class="input" placeholder="subject" required />
+                <input type="text" name="credits" class="input" placeholder="credits" required />
+
 
 
                 <input type="submit" value="add subject" class="form-btn">
