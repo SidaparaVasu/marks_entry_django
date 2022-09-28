@@ -37,16 +37,23 @@
             <div class="user-details">
                 <p class="user-info">
                     <label for="user-fetched-info" class="info-label">Username</label>
-                    <!-- <span class="user-fetched-info">{{ request.session.username }}</span> -->
-                    <input type="text" class="user-fetched-info" value="{{ request.session.username }}" />
+                    <span class="user-fetched-info">{{ request.session.username }}</span>
+                    <!-- <input type="text" class="user-fetched-info" value="{{ request.session.username }}" 
+                           style="outline: 0; border: 0; border-radius: 5px;"/> -->
                 </p>
                 <p class="user-info">
                     <label for="user-fetched-info" class="info-label">Email</label>
                     <span class="user-fetched-info">{{ request.session.email }}</span>
+                    <!-- <input type="email" class="user-fetched-info" value="{{ request.session.email }}" 
+                           style="outline: 0; border: 0; border-radius: 5px;"/> -->
                 </p>
                 <p class="user-info">
                     <label for="user-fetched-info" class="info-label">Phone no</label>
                     <span class="user-fetched-info">{{ request.session.phoneno }}</span>
+                    <!-- <input type="tel" class="user-fetched-info" value="{{ request.session.phoneno }}" 
+                           minlength="10" maxlength="10"
+                           style="outline: 0; border: 0; border-radius: 5px;"
+                           /> -->
                 </p>
             </div>
         </div>
