@@ -46,8 +46,8 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #eee;
-    background-image: url('../assets/lj-bg.jpg');
+    background-color: #091025;
+    /* background-image: url('../assets/lj-bg.jpg'); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
@@ -57,27 +57,20 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,.59);
 }
 .containerr > .home-content p{
     font-size: 65px;
     color: #fff;
     z-index: 100;
-    text-shadow: 4px 4px rgba(121, 120, 120, 0.6);
+    text-shadow: 2px 2px rgba(90, 202, 198, 0.6);
+    transition: all 0.25s ease-in-out;
     padding: 0 20px;
 }
 .containerr > .home-content a{
     padding: 10px 60px;
-    border-radius: 5px;
-    background-color: #1579BE;
     color: white;
     cursor: pointer;
     z-index: 100;
-    /* box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1); */
-}
-.containerr > .home-content a:hover{
-    background-color: #0069ae;
-    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1);
 }
 
 .containerr > .credits_footer {
@@ -89,6 +82,59 @@ body {
     margin-right: 150px;
     background-color: #fff;
 }
-.containerr > .credits_footer > p {
+.borderd-btn {
+    position: relative;
     margin: 0;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.50s ease-in-out;
+}
+
+
+.borderd-btn::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    height: 20px;
+    width: 20px;
+    border-left: 2px solid #1579BE;
+    border-top: 2px solid #1579BE;
+    transition: 0.30s ease-in-out;
+}
+
+.borderd-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    height: 20px;
+    width: 20px;
+    border-right: 2px solid #1579BE;
+    border-bottom: 2px solid #1579BE;
+    transition: all 0.30s ease-in-out;
+}
+
+.containerr > .home-content > .borderd-btn:hover::before{
+    height: 109.5%;
+    width: 103.5%;
+}
+.containerr > .home-content >  .borderd-btn:hover::after{
+    height: 109.5%;
+    width: 103.5%;
+}
+
+.borderd-btn:hover::before{
+    height: 109.5%;
+    width: 104%;
+}
+.borderd-btn:hover::after{
+    height: 109.5%;
+    width: 104%;
+}
+.borderd-btn:hover{
+    color: #fff;
+    background-color: #1579BE;
+    transition-delay: 0.30s;
 }
