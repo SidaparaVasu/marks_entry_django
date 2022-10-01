@@ -11,16 +11,16 @@ urlpatterns = [
     # institute urls
     path('institute', views.institute, name="institute"),
     path('addInstitute', views.addInstitute, name="addInstitute"),
-    path('updateInstitute<id>', views.updateInstitute, name="updateInstitute"),
-    path('editInstitute/<id>', views.editInstitute, name="editInstitute"),
-    path('deleteInstitute<id>', views.deleteInstitute, name="deleteInstitute"),
+    path('updateInstitute<instituteID>', views.updateInstitute, name="updateInstitute"),
+    path('editInstitute/<instituteID>', views.editInstitute, name="editInstitute"),
+    path('deleteInstitute<instituteID>', views.deleteInstitute, name="deleteInstitute"),
 
     # course urls
     path('course', views.course, name="course"),
     path('addCourse', views.addCourse, name="addCourse"),
-    path('updateCourse<id>', views.updateCourse, name="updateCourse"),
-    path('editCourse/<id>', views.editCourse, name="editCourse"),
-    path('deleteCourse<id>', views.deleteCourse, name="deleteCourse"),
+    path('updateCourse<courseID>', views.updateCourse, name="updateCourse"),
+    path('editCourse/<courseID>', views.editCourse, name="editCourse"),
+    path('deleteCourse/<courseID>', views.deleteCourse, name="deleteCourse"),
 
     #admin urls
     path('admin', views.admin,name="admin"),

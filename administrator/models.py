@@ -1,5 +1,6 @@
 from django.db import models
 from superadmin.models import Course
+
 # Create your models here.
 class Batch(models.Model):
     batchID = models.AutoField(primary_key=True)

@@ -1,4 +1,5 @@
 from django import forms  
+from django.views.generic import ListView
 from .models import Batch,Semester,Subject
  
 class BatchForm(forms.ModelForm):  
@@ -6,8 +7,9 @@ class BatchForm(forms.ModelForm):
         model = Batch  
         fields = ('batchName','courseName') 
 
-class SemesterForm(forms.ModelForm):  
+class SemesterForm(forms.ModelForm, ListView):  
     class Meta:  
+        paginate_by = 10
         model = Semester  
         fields = ('semester','courseName') 
 

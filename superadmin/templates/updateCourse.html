@@ -34,11 +34,11 @@
         <!-- update course form begins -->
         <div class="content-area">
             <header class="content-area-header">Update Course</header>
-            <form action="editCourse/{{ context.id }}" method="post" class="content-area-form">
-                <input type="hidden" name="id" id="id" value="{{ context.id }}">
+            <form action="editCourse/{{ context.courseID }}" method="post" class="content-area-form">
+                <input type="hidden" name="courseID" id="id" value="{{ context.courseID }}">
                 {% csrf_token %}
                 <input type="text" name="instituteName" class="input" value="{{ context.instituteName.instituteName }}" placeholder="institute name" />
-                <input type="text" name="courseID" class="input" value="{{ context.courseID }}" placeholder="course id" />
+                <input type="number" name="num_of_semesters" class="input" value="{{ context.num_of_semesters }}" placeholder="number of semesters" />
                 <input type="text" name="courseName" class="input" value="{{ context.courseName }}" placeholder="course name" />
                 <div class="two-btn-box">
                     <button type="submit" value="update" class="form-btn">Update</button>

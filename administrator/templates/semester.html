@@ -18,7 +18,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <style>
         .col-6{
-            grid-template-columns: repeat(6, 10% 10% 20% 20%  20% 20%);
+            grid-template-columns: repeat(6, 10% 10% 40% 20%  20%);
         } 
     </style>
 </head>
@@ -36,34 +36,15 @@
     <!-- Main Container -->
     <section class="container">
 
-        <!-- add institue form begins -->
-        <div class="content-area">
-            <header class="content-area-header">Add Semester</header>
-            <form action="addSemester" method="post" class="content-area-form">
-                {% csrf_token %}
-                <select name="courseName" class="input" >
-                    <option> Select a Course</option>
-                    {% for data in Courses %}
-                        <option value="{{ data.id }}"> {{ data.courseName }}</option>
-                    {% endfor%}
-                </select>                
-                <input type="text" name="semester" class="input" placeholder="semester" required />
-
-
-                <input type="submit" value="add semester" class="form-btn">
-            </form>
-        </div>
-        <!-- add institue form ends -->
-
-        <!-- show institue begins -->
+        <!-- show semester begins -->
         <div class="content-area">
             <header class="content-area-header">Show Semesters</header>
             
             <div class="show-data-box">
                 <div class="col-6">
-                    <p class="jc-lft">Srno.</p>
-                    <p class="jc-lft">Semester</p>
-                    <p class="jc-lft">Course Name</p>
+                    <p>Srno.</p>
+                    <p>Semester</p> 
+                    <p>Course Name</p>
                     <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
                     <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
                 </div>
@@ -71,16 +52,16 @@
                 {% for data in Semester %}
                 <div class="col-6">
                     <p>{{ forloop.counter }}</p>
-                    <p class="jc-lft">{{ data.semester }}</p>
-                    <p class="jc-lft">{{ data.courseName.courseName }} </p>
+                    <p>{{ data.semester }}</p>
+                    <p>{{ data.courseName.courseName }} </p>
                     
-                    <!-- update institue data -->
+
                     <a href="#">
                         <span class="icon-box gr-icon">
                             <ion-icon name="create-outline" class="icon"></ion-icon>
                         </span>
                     </a>
-                    <!-- delete institue data -->
+                    
                     <a href="#">
                         <span class="icon-box rd-icon">
                             <ion-icon name="trash-outline" class="icon"></ion-icon>
@@ -91,7 +72,7 @@
             </div>
 
         </div>
-        <!-- show institue ends -->
+        <!-- show semester ends -->
     
     </section>
     {% endblock %} 

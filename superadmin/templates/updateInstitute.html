@@ -32,10 +32,9 @@
         <!-- update institue form begins -->
         <div class="content-area">
             <header class="content-area-header">Update Institute</header>
-            <form action="editInstitute/{{ context.id }}" method="post" class="content-area-form">
-                <input type="hidden" name="id" id="id" value="{{ context.id }}">
+            <form action="editInstitute/{{ context.instituteID }}" method="post" class="content-area-form">
+                <input type="hidden" name="instituteID" id="id" value="{{ context.instituteID }}">
                 {% csrf_token %}
-                <input type="text" name="instituteID" class="input" value="{{ context.instituteID }}" />
                 <input type="text" name="instituteName" class="input" value="{{ context.instituteName }}" />
                 <input type="text" name="instituteAddress" class="input" value="{{ context.instituteAddress }}" />
                 <div class="two-btn-box">

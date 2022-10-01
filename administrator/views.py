@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 from django.contrib import messages
 from auth_app.models import users
@@ -91,7 +92,12 @@ def addBatch(request):
 
 def semester(request):
     context = {'Semester':Semester.objects.all().select_related('courseName'),'Courses':Course.objects.all()}
-    return render(request,'semester.html',context)
+    # context = {'Semester':Semester.objects.all()}
+    # paginator = Paginator(context, 10)
+    # page_number = request.GET.get('page')
+    # page_obj = paginator.get_page(page_number)
+    # return render(request, "semester.html", {'page_obj': page_obj})
+    return render(request,'semester.html',context) 
 
 def addSemester(request):
     if request.method == "POST":     
