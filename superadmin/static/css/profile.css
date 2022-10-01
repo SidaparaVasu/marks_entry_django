@@ -55,7 +55,7 @@
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     color: var(--white);
-    background-color: var(--side-panel);
+    background-color: var(--violet);
 }
 .user-fetched-info{
     color: var(--side-panel);
