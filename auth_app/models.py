@@ -5,11 +5,6 @@ import os
 
 
 # Create your models here.
-class admin(models.Model):
-    adminname = models.TextField(max_length=20)
-    adminpassword = models.TextField(max_length=8)
-
-
 def filepath(request, filename):
     old_filename = filename
     timeNow = datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')

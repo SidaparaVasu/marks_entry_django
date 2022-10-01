@@ -8,6 +8,8 @@ from auth_app.forms import RegisterForm
 from django.conf import settings
 from django.core.mail import send_mail
 
+from administrator.models import Semester
+
 
 # logger
 import logging,traceback
@@ -51,14 +53,14 @@ def addInstitute(request):
     return redirect("/superadmin/institute",{'form':form})
 
 # Request UpdateInstitute Page
-def updateInstitute(request,id):
-    context = Institute.objects.get(id=id)
+def updateInstitute(request,instituteID):
+    context = Institute.objects.get(instituteID=instituteID)
     return render(request, "updateInstitute.html",{'context' : context})
 
 # Update Function Of Institute
-def editInstitute(request,id):
+def editInstitute(request,instituteID):
     context = {}
-    obj = get_object_or_404(Institute, id=id)
+    obj = get_object_or_404(Institute, instituteID=instituteID)
     form = InstituteForm(request.POST or None, instance=obj)
 
     if form.is_valid():
@@ -74,17 +76,17 @@ def editInstitute(request,id):
     context['form'] = form
     return redirect("/superadmin/institute",context)
 
-def deleteInstitute(request,id):
+def deleteInstitute(request,instituteID):
     context ={}
-    obj = get_object_or_404(Institute,id=id)
+    obj = get_object_or_404(Institute,instituteID=instituteID)
     if request.method == "GET":
         if obj.delete():
-            logger.info("Institute deleted successfully for Id : " + str(id))
-            messages.success(request,"Institute deleted successfully for Id : " + str(id))
+            logger.info("Institute deleted successfully for Id : " + str(instituteID))
+            messages.success(request,"Institute deleted successfully for Id : " + str(instituteID))
             return redirect("/superadmin/institute")
         else:
-            logger.info("Institute deleted successfully for Id : " + str(id))
-            messages.error(request,"Institute deletion failed for Id : " + str(id))
+            logger.info("Institute deleted successfully for Id : " + str(instituteID))
+            messages.error(request,"Institute deletion failed for Id : " + str(instituteID))
     return render(request,'institute.html',context)
 # Institute CRUD ends here
 
@@ -96,31 +98,46 @@ def course(request):
 
 def addCourse(request):
     if request.method == "POST":     
-        form = CourseForm(request.POST or None) 
-        if form.is_valid():   
-            if form.save():
-                logger.info("Course added successfully!")
-                messages.success(request, "Course added successfully!")
-                return redirect("/superadmin/course") 
-            else:
-                logger.info("Course insertion failed!")
-                messages.error(request, "Course insertion failed!")
-        else:
-            messages.error(request, "Form is not valid! please fill up form curreclty!")
+        c_form = CourseForm(request.POST or None) 
+        # instituteName = request.POST.get('instituteName')
+        instituteName = Institute.objects.get()
+        num_of_semesters = request.POST.get('num_of_semesters')
+        courseName = request.POST.get('courseName')
+        obj_course = Course(instituteName=instituteName, num_of_semesters=num_of_semesters, courseName=courseName)
+        obj_course.save()
+    
+        for sem in range(1,int(num_of_semesters)+1):
+            course_data = Course.objects.all()
+            tot_course_data = Course.objects.all().count()
+            s_form = Semester(semester=sem, courseName_id=course_data[tot_course_data-1].courseID)
+            s_form.save()
+        
+            logger.info("Semesters added successfully for Course")
+        messages.success(request, "Course added successfully!")
+        # if form.is_valid():   
+        #     if form.save():
+        #         logger.info("Course added successfully!")
+        #         messages.success(request, "Course added successfully!")
+        #         return redirect("/superadmin/course") 
+        #     else:
+        #         logger.info("Course insertion failed!")
+        #         messages.error(request, "Course insertion failed!")
+        # else:
+        #     messages.error(request, "Form is not valid! please fill up form curreclty!")
         return redirect("/superadmin/course")
     else:  
-        form = CourseForm()  
-    return redirect("/superadmin/course",{'form':form})
+        c_form = CourseForm()  
+    return redirect("/superadmin/course",{'c_form':c_form})
 
 # Request UpdateCourse Page
-def updateCourse(request,id):
-    context = Course.objects.get(id=id)
+def updateCourse(request,courseID):
+    context = Course.objects.get(courseID=courseID)
     return render(request, "updateCourse.html",{'context' : context})
 
 # Update Function Of Course
-def editCourse(request,id):
+def editCourse(request,courseID):
     context = {}
-    obj = get_object_or_404(Course, id=id)
+    obj = get_object_or_404(Course, courseID=courseID)
     form = CourseForm(request.POST or None, instance=obj)
 
     if form.is_valid():
@@ -137,17 +154,17 @@ def editCourse(request,id):
     return redirect("/superadmin/course",context)
 
 
-def deleteCourse(request,id):
+def deleteCourse(request,courseID):
     context ={}
-    obj = get_object_or_404(Course,id=id)
+    obj = get_object_or_404(Course,courseID=courseID)
     if request.method == "GET":
         if obj.delete():
-            logger.info("Course deleted successfully for Id : " + str(id))
-            messages.success(request,"Course deleted successfully for Id : " + str(id))
+            logger.info("Course deleted successfully for Id : " + str(courseID))
+            messages.success(request,"Course deleted successfully for Id : " + str(courseID))
             return redirect("/superadmin/course")
         else:
-            logger.info("Course deleted failed for Id : " + str(id))
-            messages.error(request,"Course deletion failed for Id : " + str(id))
+            logger.info("Course deleted failed for Id : " + str(courseID))
+            messages.error(request,"Course deletion failed for Id : " + str(courseID))
     return render(request,'course.html',context)
 # Course CRUD ends hereCourseForm
 
