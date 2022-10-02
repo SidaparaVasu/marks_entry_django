@@ -16,11 +16,6 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <style>
-        .col-6{
-            grid-template-columns: repeat(6, 10% 10% 20% 20%  20% 20%);
-        } 
-    </style>
 </head>
 <body>
     {% block content %}
@@ -61,38 +56,21 @@
         <div class="content-area">
             <header class="content-area-header">Show Subjects</header>
             
-            <div class="show-data-box">
-                <div class="col-6">
-                    <p class="jc-lft">Srno.</p>
-                    <p class="jc-lft">Subject</p>
-                    <p class="jc-lft">Credits</p>
-                    <p class="jc-lft">Semester</p>
-                    <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
-                    <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
-                </div>
-            
-                {% for data in Subjects %}
-                <div class="col-6">
-                    <p>{{ forloop.counter }}</p>
-                    <p class="jc-lft">{{ data.subject }}</p>
-                    <p class="jc-lft">{{ data.credits }}</p>
-                    <p class="jc-lft">{{ data.semester.semester }} </p>
-                    
-                    <!-- update institue data -->
-                    <a href="#">
-                        <span class="icon-box gr-icon">
-                            <ion-icon name="create-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                    <!-- delete institue data -->
-                    <a href="#">
-                        <span class="icon-box rd-icon">
-                            <ion-icon name="trash-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
+            <table class="show-data-box">
+                <thead>
+                    <th>srno.</th><th>Subject</th><th>Credits</th><th>Semester</th>
+                </thead>
+                <tbody>
+                    {% for data in Subjects %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ data.subject }}</td>
+                        <td>{{ data.credits }}</td>
+                        <td>{{ data.semester.semester }}</td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
         </div>
         <!-- show institue ends -->

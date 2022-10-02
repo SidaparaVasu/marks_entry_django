@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.db.models import Count
 from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 from django.contrib import messages
 from auth_app.models import users
@@ -80,24 +81,26 @@ def addBatch(request):
             messages.success(request, "Batch added successfully!")
             return redirect("/administrator/batch")
             #return render(request,'admin.html')  
-        else:
-            messages.error(request, "Error in registration for batch!")
+        # else:
+        #     messages.error(request, "Error in registration for batch!")
     else:  
         form = BatchForm()  
     return redirect("/administrator/batch",{'form':form})
+    # return HttpResponse("404 Page not Found!")
 
 
 
 #SEMESTER CRUD STARTS
 
 def semester(request):
-    context = {'Semester':Semester.objects.all().select_related('courseName'),'Courses':Course.objects.all()}
-    # context = {'Semester':Semester.objects.all()}
+    context = { 'Semesters': Semester.objects.values('courseName_id').annotate(tot_sems=Count('semester')),
+                'Courses': Course.objects.all()
+            }
     # paginator = Paginator(context, 10)
     # page_number = request.GET.get('page')
     # page_obj = paginator.get_page(page_number)
     # return render(request, "semester.html", {'page_obj': page_obj})
-    return render(request,'semester.html',context) 
+    return render(request,'semester.html', context) 
 
 def addSemester(request):
     if request.method == "POST":     

@@ -24,14 +24,9 @@ def indexDashboard(request):
 def profile(request):
     return render(request, "profile.html")
 
-
-
-# Image Upload for user's
-
-
 # Institute CRUD starts here
 def institute(request):
-    context ={"Institute":Institute.objects.all()}   
+    context ={"Institute":Institute.objects.all().order_by('-instituteID')}   
     return render(request,'institute.html',context)  
 
 def addInstitute(request):
@@ -93,14 +88,15 @@ def deleteInstitute(request,instituteID):
 
 # Course CRUD starts here
 def course(request):
-    context ={"Course":Course.objects.all().select_related('instituteName'),'Institutes':Institute.objects.all()}
+    context ={"Course":Course.objects.all().select_related('instituteName').order_by('-courseID'),'Institutes':Institute.objects.all().order_by('-instituteID')}
     return render(request,'course.html',context)  
 
 def addCourse(request):
     if request.method == "POST":     
         c_form = CourseForm(request.POST or None) 
-        # instituteName = request.POST.get('instituteName')
-        instituteName = Institute.objects.get()
+        instituteName = Institute.objects.all().first()
+        # instituteName = request.POST.get('instituteName_id')
+        # return HttpResponse( instituteName )
         num_of_semesters = request.POST.get('num_of_semesters')
         courseName = request.POST.get('courseName')
         obj_course = Course(instituteName=instituteName, num_of_semesters=num_of_semesters, courseName=courseName)
@@ -114,16 +110,6 @@ def addCourse(request):
         
             logger.info("Semesters added successfully for Course")
         messages.success(request, "Course added successfully!")
-        # if form.is_valid():   
-        #     if form.save():
-        #         logger.info("Course added successfully!")
-        #         messages.success(request, "Course added successfully!")
-        #         return redirect("/superadmin/course") 
-        #     else:
-        #         logger.info("Course insertion failed!")
-        #         messages.error(request, "Course insertion failed!")
-        # else:
-        #     messages.error(request, "Form is not valid! please fill up form curreclty!")
         return redirect("/superadmin/course")
     else:  
         c_form = CourseForm()  
@@ -166,12 +152,12 @@ def deleteCourse(request,courseID):
             logger.info("Course deleted failed for Id : " + str(courseID))
             messages.error(request,"Course deletion failed for Id : " + str(courseID))
     return render(request,'course.html',context)
-# Course CRUD ends hereCourseForm
+# Course CRUD ends here
 
 
 # Admin CRUD starts 
 def admin(request):
-    context ={"Admin":users.objects.all().filter(type="2")}
+    context ={"Admin":users.objects.all().filter(type="2").order_by('-id')}
     return render(request,'admin.html',context) 
 
 def addAdmin(request):

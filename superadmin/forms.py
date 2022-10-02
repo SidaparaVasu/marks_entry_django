@@ -9,4 +9,4 @@ class InstituteForm(forms.ModelForm):
 class CourseForm(forms.ModelForm):  
     class Meta:  
         model = Course  
-        fields = ('courseID','courseName','instituteName',)
+        fields = ('courseID','courseName','num_of_semesters','instituteName',)

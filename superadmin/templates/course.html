@@ -15,9 +15,6 @@
     <script src="https://kit.fontawesome.com/2d2e379b4b.js" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<style>
-.col-6{grid-template-columns: repeat(6, 5% 40% 15% 20% 10% 10%);}
-</style>
 </head>
 <body>
     {% block content %}
@@ -38,7 +35,7 @@
             <header class="content-area-header">Add Courses</header>
             <form action="addCourse" method="post" class="content-area-form">
                 {% csrf_token %}
-                <select name="instituteName" class="input" >
+                <select name="instituteName_id" class="input" >
                     <option> Select an Institute</option>
                     {% for data in Institutes %}
                         <option value="{{ data.instituteName_id }}"> {{ data.instituteName }}</option>
@@ -56,42 +53,40 @@
         <!-- show course begins -->
         <div class="content-area">
             <header class="content-area-header">Show Courses</header>
-            
-            <div class="show-data-box">
-                <div class="field-header col-6">
-                    <p>sr no.</p>
-                    <p class="jc-lft">Course Name</p>
-                    <p class="jc-lft">Institute Name</p>
-                    <p>No of sem.</p>
-                    <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
-                    <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
-                </div>
-             
-                {% for data in Course %}
-          
-                <div class="col-6">
-                    <p>{{ forloop.counter }}</p>
-                    <p class="jc-lft">{{ data.courseName }}</p>
-                    <p class="jc-lft">{{ data.instituteName.instituteName }} </p>
-                    <!-- <p>{{ data.courseID }}</p> -->
-                    <p>{{ data.num_of_semesters }}</p>
-                    <!-- update course data -->
-                    <a href="{% url 'updateCourse' data.courseID  %}">
-                        <span class="icon-box gr-icon">
-                            <ion-icon name="create-outline" class="icon"></ion-icon>
-                        </span> 
-                    </a>
-                    <!-- delete course data -->
-                    <a href="{% url 'deleteCourse' data.courseID %}">
-                        <span class="icon-box rd-icon">
-                            <ion-icon name="trash-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
-
-        </div>
+            <table class="show-data-box">
+                <thead>
+                    <th>sr no.</th><th>Course Name</th><th>Institute Name</th><th>No of sem.</th>
+                    <th><ion-icon name="create-outline" class="blk-icon"></ion-icon></th>
+                    <th><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></th>
+                </thead>
+                <tbody>
+                    {% for data in Course %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ data.courseName }}</td>
+                        <td>{{ data.instituteName.instituteName }}</td>
+                        <td>{{ data.num_of_semesters }}</td>
+                        <td>
+                            <a href="{% url 'updateCourse' data.courseID  %}">
+                                <span class="icon-box gr-icon">
+                                    <ion-icon name="create-outline" class="icon"></ion-icon>
+                                </span> 
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'deleteCourse' data.courseID %}">
+                                <span class="icon-box rd-icon">
+                                    <ion-icon name="trash-outline" class="icon"></ion-icon>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                        <center>No data found</center>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div> 
         <!-- show course ends -->
     </section>
     {% endblock %} 

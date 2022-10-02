@@ -16,11 +16,6 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <style>
-        .col-6{
-            grid-template-columns: repeat(6, 10% 10% 20% 20%  20% 20%);
-        } 
-    </style>
 </head>
 <body>
     {% block content %}
@@ -41,15 +36,13 @@
             <header class="content-area-header">Add Faculties</header>
             <form action="addBatch" method="post" class="content-area-form">
                 {% csrf_token %}
-                <select name="courseName" class="input" >
+                <select name="courseName_id" class="input" >
                     <option> Select a Course </option>
                     {% for data in Courses %}
                         <option value="{{ data.id }}"> {{ data.courseName }}</option>
                     {% endfor%}
                 </select>                
                 <input type="text" name="batchName" class="input" placeholder="batch" required />
-
-
                 <input type="submit" value="add batch" class="form-btn">
             </form>
         </div>
@@ -58,37 +51,22 @@
         <!-- show Batches begins -->
         <div class="content-area">
             <header class="content-area-header">Show Batches</header>
-            
-            <div class="show-data-box">
-                <div class="col-6">
-                    <p class="jc-lft">Srno.</p>
-                    <p class="jc-lft">Batch Name</p>
-                    <p class="jc-lft">Course Name</p>
-                    <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
-                    <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
-                </div>
-            
-                {% for data in Batch %}
-                <div class="col-6">
-                    <p>{{ forloop.counter }}</p>
-                    <p class="jc-lft">{{ data.batchName }}</p>
-                    <p class="jc-lft">{{ data.courseName.courseName }} </p>
-                    
-                    <!-- update Batches data -->
-                    <a href="#">
-                        <span class="icon-box gr-icon">
-                            <ion-icon name="create-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                    <!-- delete Batches data -->
-                    <a href="#">
-                        <span class="icon-box rd-icon">
-                            <ion-icon name="trash-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
+            <table class="show-data-box">
+                <thead>
+                    <th>sr no.</th><th>Batch name</th><th>Course name</th>
+                </thead>
+                <tbody>
+                    {% for data in context %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ data.batchName }}</td>
+                        <td>{{ data.courseName.courseName }}</td>
+                    </tr>
+                    {% empty %}
+                        <center>No data found</center>
+                    {% endfor %}
+                </tbody>
+            </table>
 
         </div>
         <!-- show Batches ends -->
