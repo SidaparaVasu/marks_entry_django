@@ -47,40 +47,38 @@
         <!-- show institue begins -->
         <div class="content-area">
             <header class="content-area-header">Show Institutes</header>
-            
-            <div class="show-data-box">
-                <div class="field-header col-6">
-                    <p>sr no.</p>
-                    <!-- <p>Institute ID</p> -->
-                    <p>Institute Name</p>
-                    <p>Institute Address</p>
-                    <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
-                    <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
-                </div>
-            
-                {% for data in Institute %}
-                <div class="col-6">
-                    <p>{{ forloop.counter }}</p>
-                    <p>{{ data.instituteName }}</p>
-                    <p class="jc-lft">{{ data.instituteAddress }} </p>
-                    <!-- update institue data -->
-                    <a href="{% url 'updateInstitute' data.instituteID  %}">
-                        <span class="icon-box gr-icon">
-                            <ion-icon name="create-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                    <!-- delete institue data -->
-                    <a href="{% url 'deleteInstitute' data.instituteID %}">
-                        <span class="icon-box rd-icon">
-                            <ion-icon name="trash-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                </div>
-                {% empty %}
-                No data found
-                {% endfor %}
-            </div>
-
+            <table class="show-data-box">
+                <thead>
+                    <th>sr no.</th><th>Institute Name</th><th>Institute Address</th>
+                    <th><ion-icon name="create-outline" class="blk-icon"></ion-icon></th>
+                    <th><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></th>
+                </thead>
+                <tbody>
+                    {% for data in Institute %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ data.instituteName }}</td>
+                        <td>{{ data.instituteAddress }}</td>
+                        <td>
+                            <a href="{% url 'updateInstitute' data.instituteID  %}">
+                                <span class="icon-box gr-icon">
+                                    <ion-icon name="create-outline" class="icon"></ion-icon>
+                                </span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'deleteInstitute' data.instituteID  %}">
+                                <span class="icon-box rd-icon">
+                                    <ion-icon name="trash-outline" class="icon"></ion-icon>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                        <center>No data found</center>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
         <!-- show institue ends -->
     

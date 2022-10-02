@@ -31,7 +31,7 @@ def profile(request):
 
 # Institute CRUD starts here
 def institute(request):
-    context ={"Institute":Institute.objects.all()}   
+    context ={"Institute":Institute.objects.all().order_by('-instituteID')}   
     return render(request,'institute.html',context)  
 
 def addInstitute(request):
@@ -93,7 +93,7 @@ def deleteInstitute(request,instituteID):
 
 # Course CRUD starts here
 def course(request):
-    context ={"Course":Course.objects.all().select_related('instituteName'),'Institutes':Institute.objects.all()}
+    context ={"Course":Course.objects.all().select_related('instituteName').order_by('-courseID'),'Institutes':Institute.objects.all().order_by('-instituteID')}
     return render(request,'course.html',context)  
 
 def addCourse(request):
@@ -171,7 +171,7 @@ def deleteCourse(request,courseID):
 
 # Admin CRUD starts 
 def admin(request):
-    context ={"Admin":users.objects.all().filter(type="2")}
+    context ={"Admin":users.objects.all().filter(type="2").order_by('-id')}
     return render(request,'admin.html',context) 
 
 def addAdmin(request):

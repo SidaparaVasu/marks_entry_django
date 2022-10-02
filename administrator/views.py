@@ -80,11 +80,12 @@ def addBatch(request):
             messages.success(request, "Batch added successfully!")
             return redirect("/administrator/batch")
             #return render(request,'admin.html')  
-        else:
-            messages.error(request, "Error in registration for batch!")
+        # else:
+        #     messages.error(request, "Error in registration for batch!")
     else:  
         form = BatchForm()  
     return redirect("/administrator/batch",{'form':form})
+    # return HttpResponse("404 Page not Found!")
 
 
 
@@ -92,6 +93,8 @@ def addBatch(request):
 
 def semester(request):
     context = {'Semester':Semester.objects.all().select_related('courseName'),'Courses':Course.objects.all()}
+    # sems = Semester.objects.all().filter('courseName')
+    # return HttpResponse(sems)
     # context = {'Semester':Semester.objects.all()}
     # paginator = Paginator(context, 10)
     # page_number = request.GET.get('page')

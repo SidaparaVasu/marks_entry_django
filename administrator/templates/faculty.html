@@ -16,11 +16,6 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <style>
-        .col-6{
-            grid-template-columns: repeat(6, 5% 30% 25% 30% 5% 5%);
-        } 
-    </style>
 </head>
 <body>
     {% block content %}
@@ -43,7 +38,7 @@
                 {% csrf_token %}
                 <input type="text" name="username" class="input" placeholder="username" required />
                 <input type="email" name="email" class="input" placeholder="email" required/>
-                <input type="tel" name="phoneno" class="input" placeholder="phoneno" required/>
+                <input type="tel" name="phoneno" minlength="10" maxlength="10" class="input" placeholder="phoneno" required/>
                 <input type="password" name="password" class="input" placeholder="password" required/>
                 <input type="file" name="image" class="input">
                 <input type="hidden" name="type" value="3" class="input" placeholder="type" />
@@ -55,44 +50,46 @@
         <!-- show Faculty begins -->
         <div class="content-area">
             <header class="content-area-header">Show Faculties</header>
-            
-            <div class="show-data-box">
-                <div class="field-header col-6">
-                    <p class="jc-lft">Image</p>
-                    <p class="jc-lft">Username</p>
-                    <p class="jc-lft">Phone no</p>
-                    <p class="jc-lft">Email</p>
-                    <p><ion-icon name="create-outline" class="blk-icon"></ion-icon></p>
-                    <p><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></p>
-                </div>
-            
-                {% for data in faculty %}
-                <div class="col-6">
-                    <!-- <p>{{ forloop.counter }}</p> -->
-                    {% if data.image %}
-                        <img src="{{ data.image.url }}" alt="" class="img-size">
-                    {% else %}
-                        <img src="{% static 'assets/user-default.png' %}" alt="" class="img-size">
-                    {% endif %}
-                    <p class="jc-lft">{{ data.username }}</p>
-                    <p class="jc-lft">{{ data.phoneno }}</p>
-                    <p class="jc-lft">{{ data.email }} </p>
-                    
-                    <!-- update Faculty data -->
-                    <a href="{% url 'updateFaculty' data.id  %}">
-                        <span class="icon-box gr-icon">
-                            <ion-icon name="create-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                    <!-- delete Faculty data -->
-                    <a href="{% url 'deleteAdmin' data.id %}">
-                        <span class="icon-box rd-icon">
-                            <ion-icon name="trash-outline" class="icon"></ion-icon>
-                        </span>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
+
+            <table class="show-data-box">
+                <thead>
+                    <th>Image</th><th>Username</th><th>Email</th><th>Phone no.</th>
+                    <th><ion-icon name="create-outline" class="blk-icon"></ion-icon></th>
+                    <th><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></th>
+                </thead>
+                <tbody>
+                    {% for data in faculty %}
+                    <tr>
+                        <td>
+                            {% if data.image %}
+                                <img src="{{ data.image.url }}" alt="" class="img-size">
+                            {% else %}
+                                <img src="{% static 'assets/user-default.png' %}" alt="" class="img-size">
+                            {% endif %}
+                        </td>
+                        <td>{{ data.username }}</td>
+                        <td>{{ data.email }}</td>
+                        <td>{{ data.phoneno }}</td>
+                        <td>
+                            <a href="{% url 'updateFaculty' data.id  %}">
+                                <span class="icon-box gr-icon">
+                                    <ion-icon name="create-outline" class="icon"></ion-icon>
+                                </span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'deleteFaculty' data.id %}">
+                                <span class="icon-box rd-icon">
+                                    <ion-icon name="trash-outline" class="icon"></ion-icon>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <center>No data found</center>
+                    {% endfor %}
+                </tbody>
+            </table>
 
         </div>
         <!-- show Faculty ends -->

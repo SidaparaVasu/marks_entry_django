@@ -16,11 +16,6 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <style>
-        .col-6{
-            grid-template-columns: repeat(6, 10% 10% 40% 20%  20%);
-        } 
-    </style>
 </head>
 <body>
     {% block content %}
@@ -41,21 +36,24 @@
             <header class="content-area-header">Show Semesters</header>
             
             <div class="show-data-box">
-                <div class="col-6">
-                    <p>Srno.</p>
-                    <p>Semester</p> 
-                    <p>Course Name</p>
-                </div>
-            
-                {% for data in Semester %}
-                <div class="col-6">
-                    <p>{{ forloop.counter }}</p>
-                    <p>{{ data.semester }}</p>
-                    <p>{{ data.courseName.courseName }} </p>
-                </div>
-                {% endfor %}
+                
+                <table class="show-data-box">
+                    <thead>
+                        <th>srno.</th><th>Course name</th><th>Semester</th>
+                    </thead>
+                    <tbody>
+                        {% for data in Semester %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ data.courseName.courseName }} </td>
+                            <td>{{ data.semester }}</td>
+                        </tr>
+                        {% empty %}
+                        <center>No data found</center>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
-
         </div>
         <!-- show semester ends -->
     
