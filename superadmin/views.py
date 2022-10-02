@@ -94,8 +94,9 @@ def course(request):
 def addCourse(request):
     if request.method == "POST":     
         c_form = CourseForm(request.POST or None) 
+        instituteName = Institute.objects.all().first()
         # instituteName = request.POST.get('instituteName_id')
-        instituteName = Institute.objects.get('instituteName')
+        # return HttpResponse( instituteName )
         num_of_semesters = request.POST.get('num_of_semesters')
         courseName = request.POST.get('courseName')
         obj_course = Course(instituteName=instituteName, num_of_semesters=num_of_semesters, courseName=courseName)
