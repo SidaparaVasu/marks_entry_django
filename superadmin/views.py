@@ -24,11 +24,6 @@ def indexDashboard(request):
 def profile(request):
     return render(request, "profile.html")
 
-
-
-# Image Upload for user's
-
-
 # Institute CRUD starts here
 def institute(request):
     context ={"Institute":Institute.objects.all().order_by('-instituteID')}   
@@ -99,8 +94,8 @@ def course(request):
 def addCourse(request):
     if request.method == "POST":     
         c_form = CourseForm(request.POST or None) 
-        # instituteName = request.POST.get('instituteName')
-        instituteName = Institute.objects.get()
+        # instituteName = request.POST.get('instituteName_id')
+        instituteName = Institute.objects.get('instituteName')
         num_of_semesters = request.POST.get('num_of_semesters')
         courseName = request.POST.get('courseName')
         obj_course = Course(instituteName=instituteName, num_of_semesters=num_of_semesters, courseName=courseName)
@@ -114,16 +109,6 @@ def addCourse(request):
         
             logger.info("Semesters added successfully for Course")
         messages.success(request, "Course added successfully!")
-        # if form.is_valid():   
-        #     if form.save():
-        #         logger.info("Course added successfully!")
-        #         messages.success(request, "Course added successfully!")
-        #         return redirect("/superadmin/course") 
-        #     else:
-        #         logger.info("Course insertion failed!")
-        #         messages.error(request, "Course insertion failed!")
-        # else:
-        #     messages.error(request, "Form is not valid! please fill up form curreclty!")
         return redirect("/superadmin/course")
     else:  
         c_form = CourseForm()  
@@ -166,7 +151,7 @@ def deleteCourse(request,courseID):
             logger.info("Course deleted failed for Id : " + str(courseID))
             messages.error(request,"Course deletion failed for Id : " + str(courseID))
     return render(request,'course.html',context)
-# Course CRUD ends hereCourseForm
+# Course CRUD ends here
 
 
 # Admin CRUD starts 

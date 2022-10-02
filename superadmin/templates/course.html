@@ -35,7 +35,7 @@
             <header class="content-area-header">Add Courses</header>
             <form action="addCourse" method="post" class="content-area-form">
                 {% csrf_token %}
-                <select name="instituteName" class="input" >
+                <select name="instituteName_id" class="input" >
                     <option> Select an Institute</option>
                     {% for data in Institutes %}
                         <option value="{{ data.instituteName_id }}"> {{ data.instituteName }}</option>
