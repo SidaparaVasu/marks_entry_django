@@ -93,9 +93,12 @@ def addBatch(request):
 #SEMESTER CRUD STARTS
 
 def semester(request):
-    context = { 'Semesters': Semester.objects.values('courseName_id').annotate(tot_sems=Count('semester')),
-                'Courses': Course.objects.all()
-            }
+    context = {
+        'Semesters': Semester.objects.values('courseName').annotate(tot_sems=Count('semester')),
+        'Courses': Course.objects.all() 
+    }
+    # return HttpResponse(context['Semesters']['2'])
+        
     # paginator = Paginator(context, 10)
     # page_number = request.GET.get('page')
     # page_obj = paginator.get_page(page_number)

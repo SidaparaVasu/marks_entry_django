@@ -40,19 +40,19 @@
                 <table class="show-data-box">
                     <thead>
                         <th>srno.</th>
-                        <th>Course name</th><th>Semester</th>
+                        <th>Course name</th><th>Semesters</th>
                     </thead>
                     <tbody>
-                        {% for c_data in Courses %}
+                        {% for i in Courses %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
-                                {% for s_data in Semesters %}
-                                    <td> {{ c_data.courseName }} </td>
-                                    <td> {{ s_data.tot_sems }} </td>
+                                <td>{{ i.courseName }}</td>
+                                <!-- {% for j in Semesters %}
+                                    <td>{{ j.tot_sems }}</td>
+                                {% endfor %} -->
                             </tr>   
-                            {% empty %}
+                             {% empty %}
                             <center>No data found</center>
-                            {% endfor %}
                         {% endfor %}
                     </tbody>
                 </table>

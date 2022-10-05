@@ -94,23 +94,22 @@ def course(request):
 def addCourse(request):
     if request.method == "POST":     
         c_form = CourseForm(request.POST or None) 
-        instituteName = Institute.objects.all().first()
-        # instituteName = request.POST.get('instituteName_id')
-        # return HttpResponse( instituteName )
-        num_of_semesters = request.POST.get('num_of_semesters')
-        courseName = request.POST.get('courseName')
-        obj_course = Course(instituteName=instituteName, num_of_semesters=num_of_semesters, courseName=courseName)
-        obj_course.save()
+
+        if c_form.is_valid():
+            if c_form.save():
+                num_of_semesters = request.POST.get('num_of_semesters')
     
-        for sem in range(1,int(num_of_semesters)+1):
-            course_data = Course.objects.all()
-            tot_course_data = Course.objects.all().count()
-            s_form = Semester(semester=sem, courseName_id=course_data[tot_course_data-1].courseID)
-            s_form.save()
-        
-            logger.info("Semesters added successfully for Course")
-        messages.success(request, "Course added successfully!")
-        return redirect("/superadmin/course")
+                for sem in range(1,int(num_of_semesters)+1):
+                    course_data = Course.objects.all()
+                    tot_course_data = Course.objects.all().count()
+                    s_form = Semester(semester=sem, courseName_id=course_data[tot_course_data-1].courseID)
+                    s_form.save()
+                
+                    logger.info("Semesters added successfully for Course")
+                messages.success(request, "Course added successfully!")
+                return redirect("/superadmin/course")
+            else:
+                messages.success(request, "Course insertion failed!")
     else:  
         c_form = CourseForm()  
     return redirect("/superadmin/course",{'c_form':c_form})
