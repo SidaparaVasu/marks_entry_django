@@ -73,12 +73,15 @@ def loginHandle(request):
         return render(request, template_name = "login.html", context = {"form":form})
 
 def logoutHandle(request):
-    if request.method == "POST":    
-        logout(request)
-        messages.success(request, "Successfully Logged Out!")
-        return redirect("/")
-    # try:
-    #     del request.session['username']
-    # except:
-    #     return HttpResponse("nope")
-    # return HttpResponse("<strong>You are logged out.</strong>")
+    # if request.method == "POST":    
+    #     logout(request)
+    #     messages.success(request, "Successfully Logged Out!")
+    #     return redirect("/")
+    try:
+        del request.session['username']
+        del request.session['email']
+        del request.session['phoneno']
+    except KeyError:
+        pass
+    messages.success(request, "You are Logged out!")
+    return HttpResponseRedirect('/auth/loginHandle')
