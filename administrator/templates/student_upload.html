@@ -31,18 +31,22 @@
 
     {% block content %}
 
-    {% endblock %} 
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
     <!-- Main Container -->
     <section class="container">
         <div class="content-area" style="padding: 5px; height: 85vh;">
             <img src="{% static 'assets/upload-file-image.png' %}" alt="file-upload-image" />
             <header class="content-area-header">Student File Upload</header>
             <form 
-                action="" method="post" enctype="multipart/form-data" class="content-area-form"
+                action="upload_csv" method="post" enctype="multipart/form-data" class="content-area-form"
                 style="display: flex; gap: 20px;">
                 {% csrf_token %}  
                 {{ form.as_p }}  
-                <input type="file" name="student-file" 
+                <input type="file" name="csv_file" 
                     style="
                         width: 100%;
                         padding: 10px 15px;
@@ -54,5 +58,7 @@
             </form>
         </div>
     </section>
+    {% endblock %} 
+
 </body>
 </html>

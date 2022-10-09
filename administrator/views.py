@@ -1,22 +1,24 @@
 from django.core.paginator import Paginator
 from django.db.models import Count
 from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.contrib import messages
 from auth_app.models import users
 from auth_app.forms import RegisterForm
 from superadmin.models import Course
 from superadmin.forms import CourseForm
 from .models import Batch,Semester,Subject
-from .forms import BatchForm,SemesterForm,SubjectForm
+from .forms import BatchForm,SemesterForm,SubjectForm,StudentForm
+
+# logger
+import logging,traceback
+logger = logging.getLogger('superadminLogger')
+#
 
 # Create your views here.
 def adminIndex(request):
     return render(request, 'index_admin.html')
-
-# Student
-
-def studentFileUpload(request):
-    return render(request, 'student_upload.html')
 
 # Admin CRUD starts 
 def faculty(request):
@@ -157,3 +159,54 @@ def addSubject(request):
     return redirect("/administrator/subject",{'form':form})
 
 
+# Student Upload
+def studentFileUpload(request):
+    return render(request, 'student_upload.html')
+
+def upload_csv(request):
+    data = {}
+    if "GET" == request.method:
+        return render(request, "studentFileUpload", data)
+    
+    # if not GET, then proceed
+    csv_file = request.FILES["csv_file"]
+    
+    # return HttpResponse(csv_file.name)
+    if not csv_file.name.endswith('.csv'):
+        messages.error(request,'File is not CSV type')
+        return redirect("/administrator/studentFileUpload")
+    
+    #if file is too large, return
+    if csv_file.multiple_chunks():
+        messages.error(request,"Uploaded file is too big (%.2f MB)." % (csv_file.size/(1000*1000),))
+        return redirect("/administrator/studentFileUpload")
+
+
+    file_data = csv_file.read().decode("utf-8")		
+
+    lines = file_data.split("\n")
+    #loop over the lines and save them in db. If error , store as string and then display
+    try:
+        for line in lines:						
+            fields = line.split(",")
+            data_dict = {}
+            data_dict["enrolment"] = fields[0]
+            data_dict["seatno"] = fields[1]
+            data_dict["name"] = fields[2]
+            try:
+                form = StudentForm(data_dict)
+                if form.is_valid():
+                    # return HttpResponse(form)
+                    form.save()				
+                else:
+                    messages.error(request,"form is not valid")
+                    logger.info("error_logger")											
+            except Exception as e:
+                messages.error(request,"Hmmm")
+                logger.info("error_logger"+e)			
+                pass
+    except Exception as e:
+        messages.error(request,"File upload successfully!")	
+        
+
+    return redirect("/administrator/studentFileUpload")

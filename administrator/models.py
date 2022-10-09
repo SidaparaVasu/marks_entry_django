@@ -17,3 +17,8 @@ class Subject(models.Model):
     subject = models.TextField(blank = True, max_length=40)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE,related_name='semester1')
     credits = models.IntegerField()
+    
+class Student(models.Model):
+    enrolment = models.TextField(max_length=20)
+    seatno = models.TextField(max_length=20)
+    name = models.TextField(max_length=50)
