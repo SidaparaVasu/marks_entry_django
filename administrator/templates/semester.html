@@ -43,10 +43,10 @@
                         <th>Course name</th><th>Semesters</th>
                     </thead>
                     <tbody>
-                        {% for i in Courses %}
+                        {% for data in Courses %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
-                                <td>{{ i.courseName }}</td>
+                                <td>{{ data.courseName }}</td>
                                 <!-- {% for j in Semesters %}
                                     <td>{{ j.tot_sems }}</td>
                                 {% endfor %} -->

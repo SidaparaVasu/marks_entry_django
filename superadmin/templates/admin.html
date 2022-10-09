@@ -58,7 +58,7 @@
                     <th><ion-icon name="trash-outline" class="blk-icon" ></ion-icon></th>
                 </thead>
                 <tbody>
-                    {% for data in Admin %}
+                    {% for data in page_obj %}
                     <tr>
                         <td>
                             {% if data.image %}
@@ -90,6 +90,21 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <div class="pagination">
+                {%if page_obj.has_previous %} {# whether the previous page exists #}
+                    <a href="?page={{page_obj.previous_page_number}}" class="pagination-btn">prev</a> {# link to the prev page #}
+                {% endif %}
+                
+                {% if page_obj.number == 1 %}
+                    <p></p>
+                {% else %}
+                    <span>page: {{page_obj.number}}</span> {# the current page number #}
+                {% endif %}
+                
+                {%if page_obj.has_next %} {# whether the next page exists #}
+                    <a href="?page={{page_obj.next_page_number}}" class="pagination-btn">next</a> {# link to the next page #}
+                {% endif %}
+            </div>
         </div>  
         <!-- show admin ends -->
 
