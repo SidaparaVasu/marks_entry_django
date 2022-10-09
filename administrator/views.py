@@ -196,7 +196,6 @@ def upload_csv(request):
             try:
                 form = StudentForm(data_dict)
                 if form.is_valid():
-                    # return HttpResponse(form)
                     form.save()				
                 else:
                     messages.error(request,"form is not valid")
