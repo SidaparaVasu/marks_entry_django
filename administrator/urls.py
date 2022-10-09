@@ -30,6 +30,7 @@ urlpatterns = [
     
     # Student
     path('studentFileUpload', views.studentFileUpload, name="studentFileUpload"),
+    path('upload_csv', views.upload_csv, name='upload_csv'),
 ]
 
 if settings.DEBUG:

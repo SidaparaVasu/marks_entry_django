@@ -1,6 +1,6 @@
 from django import forms  
 from django.views.generic import ListView
-from .models import Batch,Semester,Subject
+from .models import Batch,Semester,Subject,Student
  
 class BatchForm(forms.ModelForm):  
     class Meta:  
@@ -17,3 +17,9 @@ class SubjectForm(forms.ModelForm):
     class Meta:  
         model = Subject  
         fields = ('subject','semester','credits') 
+
+
+class StudentForm(forms.ModelForm):  
+    class Meta:  
+        model = Student  
+        fields = ('enrolment','seatno','name') 
