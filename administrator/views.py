@@ -20,7 +20,19 @@ def studentFileUpload(request):
 
 # Admin CRUD starts 
 def faculty(request):
-    context ={"faculty":users.objects.all().filter(type="3")}
+    faculty = users.objects.all().filter(type="3")
+    p = Paginator(faculty, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
     return render(request,'faculty.html',context)
 
 def addFaculty(request):
@@ -102,12 +114,6 @@ def semester(request):
         'Semesters': Semester.objects.values('courseName').annotate(tot_sems=Count('semester')),
         'Courses': Course.objects.all() 
     }
-    # return HttpResponse(context['Semesters']['2'])
-        
-    # paginator = Paginator(context, 10)
-    # page_number = request.GET.get('page')
-    # page_obj = paginator.get_page(page_number)
-    # return render(request, "semester.html", {'page_obj': page_obj})
     return render(request,'semester.html', context) 
 
 def addSemester(request):

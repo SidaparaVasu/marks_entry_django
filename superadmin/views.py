@@ -8,6 +8,8 @@ from auth_app.forms import RegisterForm
 from django.conf import settings
 from django.core.mail import send_mail
 
+from django.core.paginator import Paginator
+
 from administrator.models import Semester
 
 
@@ -26,7 +28,19 @@ def profile(request):
 
 # Institute CRUD starts here
 def institute(request):
-    context ={"Institute":Institute.objects.all().order_by('-instituteID')}   
+    Institutes = Institute.objects.all().order_by('-instituteID')
+    p = Paginator(Institutes, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
     return render(request,'institute.html',context)  
 
 def addInstitute(request):
@@ -88,8 +102,21 @@ def deleteInstitute(request,instituteID):
 
 # Course CRUD starts here
 def course(request):
-    context ={"Course":Course.objects.all().select_related('instituteName').order_by('-courseID'),'Institutes':Institute.objects.all().order_by('-instituteID')}
-    return render(request,'course.html',context)  
+    Courses = Course.objects.all().select_related('instituteName').order_by('-courseID')
+    p = Paginator(Courses, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
+    return render(request,'course.html',context)
+    # context ={"Course":Course.objects.all().select_related('instituteName').order_by('-courseID'),'Institutes':Institute.objects.all().order_by('-instituteID')}
 
 def addCourse(request):
     if request.method == "POST":     
@@ -156,7 +183,20 @@ def deleteCourse(request,courseID):
 
 # Admin CRUD starts 
 def admin(request):
-    context ={"Admin":users.objects.all().filter(type="2").order_by('-id')}
+    admins = users.objects.all().filter(type="2").order_by('-id')
+    
+    p = Paginator(admins, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj}
     return render(request,'admin.html',context) 
 
 def addAdmin(request):

@@ -271,3 +271,27 @@ tbody tr td{
     height: 100%;
     width: 100%;
 }
+
+.pagination{
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pagination-btn{
+    border: 2px solid var(--violet);
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: var(--violet);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pagination-btn:hover{
+    background-color: var(--violet);
+    color: var(--white);
+}
