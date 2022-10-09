@@ -75,7 +75,7 @@ def batch(request):
 
 def addBatch(request):
     if request.method == "POST":     
-        form = BatchForm(request.POST or None)  
+        form = BatchForm(request.POST or None) 
         if form.is_valid():  
             form.save()  
             messages.success(request, "Batch added successfully!")

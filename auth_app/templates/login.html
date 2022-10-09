@@ -54,7 +54,11 @@
 </style>
 
 <body>
-
+  {% if messages %}
+    {% for message in messages %}
+        {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+    {% endfor %}
+  {% endif %}
   <section class="container">
     <header class="header mb-4">Login</header>
     <!-- login form -->

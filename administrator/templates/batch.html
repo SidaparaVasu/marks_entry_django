@@ -36,10 +36,10 @@
             <header class="content-area-header">Add Faculties</header>
             <form action="addBatch" method="post" class="content-area-form">
                 {% csrf_token %}
-                <select name="courseName_id" class="input" >
+                <select name="courseName" class="input" >
                     <option> Select a Course </option>
                     {% for data in Courses %}
-                        <option value="{{ data.id }}"> {{ data.courseName }}</option>
+                        <option value="{{ data.courseID }}"> {{ data.courseName }}</option>
                     {% endfor%}
                 </select>                
                 <input type="text" name="batchName" class="input" placeholder="batch" required />
@@ -56,7 +56,7 @@
                     <th>sr no.</th><th>Batch name</th><th>Course name</th>
                 </thead>
                 <tbody>
-                    {% for data in context %}
+                    {% for data in Batch %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ data.batchName }}</td>

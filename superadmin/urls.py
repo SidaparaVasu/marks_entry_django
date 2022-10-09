@@ -6,7 +6,7 @@ from django.conf.urls.static import static
  
 urlpatterns = [    
     path('', views.indexDashboard, name="indexDashboard"),
-    path('profile', views.profile, name="profile"),
+    path('profile', views.profile, name="profile"),    
     
     # institute urls
     path('institute', views.institute, name="institute"),
