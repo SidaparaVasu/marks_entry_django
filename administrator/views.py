@@ -140,7 +140,12 @@ def updateSemester(request,id):
 # Subject crud starts
 
 def subject(request):
-    context = {'Subjects':Subject.objects.all().select_related('semester'),'Semesters':Semester.objects.all()}
+    context = {
+        'Courses':Course.objects.all(),
+        'Semesters':Semester.objects.all().select_related('courseName'),
+        'Subjects':Subject.objects.all().select_related('semester'),
+    }
+    # return HttpResponse(context['Semesters'])
     return render(request,'subject.html',context)
 
 def addSubject(request):
