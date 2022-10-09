@@ -13,6 +13,11 @@ from .forms import BatchForm,SemesterForm,SubjectForm
 def adminIndex(request):
     return render(request, 'index_admin.html')
 
+# Student
+
+def studentFileUpload(request):
+    return render(request, 'student_upload.html')
+
 # Admin CRUD starts 
 def faculty(request):
     context ={"faculty":users.objects.all().filter(type="3")}
@@ -144,3 +149,5 @@ def addSubject(request):
     else:  
         form = SubjectForm()  
     return redirect("/administrator/subject",{'form':form})
+
+

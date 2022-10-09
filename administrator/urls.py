@@ -28,6 +28,8 @@ urlpatterns = [
     path('subject',views.subject,name="subject"),
     path('addSubject', views.addSubject, name="addSubject"),
     
+    # Student
+    path('studentFileUpload', views.studentFileUpload, name="studentFileUpload"),
 ]
 
 if settings.DEBUG:
