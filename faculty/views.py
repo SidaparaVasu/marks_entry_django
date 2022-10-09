@@ -5,3 +5,7 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 def facultyIndex(request):
     return render(request, 'index_faculty.html')
+
+def studentFileUpload(request):
+    return render(request, 'student_upload.html')
+
