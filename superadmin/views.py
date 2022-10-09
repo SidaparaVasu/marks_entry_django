@@ -114,7 +114,7 @@ def course(request):
     except EmptyPage:
         # if page is empty then return last page
         page_obj = p.page(p.num_pages)
-    context ={'page_obj': page_obj} 
+    context = {'page_obj': page_obj, 'Institutes':Institute.objects.all().order_by('-instituteID')} 
     return render(request,'course.html',context)
     # context ={"Course":Course.objects.all().select_related('instituteName').order_by('-courseID'),'Institutes':Institute.objects.all().order_by('-instituteID')}
 
