@@ -28,10 +28,10 @@ def faculty(request):
     
     try:
         page_obj = p.get_page(page_number)
-    except PageNotAnInteger:
+    except Paginator.PageNotAnInteger:
         # if page_number is not an integer then assign the first page
         page_obj = p.page(1)
-    except EmptyPage:
+    except Paginator.EmptyPage:
         # if page is empty then return last page
         page_obj = p.page(p.num_pages)
     context ={'page_obj': page_obj} 
@@ -169,10 +169,10 @@ def student(request):
     
     try:
         page_obj = p.get_page(page_number)
-    except PageNotAnInteger:
+    except Paginator.PageNotAnInteger:
         # if page_number is not an integer then assign the first page
         page_obj = p.page(1)
-    except EmptyPage:
+    except Paginator.EmptyPage:
         # if page is empty then return last page
         page_obj = p.page(p.num_pages)
     context = { 'page_obj': page_obj } 
