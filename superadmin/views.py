@@ -213,9 +213,8 @@ def addAdmin(request):
                 subject = f'welcome {un}!!!'
                 message = f'Greetings! You are registered as an admin. Your Username: { un }, Your Password: { ps }'
                 email_from = settings.EMAIL_HOST_USER
-                # email_from = 'vasupatel303@gmail.com'
                 recipient_list = [email]
-                # return HttpResponse(recipient_list)
+
                 send_mail( subject, message, email_from, recipient_list )
                 
                 logger.info("Admin added successfully!")
