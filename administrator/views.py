@@ -8,7 +8,7 @@ from auth_app.models import users
 from auth_app.forms import RegisterForm
 from superadmin.models import Course
 from superadmin.forms import CourseForm
-from .models import Batch,Semester,Subject
+from .models import Batch,Semester,Subject,Student
 from .forms import BatchForm,SemesterForm,SubjectForm,StudentForm
 
 # logger
@@ -145,18 +145,15 @@ def subject(request):
         'Semesters':Semester.objects.all().select_related('courseName'),
         'Subjects':Subject.objects.all().select_related('semester'),
     }
-    # return HttpResponse(context['Semesters'])
     return render(request,'subject.html',context)
 
 def addSubject(request):
     if request.method == "POST":     
         form = SubjectForm(request.POST or None)  
-        #return HttpResponse(form)
         if form.is_valid():  
             form.save()  
             messages.success(request, "Subject added successfully!")
             return redirect("/administrator/subject")
-            #return render(request,'admin.html')  
         else:
             messages.error(request, "Error in registration for Subject!")
     else:  
@@ -165,13 +162,26 @@ def addSubject(request):
 
 
 # Student Upload
-def studentFileUpload(request):
-    return render(request, 'student_upload.html')
+def student(request):
+    Students = Student.objects.all().order_by('-id')
+    p = Paginator(Students, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context = { 'page_obj': page_obj } 
+    return render(request,'student.html', context) 
 
 def upload_csv(request):
     data = {}
     if "GET" == request.method:
-        return render(request, "studentFileUpload", data)
+        return render(request, "student", data)
     
     # if not GET, then proceed
     csv_file = request.FILES["csv_file"]
@@ -179,12 +189,12 @@ def upload_csv(request):
     # return HttpResponse(csv_file.name)
     if not csv_file.name.endswith('.csv'):
         messages.error(request,'File is not CSV type')
-        return redirect("/administrator/studentFileUpload")
+        return redirect("/administrator/student")
     
     #if file is too large, return
     if csv_file.multiple_chunks():
         messages.error(request,"Uploaded file is too big (%.2f MB)." % (csv_file.size/(1000*1000),))
-        return redirect("/administrator/studentFileUpload")
+        return redirect("/administrator/student")
 
 
     file_data = csv_file.read().decode("utf-8")		
@@ -201,7 +211,6 @@ def upload_csv(request):
             try:
                 form = StudentForm(data_dict)
                 if form.is_valid():
-                    # return HttpResponse(form)
                     form.save()				
                 else:
                     messages.error(request,"form is not valid")
@@ -214,4 +223,4 @@ def upload_csv(request):
         messages.error(request,"File upload successfully!")	
         
 
-    return redirect("/administrator/studentFileUpload")
+    return redirect("/administrator/student")

@@ -29,7 +29,7 @@ urlpatterns = [
     path('addSubject', views.addSubject, name="addSubject"),
     
     # Student
-    path('studentFileUpload', views.studentFileUpload, name="studentFileUpload"),
+    path('student', views.student, name="student"),
     path('upload_csv', views.upload_csv, name='upload_csv'),
 ]
 
