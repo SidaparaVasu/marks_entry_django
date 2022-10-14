@@ -36,7 +36,7 @@
             <form action="addCourse" method="post" class="content-area-form">
                 {% csrf_token %}
                 <select name="instituteName" class="input">
-                    <option> Select an Institute</option>
+                    <option selected disabled> Select an Institute</option>
                     {% for data in Institutes %}
                         <option value="{{ data.instituteID }}"> {{ data.instituteName }}</option>
                     {% endfor%}
