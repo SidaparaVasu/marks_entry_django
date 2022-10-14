@@ -65,6 +65,7 @@
             <table class="show-data-box" style="margin-top: 20px;">
                 <thead>
                     <th>ID</th><th>Enrolment</th><th>Seat no.</th><th>Name</th>
+                    <th>email</th><th>phoneno</th><th>gender</th><th>category</th>
                 </thead>
                 <tbody>
                     {% for student in page_obj %}
@@ -73,6 +74,10 @@
                         <td>{{ student.enrolment }}</td>
                         <td>{{ student.seatno }}</td>
                         <td>{{ student.name }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.phoneno }}</td>
+                        <td>{{ student.gender }}</td>
+                        <td>{{ student.category }}</td>
                     </tr>
                     {% empty %}
                         <center>No data found</center>

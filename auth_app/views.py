@@ -42,32 +42,38 @@ def loginHandle(request):
         image_path = request.POST.get("image")
 
         flag = 0
-        data = users.objects.all()
-        for i in range(len(data)):
-            if data[i].username == un and data[i].password == ps:
-                request.session['username'] = data[i].username
-                request.session['email'] = data[i].email
-                request.session['phoneno'] = data[i].phoneno
+        try:
+            data = users.objects.all()
+            # return HttpResponse(data)
             
-                username = request.session['username']
-                email = request.session['email']
-                phoneno = request.session['phoneno']
-                session_user = {'username': username, 'email': email, 'phoneno': phoneno, 'image_path': image_path}
+            for i in range(len(data)):
+                if data[i].username == un and data[i].password == ps:
+                    request.session['username'] = data[i].username
+                    request.session['email'] = data[i].email
+                    request.session['phoneno'] = data[i].phoneno
                 
-                if data[i].type == 1:
-                    logger.info("super admin: " + data[i].username + " is logged in")
-                    return HttpResponseRedirect('/superadmin', session_user)
-                elif data[i].type == 2:
-                    logger.info("admin: " + data[i].username + " is logged in")
-                    return HttpResponseRedirect('/administrator', session_user)
-                elif data[i].type == 3:
-                    logger.info("faculty: " + data[i].username + " is logged in")
-                    return HttpResponseRedirect('/faculty', session_user)
-            else:
-                flag = 1
-        if flag == 1:
-            html = "Invaild Credentials! Please try again!" + "<a href='login'>Go back</a>"
-            return HttpResponse(html)
+                    username = request.session['username']
+                    email = request.session['email']
+                    phoneno = request.session['phoneno']
+                    session_user = {'username': username, 'email': email, 'phoneno': phoneno, 'image_path': image_path}
+                    
+                    if data[i].type == 1:
+                        logger.info("super admin: " + data[i].username + " is logged in")
+                        return HttpResponseRedirect('/superadmin', session_user)
+                    elif data[i].type == 2:
+                        logger.info("admin: " + data[i].username + " is logged in")
+                        return HttpResponseRedirect('/administrator', session_user)
+                    elif data[i].type == 3:
+                        logger.info("faculty: " + data[i].username + " is logged in")
+                        return HttpResponseRedirect('/faculty', session_user)
+                else:
+                    flag = 1
+            if flag == 1:
+                html = "Invaild Credentials! Please try again!" + "<a href='login'>Go back</a>"
+                return HttpResponse(html)
+        except:
+            messages.error(request, "please check your credentials and try again!")
+            return render(request,'login.html')  
     else:
         form = RegisterForm()
         return render(request, template_name = "login.html", context = {"form":form})

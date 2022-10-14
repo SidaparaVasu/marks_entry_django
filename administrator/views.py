@@ -200,27 +200,46 @@ def upload_csv(request):
     file_data = csv_file.read().decode("utf-8")		
 
     lines = file_data.split("\n")
-    #loop over the lines and save them in db. If error , store as string and then display
-    try:
-        for line in lines:						
-            fields = line.split(",")
-            data_dict = {}
-            data_dict["enrolment"] = fields[0]
-            data_dict["seatno"] = fields[1]
-            data_dict["name"] = fields[2]
-            try:
-                form = StudentForm(data_dict)
-                if form.is_valid():
-                    form.save()				
-                else:
-                    messages.error(request,"form is not valid")
-                    logger.info("error_logger")											
-            except Exception as e:
-                messages.error(request,"Hmmm")
-                logger.info("error_logger"+e)			
-                pass
-    except Exception as e:
-        messages.error(request,"File upload successfully!")	
-        
+    student_data = Student.objects.values_list('enrolment')
+    
+    # return HttpResponse(student_data)
+    if student_data == None:
+        return HttpResponse("oy")    
 
+    # flag = 0
+    # cnt = 0
+    # for line, enrol in zip(lines, student_data):
+    #     fields = line.split(",")
+
+    #     if enrol[0] == int(fields[0]):
+    #         cnt+=1
+    #         logger.info("data of student whose enrolment number is " + str(enrol[0]) + " is already uploaded in databse, so it is skipped to upload.")
+    #         print("found", enrol[0], " => ", fields[0])
+    #     else:
+    #         print("not found", enrol[0], " => ", fields[0])
+    #         form = Student(
+    #             enrolment = fields[0],
+    #             seatno = fields[1],
+    #             name = fields[2],
+    #             email = fields[3],
+    #             phoneno = fields[4],
+    #             gender = fields[5],
+    #             category = fields[6]
+    #         )
+    #         form.save()	
+    #         flag = 1							
+    # if flag == 1:
+    #     logger.info("File: " + csv_file.name + " is uploaded in student table")
+    #     messages.success(request, "Student data uploaded successfully!")
+    # else:
+    #     messages.success(request, "Note: all data of the file is already uploaded to database!")
+    
+    for line in lines:
+        fields = line.split(",")
+        for enrol in student_data:
+            if enrol[0] == int(fields[0]): 
+                print("found!")
+            else:
+                print("not found!")
+        
     return redirect("/administrator/student")
