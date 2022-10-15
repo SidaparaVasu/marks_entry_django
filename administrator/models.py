@@ -21,7 +21,7 @@ class Subject(models.Model):
     credits = models.IntegerField()
     
 class Student(models.Model):
-    enrolment = models.BigIntegerField(unique = True, blank = True )
+    enrolment = models.BigIntegerField(blank = True )
     seatno = models.TextField(max_length=20, blank = True)
     name = models.TextField(max_length=50, blank = True)
     email = models.EmailField(max_length=50, blank = True)

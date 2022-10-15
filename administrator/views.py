@@ -10,6 +10,7 @@ from superadmin.models import Course
 from superadmin.forms import CourseForm
 from .models import Batch,Semester,Subject,Student
 from .forms import BatchForm,SemesterForm,SubjectForm,StudentForm
+from django.db.models import Count, Max
 
 # logger
 import logging,traceback
@@ -141,11 +142,18 @@ def updateSemester(request,id):
 
 def subject(request):
     context = {
-        'Courses':Course.objects.all(),
-        'Semesters':Semester.objects.all().select_related('courseName'),
-        'Subjects':Subject.objects.all().select_related('semester'),
+        'courses':Course.objects.all(),
+        'subjects':Subject.objects.all().select_related('semester'),
     }
     return render(request,'subject.html',context)
+
+def fetch_semesters(request, course_id, course_name):
+    myDict = {
+        'courses':Course.objects.all(),
+        'semesters':Semester.objects.all().filter(courseName_id=course_id),
+        'selected_course':course_name,
+    }
+    return render(request, 'subject.html', myDict)
 
 def addSubject(request):
     if request.method == "POST":     
@@ -200,15 +208,10 @@ def upload_csv(request):
     file_data = csv_file.read().decode("utf-8")		
 
     lines = file_data.split("\n")
-    student_data = Student.objects.values_list('enrolment')
     
-    row_counter = Student.objects.count()
-
-    fields = []
-    try:
+    try:        
         for line in lines:
             fields = line.split(",")
-        
             form = Student(
                 enrolment = fields[0],
                 seatno = fields[1],     
@@ -221,35 +224,20 @@ def upload_csv(request):
             form.save()
     except:
         messages.success(request, "Student data uploaded successfully!")
-        return redirect("/administrator/student")
         
-
-    # flag = 0
-    # cnt = 0
-    # for line, enrol in zip(lines, student_data):
-    #     fields = line.split(",")
-
-    #     if enrol[0] == int(fields[0]):
-    #         cnt+=1
-    #         logger.info("data of student whose enrolment number is " + str(enrol[0]) + " is already uploaded in databse, so it is skipped to upload.")
-    #         print("found", enrol[0], " => ", fields[0])
-    #     else:
-    #         print("not found", enrol[0], " => ", fields[0])
-    #         form = Student(
-    #             enrolment = fields[0],
-    #             seatno = fields[1],
-    #             name = fields[2],
-    #             email = fields[3],
-    #             phoneno = fields[4],
-    #             gender = fields[5],
-    #             category = fields[6]
-    #         )
-    #         form.save()	
-    #         flag = 1							
-    # if flag == 1:
-    #     logger.info("File: " + csv_file.name + " is uploaded in student table")
-    #     messages.success(request, "Student data uploaded successfully!")
-    # else:
-    #     messages.success(request, "Note: all data of the file is already uploaded to database!")
-        
+    unique_fields = ['enrolment']
+    duplicates = (
+        Student.objects.values(*unique_fields)
+        .order_by()
+        .annotate(max_id=Max('id'), count_id=Count('id'))
+        .filter(count_id__gt=1)
+    )
+    
+    for duplicate in duplicates:
+        (
+            Student.objects
+            .filter(**{x: duplicate[x] for x in unique_fields})
+            .exclude(id=duplicate['max_id'])
+            .delete()
+        )        
     return redirect("/administrator/student")

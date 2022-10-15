@@ -36,22 +36,22 @@
             <header class="content-area-header">Add Subject</header>
             <form action="addSubject" method="post" class="content-area-form">
                 {% csrf_token %}
-
-
-
-                <select name="course" class="input" >
-                    <option selected disabled> Select a Course</option>   
-                    {% for data in Courses %}
-                        <option value="{{ data.courseName }}"> {{ data.courseName }}</option>
-                    {% endfor%}
+                <details>
+                    <summary>select a course</summary>
+                        {% for course in courses %}
+                            <a href="fetch_semesters/{{ course.courseID }}/{{ course.courseName }}">
+                                {{ course.courseName }}
+                            </a>
+                        {% endfor %}
+                    </select>
+                </details>
+                <select name="semester" id="">
+                    <option value="" selected disabled>select a course first</option>
+                    {% for sem in semesters %}
+                    <option value="{{ sem.semester }}">{{ sem.semester }}</option>
+                    {% endfor %}
                 </select>
 
-                <!-- <select name="semester" class="input" >
-                    <option> Select an Semester</option>
-                    {% for data in Semesters %}
-                        <option value="{{ data.semesterId }}"> {{ data.semester }}</option>
-                    {% endfor%}
-                </select>                 -->
                 <input type="text" name="subject" class="input" placeholder="subject" required />
                 <input type="text" name="credits" class="input" placeholder="credits" required />
 

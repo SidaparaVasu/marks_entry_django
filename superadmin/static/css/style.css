@@ -149,7 +149,7 @@
     left: var(--side-panel-width);
     height: calc( 100vh - var(--nav-height) );
     width: calc( 100vw - var(--side-panel-width) );
-    background-color: var(--light-grey);
+    background-color: var(--container-bg);
     padding: 30px;
     overflow-y: scroll;
 }
@@ -160,6 +160,7 @@
     background-color: var(--white);
     padding: 10px 20px;
     margin-bottom: 40px;
+    /* box-shadow: 1px 1px 2px 1px rgba(41, 41, 41, 0.167); */
 }
 .content-area-header{
     font-size: 18px;

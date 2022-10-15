@@ -24,14 +24,12 @@ urlpatterns = [
     path('addSemester', views.addSemester, name="addSemester"),
     path('updateSemester<id>', views.updateSemester, name="updateSemester"), 
 
-    #Subject
+    # Subject
     path('subject',views.subject,name="subject"),
     path('addSubject', views.addSubject, name="addSubject"),
+    path('fetch_semesters/<course_id>/<course_name>/', views.fetch_semesters, name="fetch_semesters"),
     
     # Student
     path('student', views.student, name="student"),
     path('upload_csv', views.upload_csv, name='upload_csv'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
