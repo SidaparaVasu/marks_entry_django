@@ -181,7 +181,7 @@ def student(request):
 def upload_csv(request):
     data = {}
     if "GET" == request.method:
-        return render(request, "student", data)
+        return render(request, "student.html", data)
     
     # if not GET, then proceed
     csv_file = request.FILES["csv_file"]
@@ -202,9 +202,27 @@ def upload_csv(request):
     lines = file_data.split("\n")
     student_data = Student.objects.values_list('enrolment')
     
-    # return HttpResponse(student_data)
-    if student_data == None:
-        return HttpResponse("oy")    
+    row_counter = Student.objects.count()
+
+    fields = []
+    try:
+        for line in lines:
+            fields = line.split(",")
+        
+            form = Student(
+                enrolment = fields[0],
+                seatno = fields[1],     
+                name = fields[2],
+                email = fields[3],
+                phoneno = fields[4],
+                gender = fields[5],
+                category = fields[6]
+            )
+            form.save()
+    except:
+        messages.success(request, "Student data uploaded successfully!")
+        return redirect("/administrator/student")
+        
 
     # flag = 0
     # cnt = 0
@@ -233,13 +251,5 @@ def upload_csv(request):
     #     messages.success(request, "Student data uploaded successfully!")
     # else:
     #     messages.success(request, "Note: all data of the file is already uploaded to database!")
-    
-    for line in lines:
-        fields = line.split(",")
-        for enrol in student_data:
-            if enrol[0] == int(fields[0]): 
-                print("found!")
-            else:
-                print("not found!")
         
     return redirect("/administrator/student")
