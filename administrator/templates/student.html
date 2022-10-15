@@ -29,7 +29,7 @@
     padding: 5px; height: 85vh; width: 100%; background-color: var(--white);
 }
 .center-align{ justify-content: center; }
-.popup-model .upld-img{ width: 80px; }
+.popup-model .upld-img{ width: auto; }
 .toggle{ left: 0; top: 0; }
 </style>
 <body>
@@ -62,17 +62,23 @@
                 <button class="form-btn toggle-btn" id="toggle-btn" onclick="toggleModel()">Upload file</button>
             </header>
             
-            <table class="show-data-box" style="margin-top: 20px;">
+            <table class="show-data-box" style="margin-top: 20px; overflow-y: scroll; min-width: 50%;">
                 <thead>
-                    <th>ID</th><th>Enrolment</th><th>Seat no.</th><th>Name</th>
+                    <!-- <th>ID</th> -->
+                    <th>Enrolment</th><th>Seat no.</th><th>Name</th>
+                    <th>email</th><th>phoneno</th><th>gender</th><th>category</th>
                 </thead>
                 <tbody>
                     {% for student in page_obj %}
                     <tr>
-                        <td>{{ student.id }}</td>
+                        <!-- <td>{{ student.id }}</td> -->
                         <td>{{ student.enrolment }}</td>
                         <td>{{ student.seatno }}</td>
                         <td>{{ student.name }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.phoneno }}</td>
+                        <td>{{ student.gender }}</td>
+                        <td>{{ student.category }}</td>
                     </tr>
                     {% empty %}
                         <center>No data found</center>
@@ -106,7 +112,7 @@
                     style="display: flex; gap: 20px;">
                     {% csrf_token %}  
                     {{ form.as_p }}  
-                    <input type="file" name="csv_file" 
+                    <input type="file" name="csv_file " 
                         style="
                             width: 100%;
                             padding: 10px 15px;

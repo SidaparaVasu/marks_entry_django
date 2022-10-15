@@ -37,7 +37,7 @@
             <form action="addBatch" method="post" class="content-area-form">
                 {% csrf_token %}
                 <select name="courseName" class="input" >
-                    <option> Select a Course </option>
+                    <option selected disabled> Select a Course </option>
                     {% for data in Courses %}
                         <option value="{{ data.courseID }}"> {{ data.courseName }}</option>
                     {% endfor%}

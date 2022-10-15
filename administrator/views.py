@@ -10,6 +10,7 @@ from superadmin.models import Course
 from superadmin.forms import CourseForm
 from .models import Batch,Semester,Subject,Student
 from .forms import BatchForm,SemesterForm,SubjectForm,StudentForm
+from django.db.models import Count, Max
 
 # logger
 import logging,traceback
@@ -141,11 +142,18 @@ def updateSemester(request,id):
 
 def subject(request):
     context = {
-        'Courses':Course.objects.all(),
-        'Semesters':Semester.objects.all().select_related('courseName'),
-        'Subjects':Subject.objects.all().select_related('semester'),
+        'courses':Course.objects.all(),
+        'subjects':Subject.objects.all().select_related('semester'),
     }
     return render(request,'subject.html',context)
+
+def fetch_semesters(request, course_id, course_name):
+    myDict = {
+        'courses':Course.objects.all(),
+        'semesters':Semester.objects.all().filter(courseName_id=course_id),
+        'selected_course':course_name,
+    }
+    return render(request, 'subject.html', myDict)
 
 def addSubject(request):
     if request.method == "POST":     
@@ -181,7 +189,7 @@ def student(request):
 def upload_csv(request):
     data = {}
     if "GET" == request.method:
-        return render(request, "student", data)
+        return render(request, "student.html", data)
     
     # if not GET, then proceed
     csv_file = request.FILES["csv_file"]
@@ -200,27 +208,36 @@ def upload_csv(request):
     file_data = csv_file.read().decode("utf-8")		
 
     lines = file_data.split("\n")
-    #loop over the lines and save them in db. If error , store as string and then display
-    try:
-        for line in lines:						
+    
+    try:        
+        for line in lines:
             fields = line.split(",")
-            data_dict = {}
-            data_dict["enrolment"] = fields[0]
-            data_dict["seatno"] = fields[1]
-            data_dict["name"] = fields[2]
-            try:
-                form = StudentForm(data_dict)
-                if form.is_valid():
-                    form.save()				
-                else:
-                    messages.error(request,"form is not valid")
-                    logger.info("error_logger")											
-            except Exception as e:
-                messages.error(request,"Hmmm")
-                logger.info("error_logger"+e)			
-                pass
-    except Exception as e:
-        messages.error(request,"File upload successfully!")	
+            form = Student(
+                enrolment = fields[0],
+                seatno = fields[1],     
+                name = fields[2],
+                email = fields[3],
+                phoneno = fields[4],
+                gender = fields[5],
+                category = fields[6]
+            )
+            form.save()
+    except:
+        messages.success(request, "Student data uploaded successfully!")
         
-
+    unique_fields = ['enrolment']
+    duplicates = (
+        Student.objects.values(*unique_fields)
+        .order_by()
+        .annotate(max_id=Max('id'), count_id=Count('id'))
+        .filter(count_id__gt=1)
+    )
+    
+    for duplicate in duplicates:
+        (
+            Student.objects
+            .filter(**{x: duplicate[x] for x in unique_fields})
+            .exclude(id=duplicate['max_id'])
+            .delete()
+        )        
     return redirect("/administrator/student")

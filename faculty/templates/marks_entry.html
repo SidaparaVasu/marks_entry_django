@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty | Marks Entry | Marks_Entry</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    
+    {% include 'navbar.html' %}
+    {% include 'faculty_sidepanel.html' %}
+
+    {% block content %}
+
+    {% endblock %} 
+    <!-- Main Container -->
+    <section class="container">
+        <div class="content-area">
+            <details>
+                <summary>select a course</summary>
+                    {% for course in courses %}
+                        <a href="marks_entry/{{ course.courseID }}/{{ course.courseName }}">
+                            {{ course.courseName }}
+                        </a>
+                    {% endfor %}
+                </select>
+            </details>
+            <select name="" id="">
+                <option value="" selected disabled>select a semester</option>
+                {% for sem in semesters %}
+                <option value="{{ sem.semester }}">{{ sem.semester }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </section>
+</body>
+</html>

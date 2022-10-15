@@ -1,3 +1,5 @@
+from enum import unique
+from unittest.util import _MAX_LENGTH
 from django.db import models
 from superadmin.models import Course
 
@@ -19,6 +21,11 @@ class Subject(models.Model):
     credits = models.IntegerField()
     
 class Student(models.Model):
-    enrolment = models.TextField(max_length=20)
-    seatno = models.TextField(max_length=20)
-    name = models.TextField(max_length=50)
+    enrolment = models.BigIntegerField(blank = True )
+    seatno = models.TextField(max_length=20, blank = True)
+    name = models.TextField(max_length=50, blank = True)
+    email = models.EmailField(max_length=50, blank = True)
+    phoneno = models.TextField(max_length = 10, blank = True)
+    gender = models.TextField(max_length = 6, blank = True)
+    category = models.TextField(max_length = 10, blank = True)
+    
