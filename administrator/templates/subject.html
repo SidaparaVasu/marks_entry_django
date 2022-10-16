@@ -16,6 +16,9 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="{% static 'js/main.js' %}"></script> -->
 </head>
 <body>
     {% block content %}
@@ -34,31 +37,47 @@
         <!-- add institue form begins -->
         <div class="content-area">
             <header class="content-area-header">Add Subject</header>
-            <form action="addSubject" method="post" class="content-area-form">
+            <form action="subject" method="post" class="content-area-form">
                 {% csrf_token %}
-                <details>
-                    <summary>select a course</summary>
-                        {% for course in courses %}
-                            <a href="fetch_semesters/{{ course.courseID }}/{{ course.courseName }}">
-                                {{ course.courseName }}
-                            </a>
-                        {% endfor %}
-                    </select>
-                </details>
-                <select name="semester" id="">
-                    <option value="" selected disabled>select a course first</option>
-                    {% for sem in semesters %}
-                    <option value="{{ sem.semester }}">{{ sem.semester }}</option>
+                <select name="dropdown-courseid"  class="input">
+                    <option value="none" disabled>select a course</option>
+                    {% for course in courses %}
+                        <option value="{{ course.courseID }}" name="courseID" selected>{{ course.courseName}}</option>   
                     {% endfor %}
                 </select>
-
-                <input type="text" name="subject" class="input" placeholder="subject" required />
-                <input type="text" name="credits" class="input" placeholder="credits" required />
-
-
-
-                <input type="submit" value="add subject" class="form-btn">
+                <input type="submit" class="form-btn" value="select" style="width: 200px; letter-spacing: 0; box-shadow: none"/>
             </form>
+
+            {% for seld in selected_course %}
+                {% if seld == 0 %}
+                    <p></p>
+                {% else %}
+                <form action="addSubject" method="post" class="content-area-form">
+                    {% csrf_token %}
+                    
+                    <select name="semester"  class="input">
+                        <option value="none" disabled>select a course</option>
+                        {% for sem in semesters %}
+                            <option value="{{ sem.semesterId }}" name="semester" selected>{{ sem.semester}}</option>   
+                        {% endfor %}
+                    </select>
+                    <input type="text" name="subject" class="input" placeholder="enter a subject"/>
+                    <input type="number" name="credits" id="credits" class="input" placeholder="credit"/>
+                    <input type="submit" class="form-btn" value="add subject" onclick="validate()"/>
+    
+                    <script>
+                        function validate(){
+                            let credit = document.getElementById('credits').value
+                            if (credit <= 0 ){
+                                alert("credit value should be greater than 0")
+                            }
+                        }
+                    </script>
+                </form>
+                {% endif %}
+                {% empty %}
+                    <p>{{ seld }}</p>
+            {% endfor %}
         </div>
         <!-- add institue form ends -->
 
@@ -71,13 +90,15 @@
                     <th>srno.</th><th>Subject</th><th>Credits</th><th>Semester</th>
                 </thead>
                 <tbody>
-                    {% for data in Subjects %}
+                    {% for data in subjects %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ data.subject }}</td>
                         <td>{{ data.credits }}</td>
                         <td>{{ data.semester.semester }}</td> 
                     </tr>
+                    {% empty %}
+                    <center>No Data Found</center>
                     {% endfor %}
                 </tbody>
             </table>
