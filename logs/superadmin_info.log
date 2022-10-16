@@ -50,3 +50,158 @@ INFO 2022-10-16 18:13:55,634 views 4108 21472 Semester 7 added successfully for 
 INFO 2022-10-16 18:13:55,636 views 4108 21472 Semester 8 added successfully for Course MCA
 INFO 2022-10-16 18:13:55,637 views 4108 21472 Semester 9 added successfully for Course MCA
 INFO 2022-10-16 18:13:55,640 views 4108 21472 Semester 10 added successfully for Course MCA
+INFO 2022-10-16 19:51:44,499 views 9392 6028 Course deleted successfully for Id : 2
+INFO 2022-10-16 19:51:46,564 views 9392 6028 Course deleted successfully for Id : 3
+INFO 2022-10-16 19:51:48,746 views 9392 6028 Course deleted successfully for Id : 4
+INFO 2022-10-16 19:51:50,280 views 9392 1424 Course deleted successfully for Id : 8
+INFO 2022-10-16 19:52:04,708 views 9392 12512 Course MCA added successfully
+INFO 2022-10-16 19:52:04,717 views 9392 12512 Semester 1 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,721 views 9392 12512 Semester 2 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,727 views 9392 12512 Semester 3 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,736 views 9392 12512 Semester 4 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,739 views 9392 12512 Semester 5 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,746 views 9392 12512 Semester 6 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,753 views 9392 12512 Semester 7 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,757 views 9392 12512 Semester 8 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,763 views 9392 12512 Semester 9 added successfully for Course MCA
+INFO 2022-10-16 19:52:04,769 views 9392 12512 Semester 10 added successfully for Course MCA
+INFO 2022-10-16 19:52:28,542 views 9392 17984 Course Msc. IT added successfully
+INFO 2022-10-16 19:52:28,546 views 9392 17984 Semester 1 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,549 views 9392 17984 Semester 2 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,554 views 9392 17984 Semester 3 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,559 views 9392 17984 Semester 4 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,564 views 9392 17984 Semester 5 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,566 views 9392 17984 Semester 6 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,569 views 9392 17984 Semester 7 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,575 views 9392 17984 Semester 8 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,580 views 9392 17984 Semester 9 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:28,583 views 9392 17984 Semester 10 added successfully for Course Msc. IT
+INFO 2022-10-16 19:52:56,962 views 9392 10948 Course M Plan added successfully
+INFO 2022-10-16 19:52:56,968 views 9392 10948 Semester 1 added successfully for Course M Plan
+INFO 2022-10-16 19:52:56,974 views 9392 10948 Semester 2 added successfully for Course M Plan
+INFO 2022-10-16 19:52:56,978 views 9392 10948 Semester 3 added successfully for Course M Plan
+INFO 2022-10-16 19:52:56,984 views 9392 10948 Semester 4 added successfully for Course M Plan
+INFO 2022-10-16 19:56:48,196 views 21352 20708 Course bca added successfully
+INFO 2022-10-16 19:57:02,689 views 18480 4844 Course bca added successfully
+INFO 2022-10-16 19:57:19,057 views 18440 19068 Course deleted successfully for Id : 12
+INFO 2022-10-16 19:57:21,568 views 18440 19068 Course deleted successfully for Id : 13
+INFO 2022-10-16 19:58:35,461 views 1864 22384 Course bca added successfully
+INFO 2022-10-16 19:59:09,629 views 22220 17600 Course deleted successfully for Id : 14
+INFO 2022-10-16 19:59:17,962 views 22220 9400 Course bca added successfully
+INFO 2022-10-16 19:59:46,165 views 14376 9528 Course deleted successfully for Id : 15
+INFO 2022-10-16 19:59:52,979 views 14376 9528 Course bca added successfully
+INFO 2022-10-16 20:00:29,190 views 5728 5508 Course deleted successfully for Id : 16
+INFO 2022-10-16 20:00:36,562 views 5728 20436 Course bca added successfully
+INFO 2022-10-16 20:00:54,453 views 6808 3820 Course deleted successfully for Id : 17
+INFO 2022-10-16 20:01:02,836 views 6808 21280 Course bca added successfully
+INFO 2022-10-16 20:01:27,206 views 512 11468 Course deleted successfully for Id : 18
+INFO 2022-10-16 20:01:37,185 views 512 21312 Course bca added successfully
+INFO 2022-10-16 20:01:54,313 views 19952 10752 Course bca added successfully
+INFO 2022-10-16 20:02:31,001 views 19952 21448 Course deleted successfully for Id : 19
+INFO 2022-10-16 20:02:41,527 views 19952 12372 Course bca added successfully
+INFO 2022-10-16 20:03:32,367 views 11136 19696 Course bca added successfully
+INFO 2022-10-16 20:03:43,014 views 9776 12852 Course deleted successfully for Id : 22
+INFO 2022-10-16 20:03:51,419 views 9776 9736 Course bca added successfully
+INFO 2022-10-16 20:04:49,114 views 18552 12088 Course bca added successfully
+INFO 2022-10-16 20:05:44,655 views 8944 1748 Course bca added successfully
+INFO 2022-10-16 20:05:44,662 views 8944 1748 Semester 1 added successfully for Course bca
+INFO 2022-10-16 20:05:44,666 views 8944 1748 Semester 2 added successfully for Course bca
+INFO 2022-10-16 20:05:44,672 views 8944 1748 Semester 3 added successfully for Course bca
+INFO 2022-10-16 20:05:44,678 views 8944 1748 Semester 4 added successfully for Course bca
+INFO 2022-10-16 20:05:44,681 views 8944 1748 Semester 5 added successfully for Course bca
+INFO 2022-10-16 20:05:44,686 views 8944 1748 Semester 6 added successfully for Course bca
+INFO 2022-10-16 20:05:44,692 views 8944 1748 Semester 7 added successfully for Course bca
+INFO 2022-10-16 20:05:44,696 views 8944 1748 Semester 8 added successfully for Course bca
+INFO 2022-10-16 20:05:44,700 views 8944 1748 Semester 9 added successfully for Course bca
+INFO 2022-10-16 20:05:44,708 views 8944 1748 Semester 10 added successfully for Course bca
+INFO 2022-10-16 20:06:00,444 views 8944 10236 Course deleted successfully for Id : 9
+INFO 2022-10-16 20:06:03,003 views 8944 10236 Course deleted successfully for Id : 10
+INFO 2022-10-16 20:06:05,264 views 8944 10236 Course deleted successfully for Id : 11
+INFO 2022-10-16 20:06:20,779 views 8944 18564 Course Msc. IT added successfully
+INFO 2022-10-16 20:06:20,788 views 8944 18564 Semester 1 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,803 views 8944 18564 Semester 2 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,811 views 8944 18564 Semester 3 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,819 views 8944 18564 Semester 4 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,825 views 8944 18564 Semester 5 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,832 views 8944 18564 Semester 6 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,839 views 8944 18564 Semester 7 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,846 views 8944 18564 Semester 8 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,852 views 8944 18564 Semester 9 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:20,859 views 8944 18564 Semester 10 added successfully for Course Msc. IT
+INFO 2022-10-16 20:06:43,770 views 8944 22208 Course deleted successfully for Id : 26
+INFO 2022-10-16 20:06:56,138 views 8944 9672 Course deleted successfully for Id : 25
+INFO 2022-10-16 20:07:18,391 views 8944 22004 Course MCA added successfully
+INFO 2022-10-16 20:07:18,399 views 8944 22004 Semester 1 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,406 views 8944 22004 Semester 2 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,414 views 8944 22004 Semester 3 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,420 views 8944 22004 Semester 4 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,428 views 8944 22004 Semester 5 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,434 views 8944 22004 Semester 6 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,438 views 8944 22004 Semester 7 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,442 views 8944 22004 Semester 8 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,447 views 8944 22004 Semester 9 added successfully for Course MCA
+INFO 2022-10-16 20:07:18,450 views 8944 22004 Semester 10 added successfully for Course MCA
+INFO 2022-10-16 20:07:41,265 views 8944 17604 Course Msc. IT added successfully
+INFO 2022-10-16 20:07:41,271 views 8944 17604 Semester 1 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,275 views 8944 17604 Semester 2 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,279 views 8944 17604 Semester 3 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,284 views 8944 17604 Semester 4 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,288 views 8944 17604 Semester 5 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,291 views 8944 17604 Semester 6 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,295 views 8944 17604 Semester 7 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,299 views 8944 17604 Semester 8 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,304 views 8944 17604 Semester 9 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:41,309 views 8944 17604 Semester 10 added successfully for Course Msc. IT
+INFO 2022-10-16 20:07:55,711 views 8944 19500 Course deleted successfully for Id : 28
+INFO 2022-10-16 20:07:57,896 views 8944 19500 Course deleted successfully for Id : 27
+INFO 2022-10-16 20:08:24,222 views 8944 12028 Course MCA added successfully
+INFO 2022-10-16 20:08:24,227 views 8944 12028 Semester 1 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,233 views 8944 12028 Semester 2 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,237 views 8944 12028 Semester 3 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,239 views 8944 12028 Semester 4 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,241 views 8944 12028 Semester 5 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,245 views 8944 12028 Semester 6 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,250 views 8944 12028 Semester 7 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,253 views 8944 12028 Semester 8 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,256 views 8944 12028 Semester 9 added successfully for Course MCA
+INFO 2022-10-16 20:08:24,259 views 8944 12028 Semester 10 added successfully for Course MCA
+INFO 2022-10-16 20:08:55,218 views 8944 10752 Course Msc. IT added successfully
+INFO 2022-10-16 20:08:55,226 views 8944 10752 Semester 1 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,235 views 8944 10752 Semester 2 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,244 views 8944 10752 Semester 3 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,252 views 8944 10752 Semester 4 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,261 views 8944 10752 Semester 5 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,270 views 8944 10752 Semester 6 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,279 views 8944 10752 Semester 7 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,286 views 8944 10752 Semester 8 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,294 views 8944 10752 Semester 9 added successfully for Course Msc. IT
+INFO 2022-10-16 20:08:55,300 views 8944 10752 Semester 10 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:14,346 views 8944 7024 Course deleted successfully for Id : 29
+INFO 2022-10-16 20:09:19,216 views 8944 22000 Course deleted successfully for Id : 30
+INFO 2022-10-16 20:09:30,056 views 8944 15664 Course MCA added successfully
+INFO 2022-10-16 20:09:30,060 views 8944 15664 Semester 1 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,065 views 8944 15664 Semester 2 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,068 views 8944 15664 Semester 3 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,072 views 8944 15664 Semester 4 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,077 views 8944 15664 Semester 5 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,081 views 8944 15664 Semester 6 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,085 views 8944 15664 Semester 7 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,091 views 8944 15664 Semester 8 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,097 views 8944 15664 Semester 9 added successfully for Course MCA
+INFO 2022-10-16 20:09:30,101 views 8944 15664 Semester 10 added successfully for Course MCA
+INFO 2022-10-16 20:09:44,073 views 8944 18328 Course Msc. IT added successfully
+INFO 2022-10-16 20:09:44,085 views 8944 18328 Semester 1 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,093 views 8944 18328 Semester 2 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,106 views 8944 18328 Semester 3 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,114 views 8944 18328 Semester 4 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,121 views 8944 18328 Semester 5 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,126 views 8944 18328 Semester 6 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,128 views 8944 18328 Semester 7 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,133 views 8944 18328 Semester 8 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,138 views 8944 18328 Semester 9 added successfully for Course Msc. IT
+INFO 2022-10-16 20:09:44,141 views 8944 18328 Semester 10 added successfully for Course Msc. IT
+INFO 2022-10-16 20:10:50,304 views 8944 10304 Course M Arch added successfully
+INFO 2022-10-16 20:10:50,308 views 8944 10304 Semester 1 added successfully for Course M Arch
+INFO 2022-10-16 20:10:50,314 views 8944 10304 Semester 2 added successfully for Course M Arch
+INFO 2022-10-16 20:10:50,320 views 8944 10304 Semester 3 added successfully for Course M Arch
+INFO 2022-10-16 20:10:50,323 views 8944 10304 Semester 4 added successfully for Course M Arch
