@@ -121,9 +121,12 @@ def course(request):
 def addCourse(request):
     if request.method == "POST":     
         c_form = CourseForm(request.POST or None) 
+        courseName = request.POST.get('courseName')
 
         if c_form.is_valid():
             if c_form.save():
+                logger.info(f"Course { courseName } added successfully")
+                
                 num_of_semesters = request.POST.get('num_of_semesters')
     
                 for sem in range(1,int(num_of_semesters)+1):
@@ -132,7 +135,7 @@ def addCourse(request):
                     s_form = Semester(semester=sem, courseName_id=course_data[tot_course_data-1].courseID)
                     s_form.save()
                 
-                    logger.info("Semesters added successfully for Course")
+                    logger.info(f"Semester { sem } added successfully for Course { courseName }")
                 messages.success(request, "Course added successfully!")
                 return redirect("/superadmin/course")
             else:

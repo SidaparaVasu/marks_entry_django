@@ -11,6 +11,12 @@ from superadmin.forms import CourseForm
 from .models import Batch,Semester,Subject,Student
 from .forms import BatchForm,SemesterForm,SubjectForm,StudentForm
 from django.db.models import Count, Max
+<<<<<<< HEAD
+=======
+from django.http import JsonResponse
+from django.views.generic import View
+# from django.views.decorators.csrf import csrf_exempt
+>>>>>>> vasu_v
 
 # logger
 import logging,traceback
@@ -87,11 +93,21 @@ def deleteFaculty(request,id):
     return redirect("/administrator/faculty", context)
 # Admin CRUD ends here
 
-#BATCH CRUD starts
-
+# BATCH CRUD starts
 def batch(request):
-    context = {'Batch':Batch.objects.all().select_related('courseName'),'Courses':Course.objects.all()}
-    return render(request,'batch.html',context)
+    Batches = Batch.objects.all().select_related('courseName')
+    p = Paginator(Batches, 10)
+    page_number = request.GET.get('page')
+    try:
+        page_obj = p.get_page(page_number)
+    except Paginator.PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except Paginator.EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj}
+    return render(request,'batch.html', context)
 
 def addBatch(request):
     if request.method == "POST":     
@@ -100,18 +116,15 @@ def addBatch(request):
             form.save()  
             messages.success(request, "Batch added successfully!")
             return redirect("/administrator/batch")
-            #return render(request,'admin.html')  
-        # else:
-        #     messages.error(request, "Error in registration for batch!")
+        else:
+            messages.error(request, "Error in registration for batch!")
     else:  
         form = BatchForm()  
     return redirect("/administrator/batch",{'form':form})
     # return HttpResponse("404 Page not Found!")
+# Batch CRUD ends here
 
-
-
-#SEMESTER CRUD STARTS
-
+# SEMESTER CRUD STARTS
 def semester(request):
     context = {
         'Semesters': Semester.objects.values('courseName').annotate(tot_sems=Count('semester')),
@@ -136,16 +149,48 @@ def addSemester(request):
 def updateSemester(request,id):
     context = Semester.objects.get(id=id)
     return render(request, "updateSemester.html",{'context' : context})
+# SEMESTER CRUD ends here
 
 
 # Subject crud starts
 
+# def subject(request):
+#     context = {
+#         'courses':Course.objects.all(),
+#         'subjects':Subject.objects.all().select_related('semester'),
+#     }
+#     return render(request,'subject.html',context)
+
+# def fetch_semesters(request, course_id, course_name):
+# @csrf_exempt
 def subject(request):
+<<<<<<< HEAD
     context = {
         'courses':Course.objects.all(),
         'subjects':Subject.objects.all().select_related('semester'),
     }
     return render(request,'subject.html',context)
+=======
+    if request.method == "POST":
+        course_id = request.POST.get('dropdown-courseid')
+        context = {
+            'courses': Course.objects.all(),
+            'semesters': Semester.objects.all().filter(courseName_id=course_id),
+            'selected_course': [course_id],
+            'subjects':Subject.objects.all().select_related('semester'),
+        }
+        print(course_id)
+        return render(request,'subject.html',context)
+    else: 
+        course_id = 0
+        context = {
+            'courses': Course.objects.all(),
+            'semesters': Semester.objects.all().filter(courseName_id=course_id),
+            'selected_course': [course_id],
+            'subjects':Subject.objects.all().select_related('semester'),
+        }
+        return render(request,'subject.html',context)  
+>>>>>>> vasu_v
 
 def fetch_semesters(request, course_id, course_name):
     myDict = {
@@ -156,7 +201,7 @@ def fetch_semesters(request, course_id, course_name):
     return render(request, 'subject.html', myDict)
 
 def addSubject(request):
-    if request.method == "POST":     
+    if request.method == "POST":             
         form = SubjectForm(request.POST or None)  
         if form.is_valid():  
             form.save()  

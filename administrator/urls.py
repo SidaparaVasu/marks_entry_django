@@ -27,7 +27,13 @@ urlpatterns = [
     # Subject
     path('subject',views.subject,name="subject"),
     path('addSubject', views.addSubject, name="addSubject"),
+<<<<<<< HEAD
     path('fetch_semesters/<course_id>/<course_name>/', views.fetch_semesters, name="fetch_semesters"),
+=======
+    # path('fetch_semesters/<course_id>/<course_name>/', views.fetch_semesters, name="fetch_semesters"),
+    # path('fetch_semesters', views.fetch_semesters, name="fetch_semesters"),addSubject
+    
+>>>>>>> vasu_v
     
     # Student
     path('student', views.student, name="student"),
