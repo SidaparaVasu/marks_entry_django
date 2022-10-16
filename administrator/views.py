@@ -92,6 +92,8 @@ def deleteFaculty(request,id):
 
 # BATCH CRUD starts
 def batch(request):
+    Courses = Course.objects.all()
+    
     Batches = Batch.objects.all().select_related('courseName')
     p = Paginator(Batches, 10)
     page_number = request.GET.get('page')
@@ -103,7 +105,7 @@ def batch(request):
     except Paginator.EmptyPage:
         # if page is empty then return last page
         page_obj = p.page(p.num_pages)
-    context ={'page_obj': page_obj}
+    context ={'page_obj': page_obj, 'Courses':Courses }
     return render(request,'batch.html', context)
 
 def addBatch(request):
