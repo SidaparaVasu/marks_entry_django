@@ -11,12 +11,9 @@ from superadmin.forms import CourseForm
 from .models import Batch,Semester,Subject,Student
 from .forms import BatchForm,SemesterForm,SubjectForm,StudentForm
 from django.db.models import Count, Max
-<<<<<<< HEAD
-=======
 from django.http import JsonResponse
 from django.views.generic import View
 # from django.views.decorators.csrf import csrf_exempt
->>>>>>> vasu_v
 
 # logger
 import logging,traceback
@@ -164,13 +161,6 @@ def updateSemester(request,id):
 # def fetch_semesters(request, course_id, course_name):
 # @csrf_exempt
 def subject(request):
-<<<<<<< HEAD
-    context = {
-        'courses':Course.objects.all(),
-        'subjects':Subject.objects.all().select_related('semester'),
-    }
-    return render(request,'subject.html',context)
-=======
     if request.method == "POST":
         course_id = request.POST.get('dropdown-courseid')
         context = {
@@ -190,7 +180,6 @@ def subject(request):
             'subjects':Subject.objects.all().select_related('semester'),
         }
         return render(request,'subject.html',context)  
->>>>>>> vasu_v
 
 def fetch_semesters(request, course_id, course_name):
     myDict = {
