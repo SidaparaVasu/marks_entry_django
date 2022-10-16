@@ -24,21 +24,7 @@
     <!-- Main Container -->
     <section class="container">
         <div class="content-area">
-            <details>
-                <summary>select a course</summary>
-                    {% for course in courses %}
-                        <a href="marks_entry/{{ course.courseID }}/{{ course.courseName }}">
-                            {{ course.courseName }}
-                        </a>
-                    {% endfor %}
-                </select>
-            </details>
-            <select name="" id="">
-                <option value="" selected disabled>select a semester</option>
-                {% for sem in semesters %}
-                <option value="{{ sem.semester }}">{{ sem.semester }}</option>
-                {% endfor %}
-            </select>
+
         </div>
     </section>
 </body>
