@@ -126,7 +126,7 @@ def addBatch(request):
 # SEMESTER CRUD STARTS
 def semester(request):
     context = {
-        'Semesters': Semester.objects.values('courseName').annotate(tot_sems=Count('semester')),
+        # 'Semesters': Semester.objects.values('courseName').annotate(tot_sems=Count('semester')),
         'Courses': Course.objects.all() 
     }
     return render(request,'semester.html', context) 

@@ -39,17 +39,15 @@
                 
                 <table class="show-data-box">
                     <thead>
-                        <th>srno.</th>
-                        <th>Course name</th><th>Semesters</th>
+                        <th>srno.</th><th>Course Name</th><th>Institute Name</th><th>No of sem.</th>
                     </thead>
                     <tbody>
                         {% for data in Courses %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
                                 <td>{{ data.courseName }}</td>
-                                <!-- {% for j in Semesters %}
-                                    <td>{{ j.tot_sems }}</td>
-                                {% endfor %} -->
+                                <td>{{ data.instituteName.instituteName }}</td>
+                                <td>{{ data.num_of_semesters }}</td>
                             </tr>   
                              {% empty %}
                             <center>No data found</center>
