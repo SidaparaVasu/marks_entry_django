@@ -247,14 +247,12 @@ def editAdmin(request,id):
 
     if form.is_valid():
         if form.save():
-            logger.info("Admin updation successfully!")
             messages.success(request, "Admin updation successfully!")
-            return redirect("/superadmin/admin")
         else:
-            logger.info("Admin updation failed!")
-            messages.error(request, "Admin updation failed!")
+            messages.error(request, "Admin updation failed!!")
+        return redirect("/superadmin/admin")
     else:
-        messages.error(request, "Form is not valid! please fill up form curreclty!")
+        messages.error(request, "Form is not valid! please fill up form currectly!")
     context['form'] = form
     return redirect("/superadmin/admin", context)
 

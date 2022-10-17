@@ -34,12 +34,13 @@
         <!-- update admin form begins -->
         <div class="content-area">
             <header class="content-area-header">Update Course</header>
-            <form action="editAdmin/{{ context.id }}" method="post" enctype="multipart/form-data" class="content-area-form">
+            <form action="editAdmin/{{ context.id }}" method="post" class="content-area-form">
                 <input type="hidden" name="id" id="id" value="{{ context.id }}">
                 {% csrf_token %}
                 <input type="text" name="username" class="input" value="{{ context.username }}"  placeholder="username" required />
                 <input type="email" name="email" class="input" value="{{ context.email }}" placeholder="email" required/>
                 <input type="tel" name="phoneno" class="input" value="{{ context.phoneno }}" maxlength="10" placeholder="phoneno" required/>
+                <input type="hidden" name="type" value="2" class="input" placeholder="type" />
                 <input type="password" name="password" class="input" value="{{ context.password }}" placeholder="password" required/>
                 <div class="two-btn-box">
                     <button type="submit" value="update" class="form-btn">Update</button>
