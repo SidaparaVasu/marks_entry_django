@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Subject | Marks_Entry</title>
+    <title> Subject_AJAX| Marks_Entry</title>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/lj-favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
@@ -17,8 +17,6 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script src="{% static 'js/main.js' %}"></script> -->
 </head>
 <body>
     {% block content %}
@@ -37,47 +35,32 @@
         <!-- add institue form begins -->
         <div class="content-area">
             <header class="content-area-header">Add Subject</header>
-            <form action="subject" method="post" class="content-area-form">
+            
+            <form action="addSubject" method="post" class="content-area-form" id="courses_form" data-semester-url="{% url 'ajax_load_semesters' %}">
                 {% csrf_token %}
-                <select name="dropdown-courseid"  class="input">
-                    <option value="none" disabled>select a course</option>
+                <select name="dropdown-course-name" id="fetch_semesters" class="input">
+                    <option value="disabled" selected disabled>select a course</option>
                     {% for course in courses %}
-                        <option value="{{ course.courseID }}" name="courseID" selected>{{ course.courseName}}</option>   
+                        <option value="{{ course.courseID }}" name="courseID">{{ course.courseName}}</option>   
                     {% endfor %}
                 </select>
-                <input type="submit" class="form-btn" value="select" style="width: 200px; letter-spacing: 0; box-shadow: none"/>
-            </form>
+                <select name="semester" id="dropdown-semesters" class="input">
+                    <option value="disabled" selected disabled>--- select course first ---</option>                    
+                </select>
+                <input type="text" name="subject" class="input" placeholder="enter a subject"/>
+                <input type="number" name="credits" id="credits" class="input" placeholder="credit"/>
+                <input type="submit" class="form-btn" value="add subject" onclick="validate()"/>
 
-            {% for seld in selected_course %}
-                {% if seld == 0 %}
-                    <p></p>
-                {% else %}
-                <form action="addSubject" method="post" class="content-area-form">
-                    {% csrf_token %}
-                    
-                    <select name="semester"  class="input">
-                        <option value="none" disabled>select a course</option>
-                        {% for sem in semesters %}
-                            <option value="{{ sem.semesterId }}" name="semester" selected>{{ sem.semester}}</option>   
-                        {% endfor %}
-                    </select>
-                    <input type="text" name="subject" class="input" placeholder="enter a subject"/>
-                    <input type="number" name="credits" id="credits" class="input" placeholder="credit"/>
-                    <input type="submit" class="form-btn" value="add subject" onclick="validate()"/>
-    
-                    <script>
-                        function validate(){
-                            let credit = document.getElementById('credits').value
-                            if (credit <= 0 ){
-                                alert("credit value should be greater than 0")
-                            }
+                <script>
+                    function validate(){
+                        let credit = document.getElementById('credits').value
+                        if (credit <= 0 ){
+                            alert("credit value should be greater than 0")
                         }
-                    </script>
-                </form>
-                {% endif %}
-                {% empty %}
-                    <p>{{ seld }}</p>
-            {% endfor %}
+                    }
+                </script>
+                
+            </form>
         </div>
         <!-- add institue form ends -->
 
@@ -107,6 +90,26 @@
         <!-- show institue ends -->
     
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("#fetch_semesters").change(function () {
+            var url = $("#courses_form").attr("data-semester-url"); 
+            var course_id = $(this).val(); 
+            $.ajax({                      
+                url: url,                  
+                data: {
+                    'course_id': course_id     
+                },
+                success: function (data) { 
+                    $("#dropdown-semesters").html(data); 
+                    console.log("semesters are fetched")
+                },
+                error: function(data){
+                    console.log("error")
+                }
+            });
+        });
+      </script>
     {% endblock %} 
 </body>
 </html>

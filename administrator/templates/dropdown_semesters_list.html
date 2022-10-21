@@ -1,0 +1,4 @@
+<option value="disabled" selected disabled>--- select semester ---</option>
+{% for sem in context.semesters %}
+    <option value="{{ sem.semesterId }}">{{ sem.semester }}</option>
+{% endfor %}
