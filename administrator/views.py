@@ -169,6 +169,10 @@ def load_semesters(request):
 def addSubject(request):
     if request.method == "POST":             
         form = SubjectForm(request.POST or None)  
+        credits = request.POST.get('credits')
+        if int(credits) <= 0:
+            messages.success(request, "Credits must be greater than 0.")
+            return redirect("/administrator/subject")
         if form.is_valid():  
             form.save()  
             messages.success(request, "Subject added successfully!")

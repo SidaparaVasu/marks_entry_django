@@ -47,19 +47,9 @@
                 <select name="semester" id="dropdown-semesters" class="input">
                     <option value="disabled" selected disabled>--- select course first ---</option>                    
                 </select>
-                <input type="text" name="subject" class="input" placeholder="enter a subject"/>
-                <input type="number" name="credits" id="credits" class="input" placeholder="credit"/>
-                <input type="submit" class="form-btn" value="add subject" onclick="validate()"/>
-
-                <script>
-                    function validate(){
-                        let credit = document.getElementById('credits').value
-                        if (credit <= 0 ){
-                            alert("credit value should be greater than 0")
-                        }
-                    }
-                </script>
-                
+                <input type="text" name="subject" class="input" placeholder="enter a subject" required/>
+                <input type="number" name="credits" id="credits" class="input" placeholder="credit" required/>
+                <input type="submit" class="form-btn" value="add subject"/>                
             </form>
         </div>
         <!-- add institue form ends -->
