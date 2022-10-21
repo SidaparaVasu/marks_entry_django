@@ -141,7 +141,7 @@ def addCourse(request):
                 messages.success(request, "Course added successfully!")
                 return redirect("/superadmin/course")
             else:
-                messages.success(request, "Course insertion failed!")
+                messages.error(request, "Course insertion failed!")
         else:
             messages.error("Please fill up form with valid requirements!")
     else:  

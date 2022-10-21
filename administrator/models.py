@@ -1,12 +1,10 @@
-from enum import unique
-from unittest.util import _MAX_LENGTH
 from django.db import models
-from superadmin.models import Course
+from superadmin.models import Institute, Course
 
 # Create your models here.
 class Batch(models.Model):
     batchID = models.AutoField(primary_key=True)
-    batchName = models.TextField(blank = True, max_length=50)
+    batchName = models.TextField(max_length=50)
     courseName = models.ForeignKey(Course, on_delete=models.CASCADE,related_name='course1')
 
 class Semester(models.Model):
@@ -22,6 +20,11 @@ class Subject(models.Model):
     credits = models.IntegerField()
     
 class Student(models.Model):
+    instituteName = models.ForeignKey(Institute, on_delete=models.CASCADE,related_name='institute1')
+    courseName = models.ForeignKey(Course, on_delete=models.CASCADE,related_name='course4')
+    batchName = models.ForeignKey(Batch, on_delete=models.CASCADE,related_name='batch1')
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE,related_name='semester2')
+    
     enrolment = models.BigIntegerField(blank = True )
     seatno = models.TextField(max_length=20, blank = True)
     name = models.TextField(max_length=50, blank = True)

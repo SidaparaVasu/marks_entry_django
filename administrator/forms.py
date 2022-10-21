@@ -22,4 +22,7 @@ class SubjectForm(forms.ModelForm):
 class StudentForm(forms.ModelForm):  
     class Meta:  
         model = Student  
-        fields = ('enrolment','seatno','name', 'email', 'phoneno', 'gender', 'category') 
+        fields = (
+            'instituteName','courseName','semester','batchName',
+            'enrolment','seatno','name', 'email', 'phoneno', 'gender', 'category'
+        ) 
