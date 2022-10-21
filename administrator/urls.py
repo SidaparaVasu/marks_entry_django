@@ -25,11 +25,8 @@ urlpatterns = [
     path('updateSemester<id>', views.updateSemester, name="updateSemester"), 
 
     # Subject
-    # path('subject',views.subject,name="subject"),
     path('subject',views.subject,name="subject"),
     path('addSubject', views.addSubject, name="addSubject"),
-    # path('fetch_semesters/<course_id>/<course_name>/', views.fetch_semesters, name="fetch_semesters"),
-    # path('fetch_semesters', views.fetch_semesters, name="fetch_semesters"),
     path('load_semesters', views.load_semesters, name="ajax_load_semesters"),
     
     
