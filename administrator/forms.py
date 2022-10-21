@@ -16,7 +16,7 @@ class SemesterForm(forms.ModelForm, ListView):
 class SubjectForm(forms.ModelForm):  
     class Meta:  
         model = Subject  
-        fields = ('subject','semester','credits') 
+        fields = ('courseName','subject','semester','credits') 
 
 
 class StudentForm(forms.ModelForm):  

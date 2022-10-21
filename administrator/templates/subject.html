@@ -38,7 +38,7 @@
             
             <form action="addSubject" method="post" class="content-area-form" id="courses_form" data-semester-url="{% url 'ajax_load_semesters' %}">
                 {% csrf_token %}
-                <select name="dropdown-course-name" id="fetch_semesters" class="input">
+                <select name="courseName" id="fetch_semesters" class="input">
                     <option value="disabled" selected disabled>select a course</option>
                     {% for course in courses %}
                         <option value="{{ course.courseID }}" name="courseID">{{ course.courseName}}</option>   
@@ -70,12 +70,13 @@
             
             <table class="show-data-box">
                 <thead>
-                    <th>srno.</th><th>Subject</th><th>Credits</th><th>Semester</th>
+                    <th>srno.</th><th>Course</th><th>Subject</th><th>Credits</th><th>Semester</th>
                 </thead>
                 <tbody>
                     {% for data in subjects %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
+                        <td>{{ data.courseName.courseName }}</td> 
                         <td>{{ data.subject }}</td>
                         <td>{{ data.credits }}</td>
                         <td>{{ data.semester.semester }}</td> 

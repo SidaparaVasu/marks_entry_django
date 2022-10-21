@@ -12,10 +12,11 @@ class Batch(models.Model):
 class Semester(models.Model):
     semesterId = models.AutoField(primary_key=True)
     semester = models.IntegerField()
-    courseName = models.ForeignKey(Course, on_delete=models.CASCADE,related_name='course')
+    courseName = models.ForeignKey(Course, on_delete=models.CASCADE,related_name='course2')
 
 class Subject(models.Model):
     subjectId = models.AutoField(primary_key=True)
+    courseName = models.ForeignKey(Course, on_delete=models.CASCADE,related_name='course3')
     subject = models.TextField(blank = True, max_length=40)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE,related_name='semester1')
     credits = models.IntegerField()

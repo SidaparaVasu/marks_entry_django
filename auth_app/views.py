@@ -43,10 +43,11 @@ def loginHandle(request):
 
         row_counter = users.objects.all().count()
         if row_counter == 0:
-            # return HttpResponse(row_counter)
             form = users(username='superadmin', email='superadmin@gmail.com', phoneno=9852360147,
                                 password=12345, image='', type=1)
             form.save()
+            messages.success(request, "please login again!")
+            return render(request,'login.html')  
         else:
             flag = 0
             try:

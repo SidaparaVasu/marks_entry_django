@@ -163,7 +163,6 @@ def load_semesters(request):
     course_id = request.GET.get('course_id')
     context = {
         'semesters': Semester.objects.all().filter(courseName_id=course_id).order_by('semester'),
-        'course_id': course_id,
     }
     return render(request, 'dropdown_semesters_list.html', {'context': context})
 
