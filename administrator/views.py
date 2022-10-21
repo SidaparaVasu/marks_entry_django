@@ -152,44 +152,20 @@ def updateSemester(request,id):
 
 
 # Subject crud starts
-
-# def subject(request):
-#     context = {
-#         'courses':Course.objects.all(),
-#         'subjects':Subject.objects.all().select_related('semester'),
-#     }
-#     return render(request,'subject.html',context)
-
-# def fetch_semesters(request, course_id, course_name):
-# @csrf_exempt
 def subject(request):
-    if request.method == "POST":
-        course_id = request.POST.get('dropdown-courseid')
-        context = {
-            'courses': Course.objects.all(),
-            'semesters': Semester.objects.all().filter(courseName_id=course_id),
-            'selected_course': [course_id],
-            'subjects':Subject.objects.all().select_related('semester'),
-        }
-        print(course_id)
-        return render(request,'subject.html',context)
-    else: 
-        course_id = 0
-        context = {
-            'courses': Course.objects.all(),
-            'semesters': Semester.objects.all().filter(courseName_id=course_id),
-            'selected_course': [course_id],
-            'subjects':Subject.objects.all().select_related('semester'),
-        }
-        return render(request,'subject.html',context)  
-
-def fetch_semesters(request, course_id, course_name):
-    myDict = {
-        'courses':Course.objects.all(),
-        'semesters':Semester.objects.all().filter(courseName_id=course_id),
-        'selected_course':course_name,
+    context = {
+        'courses': Course.objects.all(),
+        'subjects':Subject.objects.all().select_related('semester'),
     }
-    return render(request, 'subject.html', myDict)
+    return render(request, "subject.html", context)
+
+def load_semesters(request):
+    course_id = request.GET.get('course_id')
+    context = {
+        'semesters': Semester.objects.all().filter(courseName_id=course_id).order_by('semester'),
+        'course_id': course_id,
+    }
+    return render(request, 'dropdown_semesters_list.html', {'context': context})
 
 def addSubject(request):
     if request.method == "POST":             
