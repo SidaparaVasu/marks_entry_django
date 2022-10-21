@@ -55,7 +55,7 @@ def addInstitute(request):
                 logger.info("Institute insertion failed!")
                 messages.error(request, "Institute insertion failed!")
         else:
-            messages.error(request, "Form is not valid! please fill up form curreclty!")
+            messages.error(request, "Please fill up form with valid requirements!")
         return redirect("/superadmin/institute")
     else:  
         form = InstituteForm()  
@@ -81,7 +81,7 @@ def editInstitute(request,instituteID):
             logger.info("Institute updation failed!")
             messages.error(request, "Institute updation failed!")
     else:
-        messages.error(request, "Form is not valid! please fill up form curreclty!")
+        messages.error(request, "Please fill up form with valid requirements!")
     context['form'] = form
     return redirect("/superadmin/institute",context)
 
@@ -142,6 +142,8 @@ def addCourse(request):
                 return redirect("/superadmin/course")
             else:
                 messages.success(request, "Course insertion failed!")
+        else:
+            messages.error("Please fill up form with valid requirements!")
     else:  
         c_form = CourseForm()  
     return redirect("/superadmin/course",{'c_form':c_form})

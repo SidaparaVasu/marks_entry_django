@@ -51,7 +51,7 @@ def addFaculty(request):
             messages.success(request, "Faculty added successfully!")
             return redirect("/administrator/faculty")  
         else:
-            messages.error(request, "Error in registration for faculty!")
+            messages.error(request, "Please fill up form with valid requirements!")
     else:  
         form = RegisterForm()  
     return redirect("/administrator/faculty",{'form':form})
@@ -116,7 +116,7 @@ def addBatch(request):
             messages.success(request, "Batch added successfully!")
             return redirect("/administrator/batch")
         else:
-            messages.error(request, "Error in registration for batch!")
+            messages.error(request, "Please fill up form with valid requirements!")
     else:  
         form = BatchForm()  
     return redirect("/administrator/batch",{'form':form})
@@ -140,7 +140,7 @@ def addSemester(request):
             return redirect("/administrator/semester")
             #return render(request,'admin.html')  
         else:
-            messages.error(request, "Error in registration for Semester!")
+            messages.error(request, "Please fill up form with valid requirements!")
     else:  
         form = BatchForm()  
     return redirect("/administrator/Semester",{'form':form})
@@ -178,7 +178,7 @@ def addSubject(request):
             messages.success(request, "Subject added successfully!")
             return redirect("/administrator/subject")
         else:
-            messages.error(request, "Error in registration for Subject!")
+            messages.error(request, "Please fill up form with valid requirements!")
     else:  
         form = SubjectForm()  
     return redirect("/administrator/subject",{'form':form})
