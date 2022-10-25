@@ -81,26 +81,10 @@
         <!-- show institue ends -->
     
     </section>
+
+    <!-- scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $("#fetch_semesters").change(function () {
-            var url = $("#courses_form").attr("data-semester-url"); 
-            var course_id = $(this).val(); 
-            $.ajax({                      
-                url: url,                  
-                data: {
-                    'course_id': course_id     
-                },
-                success: function (data) { 
-                    $("#dropdown-semesters").html(data); 
-                    console.log("semesters are fetched")
-                },
-                error: function(data){
-                    console.log("error")
-                }
-            });
-        });
-      </script>
+    <script src="{% static 'js/main.js' %}"></script>
     {% endblock %} 
 </body>
 </html>

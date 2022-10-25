@@ -27,7 +27,12 @@ urlpatterns = [
     # Subject
     path('subject',views.subject,name="subject"),
     path('addSubject', views.addSubject, name="addSubject"),
+    
+    # load using ajax
     path('load_semesters', views.load_semesters, name="ajax_load_semesters"),
+    path('load_courses', views.load_courses, name="ajax_load_courses"),
+    path('load_batches', views.load_batches, name="ajax_load_batches"),
+    
     
     
     # Student

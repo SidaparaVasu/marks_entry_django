@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib import messages
 from auth_app.models import users
 from auth_app.forms import RegisterForm
-from superadmin.models import Course
+from superadmin.models import Course,Institute
 from superadmin.forms import CourseForm
 from .models import Batch,Semester,Subject,Student
 from .forms import BatchForm,SemesterForm,SubjectForm,StudentForm
@@ -142,7 +142,7 @@ def addSemester(request):
         else:
             messages.error(request, "Please fill up form with valid requirements!")
     else:  
-        form = BatchForm()  
+        form = SemesterForm()  
     return redirect("/administrator/Semester",{'form':form})
 
 def updateSemester(request,id):
@@ -155,9 +155,17 @@ def updateSemester(request,id):
 def subject(request):
     context = {
         'courses': Course.objects.all(),
-        'subjects':Subject.objects.all().select_related('semester'),
+        'subjects': Subject.objects.all().select_related('semester'),
     }
     return render(request, "subject.html", context)
+
+
+def load_courses(request):
+    institute_id = request.GET.get('institute_id')
+    context = {
+        'courses': Course.objects.all().filter(instituteName_id=institute_id).order_by('courseName'),
+    }
+    return render(request, 'dropdown_courses_list.html', {'context': context})
 
 def load_semesters(request):
     course_id = request.GET.get('course_id')
@@ -165,6 +173,13 @@ def load_semesters(request):
         'semesters': Semester.objects.all().filter(courseName_id=course_id).order_by('semester'),
     }
     return render(request, 'dropdown_semesters_list.html', {'context': context})
+
+def load_batches(request):
+    course_id = request.GET.get('course_id')
+    context = {
+        'batches': Batch.objects.all().filter(courseName_id=course_id).order_by('batchName'),
+    }
+    return render(request, 'dropdown_batches_list.html', {'context': context})
 
 def addSubject(request):
     if request.method == "POST":             
@@ -185,9 +200,11 @@ def addSubject(request):
 
 
 # Student Upload
-def student(request):
+def student(request):     
     Students = Student.objects.all().order_by('-id')
-    p = Paginator(Students, 10)
+    Institutes = Institute.objects.all().order_by('-instituteID')
+
+    p = Paginator(Students, 20)
     page_number = request.GET.get('page')
     
     try:
@@ -198,7 +215,7 @@ def student(request):
     except Paginator.EmptyPage:
         # if page is empty then return last page
         page_obj = p.page(p.num_pages)
-    context = { 'page_obj': page_obj } 
+    context = { 'page_obj': page_obj, 'institutes':Institutes } 
     return render(request,'student.html', context) 
 
 def upload_csv(request):
@@ -220,6 +237,12 @@ def upload_csv(request):
         return redirect("/administrator/student")
 
 
+    instituteName = request.POST.get('instituteName')
+    courseName = request.POST.get('courseName')
+    batchName = request.POST.get('batchName')
+    # return HttpResponse(batchName)
+    semester = request.POST.get('semester')
+    
     file_data = csv_file.read().decode("utf-8")		
 
     lines = file_data.split("\n")
@@ -234,7 +257,11 @@ def upload_csv(request):
                 email = fields[3],
                 phoneno = fields[4],
                 gender = fields[5],
-                category = fields[6]
+                category = fields[6],
+                batchName_id = batchName,
+                courseName_id = courseName,
+                instituteName_id = instituteName,
+                semester_id = semester,
             )
             form.save()
     except:

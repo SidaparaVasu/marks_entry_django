@@ -1,0 +1,4 @@
+<option value="disabled" selected disabled>--- select course ---</option>
+{% for course in context.courses %}
+    <option value="{{ course.courseID }}">{{ course.courseName }}</option>
+{% endfor %}

@@ -62,29 +62,31 @@
                 <button class="form-btn toggle-btn" id="toggle-btn" onclick="toggleModel()">Upload file</button>
             </header>
             
-            <table class="show-data-box" style="margin-top: 20px; overflow-y: scroll; min-width: 50%;">
-                <thead>
-                    <!-- <th>ID</th> -->
-                    <th>Enrolment</th><th>Seat no.</th><th>Name</th>
-                    <th>email</th><th>phoneno</th><th>gender</th><th>category</th>
-                </thead>
-                <tbody>
-                    {% for student in page_obj %}
-                    <tr>
-                        <!-- <td>{{ student.id }}</td> -->
-                        <td>{{ student.enrolment }}</td>
-                        <td>{{ student.seatno }}</td>
-                        <td>{{ student.name }}</td>
-                        <td>{{ student.email }}</td>
-                        <td>{{ student.phoneno }}</td>
-                        <td>{{ student.gender }}</td>
-                        <td>{{ student.category }}</td>
-                    </tr>
-                    {% empty %}
-                        <center>No data found</center>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div style="overflow-x:auto; width: 100%;">
+                <table class="show-data-box" style="overflow-x:scroll; width: 100%; margin-top: 20px;">
+                    <thead>
+                        <th>ID</th>
+                        <th>Institute</th><th>Course</th><th>Batch</th><th>Semester</th>
+                        <th>Enrolment</th><th>Seat no.</th><th>Name</th>
+                    </thead>
+                    <tbody>
+                        {% for student in page_obj %}
+                        <tr>
+                            <td>{{ student.id }}</td>
+                            <td>{{ student.instituteName.instituteName }}</td>
+                            <td>{{ student.courseName.courseName }}</td>
+                            <td>{{ student.batchName.batchName }}</td>
+                            <td>{{ student.semester.semester }}</td>
+                            <td>{{ student.enrolment }}</td>
+                            <td>{{ student.seatno }}</td>
+                            <td>{{ student.name }}</td>
+                        </tr>
+                        {% empty %}
+                            <center>No data found</center>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             <div class="pagination">
                 {%if page_obj.has_previous %} {# whether the previous page exists #}
                     <a href="?page={{page_obj.previous_page_number}}" class="pagination-btn">prev</a> {# link to the prev page #}
@@ -105,13 +107,35 @@
                 <div class="close-icon-box" onclick="toggleModel()">
                     <img src="{% static 'assets/cancel.png' %}" alt="" srcset="">
                 </div>
-                <img src="{% static 'assets/upload-file-image.png' %}" alt="file-upload-image" class="upld-img"/>
+                <!-- <img src="{% static 'assets/upload-file-image.png' %}" alt="file-upload-image" class="upld-img"/> -->
                 <header class="content-area-header | center-align">Student File Upload</header>
                 <form 
                     action="upload_csv" method="post" enctype="multipart/form-data" class="content-area-form"
-                    style="display: flex; gap: 20px;">
+                    id="student_form"
+                    data-course-url="{% url 'ajax_load_courses' %}"
+                    data-batch-url="{% url 'ajax_load_batches' %}"
+                    data-semester-url="{% url 'ajax_load_semesters' %}"
+
+                    style="display: flex; gap: 20px;" >
                     {% csrf_token %}  
                     {{ form.as_p }}  
+
+                    <select name="instituteName" id="dropdown-institutes" class="input">
+                        <option value="disabled" selected disabled>select an institute</option>
+                        {% for institute in institutes %}
+                            <option value="{{ institute.instituteID }}" name="instituteID">{{ institute.instituteName}}</option>   
+                        {% endfor %}
+                    </select>
+                    <select name="courseName" id="dropdown-courses" class="input">
+                        <option value="disabled" selected disabled>---</option>                    
+                    </select>
+                    <select name="batchName" id="dropdown-batches" class="input">
+                        <option value="disabled" selected disabled>---</option>                    
+                    </select>
+                    <select name="semester" id="dropdown-semesters" class="input">
+                        <option value="disabled" selected disabled>---</option>                    
+                    </select>
+
                     <input type="file" name="csv_file " 
                         style="
                             width: 100%;
@@ -127,6 +151,9 @@
 
         </div>  
     </section>
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
     {% endblock %} 
 
 </body>
