@@ -1,3 +1,4 @@
+from django.views.decorators.cache import cache_control
 from django.shortcuts import render, redirect, get_object_or_404,HttpResponse
 from auth_app.forms import RegisterForm  
 from django.contrib import messages
@@ -86,6 +87,9 @@ def loginHandle(request):
         form = RegisterForm()
         return render(request, template_name = "login.html")
 
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def logoutHandle(request):
     try:
         del request.session['username']

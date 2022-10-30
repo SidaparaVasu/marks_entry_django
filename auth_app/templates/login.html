@@ -23,15 +23,24 @@
     align-items: center;
     justify-content: center;
     background-color: #f0fdff;
+    /* background-image: url("{% static 'assets/pexels-enrique-hoyos-6193784_2.jpg' %}");
+    background-size: 450px;
+    background-repeat: repeat;
+    backdrop-filter: blur(150px); */
+    background-image: url("{% static 'assets/pexels-uzunov-rostislav-5011647.jpg' %}");
+    background-position: 50% 5%;
+    /* backdrop-filter: blur(2px); */
   }
 
   .container {
+    color: #fff;
     width: 500px;
     height: auto;
     padding: 30px 40px;
     border: 1px solid rgb(229, 229, 229);
-    background-color: #fff;
-    box-shadow: 0 2px 20px 5px rgba(0, 0, 0, 0.1)
+    /* background-color: #0002; */
+    box-shadow: 0 2px 20px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
   }
 
   .container>.header {
@@ -41,6 +50,7 @@
   }
 
   .input {
+    color: #fff;
     min-height: auto;
     padding: 0.33em 0.75em;
     width: 100%;
@@ -50,6 +60,11 @@
     background: transparent;
     transition: all .2s linear;
     font-size: 16px;
+  }
+  .btn{
+    color: #000;
+    background-color: #fff;
+    letter-spacing: 1px;
   }
 </style>
 
@@ -91,7 +106,7 @@
       </div>
 
       <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+      <button type="submit" class="btn btn-block mb-4">Sign in</button>
 
     </form>
   </section>
