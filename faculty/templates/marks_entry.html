@@ -20,12 +20,55 @@
 
     {% block content %}
 
-    {% endblock %} 
     <!-- Main Container -->
     <section class="container">
         <div class="content-area">
+            <!-- styling for this form is in head >> style tag in this page -->
+            <form 
+                method="post" enctype="multipart/form-data" class="content-area-form | marks_entry_form"
+                id="student_form"
+                data-course-url="{% url 'ajax_load_courses' %}"
+                data-batch-url="{% url 'ajax_load_batches' %}"
+                data-semester-url="{% url 'ajax_load_semesters' %}"
+                data-student-url="{% url 'ajax_load_students' %}"
+                >
 
+                {% csrf_token %}  
+                {{ form.as_p }}  
+
+                <header class="content-area-header">Marks Entry</header>
+
+                <div class="dropdown-box">
+                    <select name="instituteName" id="dropdown-institutes" class="input">
+                        <option value="disabled" selected disabled>select an institute</option>
+                        {% for institute in institutes %}
+                            <option value="{{ institute.instituteID }}" name="instituteID">{{ institute.instituteName}}</option>   
+                        {% endfor %}
+                    </select>
+    
+                    <select name="courseName" id="dropdown-courses" class="input">
+                        <option value="disabled" selected disabled>---</option>  
+                    </select>
+    
+                    <select name="batchName" id="dropdown-batches" class="input">
+                        <option value="disabled" selected disabled>---</option>                    
+                    </select>
+    
+                    <select name="semester" id="dropdown-semesters" class="input">
+                        <option value="disabled" selected disabled>---</option>                    
+                    </select>
+                </div>
+
+                <div class="marksEntryForm" id="get-students">
+                    
+                </div>
+
+            </form>
         </div>
     </section>
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% endblock %} 
 </body>
 </html>

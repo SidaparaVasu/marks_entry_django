@@ -1,0 +1,35 @@
+<table>
+    <thead>
+        <th>no.</th>
+        <th>name</th>
+        <th>enrolment</th>
+        <th>seatno</th>
+        {% for subj in subjects %}
+            {% for subj_info in subj %}
+                <th>{{ subj_info.subject }}</th>
+                <th>credits</th>
+            {% endfor %}
+        {% endfor %}
+    </thead>
+    <tbody>
+        {% for data in students %}
+            {% for info in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ info.name }}</td>
+                    <td>{{ info.enrolment }}</td>
+                    <td>{{ info.seatno }}</td>
+                    {% for subj in subjects %}
+                        {% for subj_info in subj %}
+                            <td><input type="text" placeholder="{{ subj_info.subject }}"/></td>
+                            <td>{{ subj_info.credits }}</td>
+                        {% endfor %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        {% empty %}
+        <p>no data found</p>
+        {% endfor %}
+    </tbody>
+</table>
+

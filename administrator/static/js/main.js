@@ -36,7 +36,7 @@ $("#dropdown-courses").change(function () {
     });
 });
 
-// Fetching semester from selecting course
+// Fetching semester from selecting course (note: this is for student.html page)
 $("#dropdown-courses").change(function () {
     var url = $("#student_form").attr("data-semester-url"); 
     var course_id = $(this).val(); 
@@ -67,6 +67,31 @@ $("#fetch_semesters").change(function () {
         success: function (data) { 
             $("#dropdown-semesters").html(data); 
             console.log("semesters are fetched")
+        },
+        error: function(data){
+            console.log("error")
+        }
+    });
+});
+
+// Fetching student from selecting semester (note: this is for marks_entry.html page)
+$("#dropdown-semesters").change(function () {
+    var url = $(".marks_entry_form").attr("data-student-url"); 
+    var institute_id = $('#dropdown-institutes').val(); 
+    var course_id = $('#dropdown-courses').val(); 
+    var batch_id = $('#dropdown-batches').val(); 
+    var semester_id = $('#dropdown-semesters').val(); 
+    $.ajax({                      
+        url: url,                  
+        data: {
+            'institute_id': institute_id,
+            'course_id': course_id,
+            'batch_id': batch_id,
+            'semester_id': semester_id,     
+        },
+        success: function (data) { 
+            $("#get-students").html(data); 
+            console.log(institute_id, course_id, batch_id, semester_id)
         },
         error: function(data){
             console.log("error")

@@ -175,7 +175,31 @@
     flex-direction: column;
     padding: 20px 50px;
 }
-.content-area-form > .input{
+.dropdown-box{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-evenly;
+}
+.dropdown-box > .input{
+    width: 250px;
+}
+/* .get-student-btn{
+    width: max-content;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 15px;
+    outline: none;
+    border-radius: 6px;
+    border: 1px solid var(--grey);
+    background: var(--violet);
+    color: var(--white);
+    cursor: pointer;
+} */
+.content-area-form > .input,
+.dropdown-box > .input{
     outline: none;
     border: 1px solid var(--grey);
     padding: 10px 15px;
@@ -183,7 +207,8 @@
     margin-bottom: 8px;
     transition: 0.25s;
 }   
-.content-area-form > .input:focus{
+.content-area-form > .input:focus,
+.dropdown-box > .input:focus{
     box-shadow: 0 0 0 2px #ded6f681;
 }
 .form-btn{
